@@ -3,7 +3,9 @@
 <div id="categories-wrapper">
 
   <?php  
-    $cats = get_categories( array('taxonomy'=>'works') );
+    $cats = get_categories( array('taxonomy'=>'works',
+								  'orderby' =>'slug'
+								  ));
     foreach ( $cats as $category) {
   ?>
     <div class="category_header">
@@ -20,7 +22,7 @@
               'tax_query' => array( 
                               array( 
                                 'taxonomy' => 'works',
-                                'field' => 'slug',
+                                'field' => 'name',
                                 'terms' => $category->name
                                 ))
               );
