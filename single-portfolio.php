@@ -37,23 +37,33 @@
             'exclude' => get_post_thumbnail_id()
             );
           $attachments = get_posts($args);
-          
-          if ( get_post_meta( $post->ID, 'youtube_video', true) != "" ) { 
+
+          $youtubeVideos = get_post_meta( $post->ID, 'youtube_video', false);
+
+          if ( count($youtubeVideos) > 0):
+            foreach( $youtubeVideos as $youtubeVideoMeta):
+              $youtubeMetaSplit = explode("::", $youtubeVideoMeta);
+              $youtubeVideoUrl = $youtubeMetaSplit[0];
+              $youtubeVideoDescription = $youtubeMetaSplit[1];
       ?>
             <div class="project-video" >
               <?php 
-              $vid_url = get_post_meta( $post->ID, 'youtube_video', true); 
-              echo do_shortcode('[iframe src=http:'.$vid_url.'?rel=0&controls=2&modestbranding=1&autohide=1&showinfo=0&wmode=transparent]');
+                echo do_shortcode('[iframe src=http://'.$youtubeVideoUrl.'?rel=0&controls=2&modestbranding=1&autohide=1&showinfo=0&wmode=transparent]');
               ?>
-              <p>
-                <?php echo get_post_meta( $post->ID, 'youtube_video_desc', true); ?>
-              </p>
+              <?php 
+                if ($youtubeVideoDescription != "") {
+                  echo "<p>".$youtubeVideoDescription."</p>";
+                }
+              ?>
             </div>
 
           <?php
-          }
+            endforeach;
+          endif;
+
           if ($attachments):
-            foreach ($attachments as $attachment): ?>
+            foreach ($attachments as $attachment): 
+          ?>
               <div class="project-image" >
                 <div class="project-captionGrouper">
                     <?php $img_attributes = wp_get_attachment_image_src($attachment->ID, 'full'); ?>

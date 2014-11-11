@@ -7,7 +7,7 @@
 
 /**
  * Set the content width based on the theme's design and stylesheet.
-  e.g. Limits the width of an image so it doesn't overflowing the content areaing the content area
+ * e.g. Limits the width of an image so it doesn't overflowing the content areaing the content area
  */
 if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
@@ -269,7 +269,7 @@ function catlist() {
 			<ul class="taglist">
 				<?php wp_list_categories('title_li=&hierarchical=0&'); ?>
 			</ul>
-		</li>
+		</li>where is the xorg.conf
 	</ul>
 	<?php
 }
@@ -284,3 +284,16 @@ add_filter('next_posts_link_attributes', 'n_posts_link_attributes');
 add_filter('next_comments_link_attributes', 'n_posts_link_attributes');
 add_filter('previous_posts_link_attributes', 'p_posts_link_attributes');
 add_filter('previous_comments_link_attributes', 'p_posts_link_attributes');
+
+
+function getOrderedListOfProjectVideos( $customFields) {
+	$youtubeVideos = $customFields;
+
+	foreach ($customFields as $field) {
+		if ($field) {
+			
+		}
+	}
+
+	return $youtubeVideos;
+}
