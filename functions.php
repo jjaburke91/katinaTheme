@@ -284,16 +284,3 @@ add_filter('next_posts_link_attributes', 'n_posts_link_attributes');
 add_filter('next_comments_link_attributes', 'n_posts_link_attributes');
 add_filter('previous_posts_link_attributes', 'p_posts_link_attributes');
 add_filter('previous_comments_link_attributes', 'p_posts_link_attributes');
-
-
-function getOrderedListOfProjectVideos( $customFields) {
-	$youtubeVideos = $customFields;
-
-	foreach ($customFields as $field) {
-		if ($field) {
-			
-		}
-	}
-
-	return $youtubeVideos;
-}
