@@ -744,4 +744,8 @@ embed, iframe, object {
     .post_home {
         width: 48%;
     }
+
+    #contact-Img {
+        display: none;
+    }
 }

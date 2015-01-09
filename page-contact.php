@@ -1,5 +1,3 @@
-<!-- Page Displaying About/Contact Info -->
-
 <?php get_header(); ?>
 
 <div class="content-area">

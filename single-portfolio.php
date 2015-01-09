@@ -1,4 +1,3 @@
-<!-- Single Project root & content -->
 <?php get_header(); ?>
 
 	<div class="content-area">

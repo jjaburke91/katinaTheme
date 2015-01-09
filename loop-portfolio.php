@@ -1,5 +1,3 @@
-<!--Home page, display projects and categories  -->
-
 <div id="categories-wrapper">
 
   <?php  
