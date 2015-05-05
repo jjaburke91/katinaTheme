@@ -1,2 +1,6 @@
 .idea
 bower_components
+node_modules
+style.css.map
+style.css
+dist

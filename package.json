@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/jjaburke91/katinaTheme/issues"
   },
-  "homepage": "https://github.com/jjaburke91/katinaTheme"
+  "homepage": "https://github.com/jjaburke91/katinaTheme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-html2js": "^0.3.2",
+    "grunt-wiredep": "^2.0.0"
+  }
 }

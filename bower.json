@@ -14,5 +14,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "sass": "sass/sass#~3.4.13",
+    "font-awesome": "~4.3.0",
+    "jquery": "~2.1.4"
+  }
 }
