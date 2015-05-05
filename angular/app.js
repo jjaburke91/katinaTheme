@@ -4,11 +4,13 @@ var jmApp = angular.module('jordan_muir_app', [
 
 console.log("Hello from app.js");
 
-jmApp.config(['$routeProvider', '$templateCache',
-    function($routeProvider, $templateCache) {
+// Don't think we should be using template directory in the routing, bypassing template Cache!!!
+
+jmApp.config(['$routeProvider',
+    function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '<?php bloginfo(\'template_directory\'); ?>/project-listing.html',
+                templateUrl: template_directory+'/angular/views/project-listing.html',
                 controller: 'projectListingController'
             })
             .when('/post/:postId', {

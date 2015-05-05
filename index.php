@@ -8,6 +8,7 @@
     <!-- bower:js -->
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
 
     <!-- bower:css -->
@@ -23,7 +24,7 @@
 
 </head>
 
-<body>
+<body ng-app="jordan_muir_app">
 
     <header>
         <h1>Header</h1>
