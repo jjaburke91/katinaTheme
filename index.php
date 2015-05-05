@@ -29,6 +29,8 @@
         <h1>Header</h1>
     </header>
 
+    <a href="">hello</a>
+
     <div id="content" ng-view>
         <h2>Body</h2>
 

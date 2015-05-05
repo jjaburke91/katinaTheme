@@ -2,12 +2,13 @@ var jmApp = angular.module('jordan_muir_app', [
     'ngRoute'
 ]);
 
+console.log("Hello from app.js");
 
-jmApp.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
+jmApp.config(['$routeProvider', '$templateCache',
+    function($routeProvider, $templateCache) {
         $routeProvider
             .when('/', {
-                templateUrl: 'project-listing.html',
+                templateUrl: '<?php bloginfo(\'template_directory\'); ?>/project-listing.html',
                 controller: 'projectListingController'
             })
             .when('/post/:postId', {
