@@ -1,8 +1,105 @@
+@font-face
+   font-family: "CircularStd_Book"
+   src: url("fonts/CircularStd-Book.otf") format("opentype")
+
+//@font-face
+//   font-family: "CircularStd_Bold"
+//   src: url("fonts/CircularStd-Bold.otf") format("opentype")
+
+
+$font-stack: 'CircularStd_Book', 'Open Sans', sans-serif
+
+$base-colour: #FFFFFF
+$primary-colour: #EFF1EE
+$secondary-colour: #5D6C76
+
+$header-height: 2em
+
+$show-div-borders: false
+
+/**************************************/
 
 html
-   margin: 1em 1em
-   font-family: 'Open Sans', sans-serif
-   font-weight: 300
+   max-width: 90%
+   margin: 0 auto
+   font-family: $font-stack
+   background-color: #FFFFFF
 
-body
+   a
+      text-decoration: none
+   a:visited
+      color: $secondary-colour
 
+div
+   @if $show-div-borders
+      border: 1px solid black
+
+#content
+   margin-top: $header-height + 3em
+   color: $secondary-colour
+
+/************/
+/** Header **/
+/************/
+
+header
+   position: fixed
+   width: 100%
+   height: $header-height
+   top: 0
+   left: 0
+   padding: 1em
+
+   background-color: $primary-colour
+   color: $secondary-colour
+
+   z-index: 99900
+
+   div
+      float: left
+
+#logo-container
+   width: 48%
+   margin: 0 auto
+   text-align: center
+
+   h1
+      z-index: 999999
+      background-color: transparent
+      margin: 0
+
+#about-container
+   width: 25%
+   text-align: left
+   padding-top: 5px
+   text-transform: lowercase
+
+#media-icon-container
+   width: 25%
+   text-align: right
+   padding-top: 5px
+
+
+
+
+/*********************/
+/** Project-Listing **/
+/*********************/
+
+.listing-item
+   max-width: 31%
+   min-width: 31%
+   width: 31%
+   margin: .5em .8em
+   float: left
+
+   img
+      width: 100%
+
+
+
+
+
+/*** Animations ***/
+
+/** https://scotch.io/tutorials/animating-angularjs-apps-ngview **.

@@ -1,4 +1,3 @@
-jmApp.controller('projectListingController', function( $scope) {
+jmApp.controller('projectListingController', function( $scope, $rootScope) {
     console.log("hello from project listing controller");
-
 });

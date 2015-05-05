@@ -1,6 +1,7 @@
-var jmApp = angular.module('jordan_muir_app', [
-    'ngRoute'
-]);
+var jmApp = angular.module('jordan_muir_app', ['ngRoute'])
+    .run( function($rootScope) {
+        $rootScope.template_directory = template_directory;
+    });
 
 console.log("Hello from app.js");
 
@@ -18,11 +19,11 @@ jmApp.config(['$routeProvider',
                 controller: 'projectController'
             })
             .when('/about', {
-                templateUrl: 'about.html',
+                templateUrl: template_directory+'/angular/views/about.html',
                 controller: 'aboutController'
             })
             .when('/error', {
-                templateUrl: '404.html',
+                templateUrl: template_directory+'/angular/views/404.html',
                 controller: 'errorController'
             })
             .otherwise({
