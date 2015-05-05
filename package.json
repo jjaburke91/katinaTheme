@@ -1,0 +1,19 @@
+{
+  "name": "jordanMuir",
+  "version": "1.0.0",
+  "description": "Bespoke theme for jordanmuir.co.uk",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjaburke91/katinaTheme.git"
+  },
+  "author": "Jamie Burke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjaburke91/katinaTheme/issues"
+  },
+  "homepage": "https://github.com/jjaburke91/katinaTheme"
+}

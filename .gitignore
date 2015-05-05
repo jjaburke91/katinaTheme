@@ -1,3 +1,2 @@
-*.sublime-project
-*.sublime-workspace
-session
+.idea
+bower_components
