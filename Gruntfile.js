@@ -9,13 +9,20 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        /* Info on wiredep found here: https://github.com/stephenplusplus/grunt-wiredep */
+        /* Info on wiredep found here: https://github.com/stephenplusplus/grunt-wiredep
+        *  Needed to override script field so that it includes the php to retrieve template directory */
         wiredep: {
             task: {
-                // Point to the files that should be updated when
-                // you run `grunt wiredep`
                 src: ['index.php'],
                 options: {
+                    fileTypes: {
+                        html: {
+                            replace: {
+                                js: '<script type="text/javascript" src="<?php bloginfo(\'template_directory\'); ?>/{{filePath}}"></script>',
+                                css:'<link rel="stylesheet" href="<?php bloginfo(\'template_directory\'); ?>/{{filePath}}" />'
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -32,7 +39,7 @@ module.exports = function(grunt) {
             }
         },
 
-        // Converts all the views to a js file (somehow)
+        // Converts all the views to a js file
         html2js: {
             dist: {
                 src: [ 'angular/views/*.html' ],
@@ -47,7 +54,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: [ 'angular/*.js', 'angular/controllers/*.js', 'angular/directives/*.js', 'tmp/*.js' ],
-                dest: 'dist/app.js'
+                dest: 'dist/dist-app.js'
             }
         },
 
