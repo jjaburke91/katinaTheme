@@ -3,8 +3,10 @@
 Recently Completed Tasks:
 * Routing
 * Integration of wp-json
+* Project URLs that come through wp-json now contain hashbang and appropriate prefix.
+* Meta box for projects, will be useful once further developed.
 
 Current Status:
-* Configuring wordpress taxonomy for projects.
+* Creating more advanced meta box for projects.
 
 See for notes: https://trello.com/b/kuHzz3E8/jordanmuir-co-uk-notes
