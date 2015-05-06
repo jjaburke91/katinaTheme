@@ -6,7 +6,6 @@
 //   font-family: "CircularStd_Bold"
 //   src: url("fonts/CircularStd-Bold.otf") format("opentype")
 
-
 $font-stack: 'CircularStd_Book', 'Open Sans', sans-serif
 
 $base-colour: #FFFFFF
@@ -15,8 +14,20 @@ $secondary-colour: #5D6C76
 
 $header-height: 2em
 
-$show-div-borders: false
+/**** Testing Ifs ****/
 
+$show-div-borders: false
+$show-project-listing-borders: true
+
+@if $show-div-borders
+   div
+      border: 1px solid black
+
+@if $show-project-listing-borders
+   .listing-item
+      border: 1px solid grey
+
+/**************************************/
 /**************************************/
 
 html
@@ -30,9 +41,6 @@ html
    a:visited
       color: $secondary-colour
 
-div
-   @if $show-div-borders
-      border: 1px solid black
 
 #content
    margin-top: $header-height + 3em
@@ -67,6 +75,7 @@ header
       z-index: 999999
       background-color: transparent
       margin: 0
+      text-transform: uppercase
 
 #about-container
    width: 25%

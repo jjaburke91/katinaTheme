@@ -3,9 +3,7 @@ var jmApp = angular.module('jordan_muir_app', ['ngRoute'])
         $rootScope.template_directory = template_directory;
     });
 
-console.log("Hello from app.js");
-
-// Don't think we should be using template directory in the routing, bypassing template Cache!!!
+//todo: Don't think we should be using template directory in the routing, bypassing template Cache!!!
 
 jmApp.config(['$routeProvider',
     function($routeProvider) {
