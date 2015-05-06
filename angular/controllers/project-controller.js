@@ -1,4 +1,4 @@
-jmApp.controller('projectController', function( $scope, $routeParams, $log, wp) {
+jmApp.controller('projectController', function( $scope, $routeParams, wp) {
     console.log($routeParams);
 
 });

@@ -12,8 +12,8 @@ jmApp.config(['$routeProvider',
                 templateUrl: template_directory+'/angular/views/project-listing.html',
                 controller: 'projectListingController'
             })
-            .when('/post/:postId', {
-                templateUrl: 'project.html',
+            .when('/project/:postName', {
+                templateUrl: template_directory+'/angular/views/project.html',
                 controller: 'projectController'
             })
             .when('/about', {

@@ -1,7 +1,8 @@
 <div id="project-listing-container">
 
     <div class="listing-item" ng-repeat="project in projects">
-        <h1>{{project.title.rendered}}</h1>
+        <h1>{{project.title}}</h1>
+        <a href="{{project.link}}">{{project.link}}</a>
     </div>
 
     <div class="listing-item">
