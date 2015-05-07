@@ -1,4 +1,5 @@
 jmApp.controller('aboutController', function( $scope, wp) {
+    $scope.pageClass = "about";
 
     wp.getAboutPage()
         .success( function(response) {

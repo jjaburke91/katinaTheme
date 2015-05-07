@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <script type="text/javascript">
@@ -43,7 +44,7 @@
         </div>
     </header>
 
-    <div id="content" ng-view>
+    <div id="content" class="{{pageClass}}" ng-view>
     </div>
 
 </body>

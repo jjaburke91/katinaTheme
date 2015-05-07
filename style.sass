@@ -9,10 +9,18 @@
 $font-stack: 'CircularStd_Book', 'Open Sans', sans-serif
 
 $base-colour: #FFFFFF
+$dark-base-colour: #fff7e8
 $primary-colour: #EFF1EE
 $secondary-colour: #5D6C76
 
 $header-height: 2em
+
+@mixin animation($str)
+   animation: #{$str}
+   -webkit-animation: #{$str}
+   -moz-animation: #{$str}
+   -o-animation: #{$str}
+
 
 /**** Testing Ifs ****/
 
@@ -31,8 +39,7 @@ $show-project-listing-borders: false
 /**************************************/
 
 html
-   max-width: 90%
-   margin: 0 auto
+   max-width: 100%
    font-family: $font-stack
    background-color: #FFFFFF
 
@@ -41,8 +48,11 @@ html
       color: $secondary-colour
 
 #content
-   margin-top: $header-height + 3em
+   margin: ($header-height + 3em) auto .5em auto
+   padding: 0 1.7em
    color: $secondary-colour
+   width: 100%
+   height: 100%
 
 /************/
 /** Header **/
@@ -106,7 +116,69 @@ header
 
 
 
-
+/******************/
 /*** Animations ***/
+/******************/
+/** https://scotch.io/tutorials/animating-angularjs-apps-ngview **/
+// Ng-enter/leave-active defines where the transition goes.
 
-/** https://scotch.io/tutorials/animating-angularjs-apps-ngview **.
+// Todo: Animations for all webkits! Create mixin to handle this nicely.
+
+//@keyframes fadeIn
+//   from
+//      opacity: 0
+//   to
+//      opacity: 1
+
+//#content.ng-enter
+   //animation: fadeIn 0.5s forwards
+
+@keyframes slideFromRight
+   from
+      top: 0px
+      left: 100px
+      opacity: 0
+
+   to
+      position: relative
+      top: 0
+      left: 0
+      opacity: 1
+
+@keyframes slideFromLeft
+   from
+      top: 0px
+      left: -100px
+      opacity: 0
+
+   to
+      position: relative
+      top: 0
+      left: 0
+      opacity: 1
+
+@keyframes slideFromTop
+   from
+      top: 0px
+      left: 0px
+      opacity: 0
+
+   to
+      position: relative
+      top: 0
+      left: 0
+      opacity: 1
+
+
+.about.ng-enter
+   position: relative
+   @include animation(slideFromLeft 1.5s ease)
+
+.project.ng-enter
+   position: relative
+   @include animation(slideFromRight 1.5s ease)
+
+.project-listing.ng-enter
+   position: relative
+   @include animation(slideFromTop 1.5s ease)
+

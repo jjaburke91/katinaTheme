@@ -1,4 +1,5 @@
 jmApp.controller('projectListingController', function( $scope, $rootScope, wp) {
+    $scope.pageClass = "project-listing";
 
     wp.getProjects()
         .success( function(response) {
