@@ -21,6 +21,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" ></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jordanMuir.js" ></script>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 
@@ -46,6 +47,7 @@
 
     <div id="content" class="{{pageClass}}" ng-view>
     </div>
+
 
 </body>
 

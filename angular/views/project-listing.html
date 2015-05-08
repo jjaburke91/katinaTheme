@@ -2,10 +2,12 @@
 
     <div class="listing-item" ng-repeat="project in projects">
         <a href="{{project.link}}">
-            <!--<h1>{{project.title}}</h1>-->
-            <!--<a href="{{project.link}}">{{project.link}}</a>-->
-            <img src="{{project.featured_image.guid}}">
+            <h3 class="fadeInOut" >{{project.title}}</h3>
+            <div class="fadeInOut project-listing-image-container">
+                <img src="{{project.featured_image.guid}}" />
+            </div>
         </a>
     </div>
+
 
 </div>

@@ -15,6 +15,20 @@ $secondary-colour: #5D6C76
 
 $header-height: 2em
 
+
+@mixin animation($str)
+   animation: #{$str}
+   -webkit-animation: #{$str}
+   -moz-animation: #{$str}
+   -o-animation: #{$str}
+
+@mixin transition($str)
+   transition: #{$str}
+   -webkit-transition: #{$str}
+   -moz-transition: #{$str}
+   -o-transition: #{$str}
+
+
 /**** Testing Ifs ****/
 
 $show-div-borders: false
@@ -114,16 +128,39 @@ header
 /*********************/
 
 .listing-item
+   position: relative
+   float: left
+   margin: .5em .8em
+   width: 31%
    max-width: 31%
    min-width: 31%
-   width: 31%
-   margin: .5em .8em
-   float: left
+
+   h3
+      position: absolute
+      width: 100%
+      top: 38%
+      margin: auto
+
+      text-align: center
+      opacity: 0
+      font-size: 2em
+
+
+   &:hover
+      h3
+         opacity: 1
+         z-index: 99999
+
+.project-listing-image-container
+   z-index: 1
 
    img
       width: 100%
 
-
+   &:hover
+      opacity: 0.4
+      filter: blur(5px)
+      -webkit-filter: blur(5px)
 
 
 /******************/
@@ -132,12 +169,6 @@ header
 
 /** https://scotch.io/tutorials/animating-angularjs-apps-ngview **/
 // Ng-enter/leave-active defines where the transition goes.
-
-@mixin animation($str)
-   animation: #{$str}
-   -webkit-animation: #{$str}
-   -moz-animation: #{$str}
-   -o-animation: #{$str}
 
 @keyframes fadeAndSlideFromRight
    from
@@ -171,7 +202,6 @@ header
       transform: translateX(-100%)
 
 
-
 .about.ng-enter
    @include animation(fadeAndSlideFromLeft 1s ease)
 .about.ng-leave
@@ -183,8 +213,11 @@ header
 .project.ng-leave
    @include animation(fadeOutToLeft 1s ease)
 
+
 .project-listing.ng-enter
    @include animation(fadeInFromLeft 1s ease)
 .project-listing.ng-leave
    @include animation(fadeOutToRight 1s ease)
 
+.fadeInOut
+   @include transition(all 0.3s ease)
