@@ -15,13 +15,6 @@ $secondary-colour: #5D6C76
 
 $header-height: 2em
 
-@mixin animation($str)
-   animation: #{$str}
-   -webkit-animation: #{$str}
-   -moz-animation: #{$str}
-   -o-animation: #{$str}
-
-
 /**** Testing Ifs ****/
 
 $show-div-borders: false
@@ -39,7 +32,9 @@ $show-project-listing-borders: false
 /**************************************/
 
 html
-   max-width: 100%
+   width: 100%
+   margin: 0 0 0 0
+
    font-family: $font-stack
    background-color: #FFFFFF
 
@@ -48,11 +43,15 @@ html
       color: $secondary-colour
 
 #content
-   margin: ($header-height + 3em) auto .5em auto
-   padding: 0 1.7em
-   color: $secondary-colour
+   position: absolute
+   top: 0
+   left: 0
    width: 100%
    height: 100%
+   margin: ($header-height + 3em) 1em .5em 1em
+   color: $secondary-colour
+
+
 
 /************/
 /** Header **/
@@ -85,17 +84,28 @@ header
       margin: 0
       text-transform: uppercase
 
-#about-container
-   width: 25%
-   text-align: left
-   padding-top: 5px
-   text-transform: lowercase
-
 #media-icon-container
    width: 25%
    text-align: right
    padding-top: 5px
 
+#about-container
+   width: 25%
+   text-align: left
+   padding-top: 8px
+   text-transform: lowercase
+
+
+
+/***********/
+/** Pages **/
+/***********/
+
+#project-page-container
+   text-align: center
+
+#about-page-container
+   text-align: center
 
 
 
@@ -119,66 +129,62 @@ header
 /******************/
 /*** Animations ***/
 /******************/
+
 /** https://scotch.io/tutorials/animating-angularjs-apps-ngview **/
 // Ng-enter/leave-active defines where the transition goes.
 
-// Todo: Animations for all webkits! Create mixin to handle this nicely.
+@mixin animation($str)
+   animation: #{$str}
+   -webkit-animation: #{$str}
+   -moz-animation: #{$str}
+   -o-animation: #{$str}
 
-//@keyframes fadeIn
-//   from
-//      opacity: 0
-//   to
-//      opacity: 1
-
-//#content.ng-enter
-   //animation: fadeIn 0.5s forwards
-
-@keyframes slideFromRight
+@keyframes fadeAndSlideFromRight
    from
-      top: 0px
-      left: 100px
       opacity: 0
-
+      transform: translateX(100%)
    to
-      position: relative
-      top: 0
-      left: 0
       opacity: 1
 
-@keyframes slideFromLeft
+@keyframes fadeAndSlideFromLeft
    from
-      top: 0px
-      left: -100px
       opacity: 0
-
+      transform: translateX(-100%)
    to
-      position: relative
-      top: 0
-      left: 0
       opacity: 1
 
-@keyframes slideFromTop
+@keyframes fadeInFromLeft
    from
-      top: 0px
-      left: 0px
       opacity: 0
-
+      transform: translateX(100%)
    to
-      position: relative
-      top: 0
-      left: 0
       opacity: 1
+
+@keyframes fadeOutToRight
+   to
+      opacity: 1
+      transform: translateX(100%)
+
+@keyframes fadeOutToLeft
+   to
+      opacity: 1
+      transform: translateX(-100%)
+
 
 
 .about.ng-enter
-   position: relative
-   @include animation(slideFromLeft 1.5s ease)
+   @include animation(fadeAndSlideFromLeft 1s ease)
+.about.ng-leave
+   @include animation(fadeOutToLeft 1s ease)
+
 
 .project.ng-enter
-   position: relative
-   @include animation(slideFromRight 1.5s ease)
+   @include animation(fadeAndSlideFromLeft 1s ease)
+.project.ng-leave
+   @include animation(fadeOutToLeft 1s ease)
 
 .project-listing.ng-enter
-   position: relative
-   @include animation(slideFromTop 1.5s ease)
+   @include animation(fadeInFromLeft 1s ease)
+.project-listing.ng-leave
+   @include animation(fadeOutToRight 1s ease)
 
