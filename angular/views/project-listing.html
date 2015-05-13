@@ -8,7 +8,7 @@
                 </h2>
                 <span class="listing-item-text-separator"></span>
                 <h3 class="listing-item-description">
-                    {{project.excerpt}}
+                    {{project.excerpt | extractSurroundingTags:'p'}}
                 </h3>
                 <button >view</button>
             </div>
