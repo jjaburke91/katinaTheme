@@ -11,3 +11,10 @@ jmApp.filter('extractSurroundingTags', function() {
         return result;
     }
 });
+
+
+jmApp.filter('trustAsHtmlFilter', function($sce) {
+    console.log("trust hit");
+    console.log( $sce.trustAsHtml());
+    return $sce.trustAsHtml;
+});

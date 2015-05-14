@@ -8,5 +8,6 @@ Recently Completed Tasks:
 
 Current Status:
 * Creating more advanced meta box for projects.
+* Styling listing page objects
 
 See for notes: https://trello.com/b/kuHzz3E8/jordanmuir-co-uk-notes

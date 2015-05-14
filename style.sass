@@ -10,8 +10,10 @@ $font-stack: 'CircularStd_Book', 'Open Sans', sans-serif
 
 $base-colour: #FFFFFF
 $dark-base-colour: #fff7e8
+
 $primary-colour: #EFF1EE
 $secondary-colour: #5D6C76
+$tertiary-colour: #cfffe2
 
 $header-height: 2em
 
@@ -66,14 +68,14 @@ html
    left: 0
    width: 100%
    height: 100%
-   margin: ($header-height + 3em) 1em .5em 1em
+   margin: ($header-height + 3em) 0em .5em 0em
    color: $secondary-colour
 
 button
    padding: 7px 10px
    background: $base-colour
    color: $secondary-colour
-   border: 2px solid $primary-colour
+   border: 1px solid $secondary-colour
    @include border-radius(25px)
 
 
@@ -128,8 +130,13 @@ header
 #project-page-container
    text-align: center
 
+#view-description-btn
+   &:hover
+      background-color: $tertiary-colour
+
 #about-page-container
    text-align: center
+
 
 
 
@@ -142,8 +149,6 @@ header
    float: left
    margin: .5em .8em
    width: 31%
-   max-width: 31%
-   min-width: 31%
 
    .listing-item-title, button, .listing-item-text-separator, .listing-item-description
       position: absolute
@@ -157,33 +162,24 @@ header
       font-size: 2em
 
    .listing-item-text-separator
-      top: 35%
-      left: 44%
+      top: 34%
+      left: 49%
       border: 1px solid $secondary-colour
       //opacity: 1
-      width: 4em
-      @include border-radius(200px)
+      width: 3px
+      height: 3px
+      background-color: $secondary-colour
+      @include border-radius(500px)
 
    .listing-item-description
       width: 100%
       top: 41%
 
-   button
-      top: 70%
-      left: 40%
-      padding: 8px 37px
-      font-size: .8em
-
-      text-transform: uppercase
-      color: $secondary-colour
-      border-color: $secondary-colour
-      background-color: transparent
-      //opacity: 1
-
    &:hover
+      background-color: $tertiary-colour
+
       .listing-item-title, button, .listing-item-text-separator, .listing-item-description
          opacity: 1
-         //z-index: 99999
 
 .project-listing-image-container
    z-index: 1
@@ -192,9 +188,12 @@ header
       width: 100%
 
    &:hover
-      opacity: 0.4
-      filter: blur(5px)
-      -webkit-filter: blur(5px)
+      opacity: 0.1
+      filter: blur(1px)
+      -webkit-filter: blur(1px)
+
+
+
 
 
 /********************************/
