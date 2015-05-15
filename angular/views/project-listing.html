@@ -4,7 +4,7 @@
         <a href="{{project.link}}">
             <!--Following container needs to be formatted so that it's width is 100%, meaning
                     centering of the contained DOM objects can be done nicely. -->
-            <div class="fadeInOut">
+            <div class="listing-item-text-container fadeInOut">
                 <h2 class="listing-item-title">
                     {{project.title}}
                 </h2>
@@ -12,11 +12,12 @@
                 <span class="listing-item-text-separator"></span>
 
                 <h3 class="listing-item-description">
-                    {{project.excerpt | extractSurroundingTags:'p' | limitTo:100:0}}
+                    {{project.excerpt | extractSurroundingTags:'p' }}
+                    <!--{{project.excerpt | extractSurroundingTags:'p' | limitTo:100:0}}-->
                 </h3>
             </div>
 
-            <div class="fadeInOut project-listing-image-container">
+            <div class="listing-item-image-container fadeInOut">
                 <img src="{{project.featured_image.guid}}" />
             </div>
         </a>
