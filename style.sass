@@ -144,7 +144,6 @@ header
 
 
 
-
 /*********************/
 /** Project-Listing **/
 /*********************/
@@ -152,33 +151,41 @@ header
 #project-listing-container
    text-align: center
 
+// todo: Actually learn precisely how the grid is working i.e. importance of position, display and width.
+
 .listing-item
    position: relative
    display: inline-block
-   vertical-align: top
 
    margin: .5em .8em
    width: 31%
    max-width: 31%
+
    z-index: 9999
 
    .listing-item-text-container
       position: absolute
       width: 100%
-      height: 100%
-      top: 0
-      left: 0
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      -moz-transform: translate(-50%, -50%)
+
+      z-index: -1
       opacity: 0
-
-      z-index: 2
-
-   .listing-item-title, .listing-item-text-separator, .listing-item-description
-      margin: 0 auto
       text-align: center
 
+   .listing-item-title, .listing-item-description
+      padding: 0 1em
+      margin: 0
+
+   /* Be sure to do more testing on the 'vw' values!! Could cause problems. Word-wrapping properly is probably better option.
    .listing-item-title
-      font-size: 2em
-      padding: 1em 1em 0 1em
+      font-size: 1.8vw
+
+   .listing-item-description
+      padding: 0 1em
+      font-size: 1.2vw
 
    .listing-item-text-separator
       display: inline-block
@@ -189,9 +196,6 @@ header
       border: 1px solid $secondary-colour
       @include border-radius(500px)
       background-color: $secondary-colour
-
-   .listing-item-description
-      padding: 0 1em
 
    &:hover
       background-color: $tertiary-colour
@@ -207,18 +211,11 @@ header
 .listing-item-image-container
    display: block
    z-index: 1
-   //height: 100%
+   height: 100%
    width: 100%
 
    img
       width: 100%
-
-   //&:hover
-   //   opacity: 0.05
-   //   filter: blur(1px)
-   //   -webkit-filter: blur(1px)
-
-
 
 
 
