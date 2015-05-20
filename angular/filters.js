@@ -14,8 +14,6 @@ jmApp.filter('extractSurroundingTags', function() {
 
 jmApp.filter('trustAsHtml', function($sce){
     return function(input){
-        console.log(input);
-        console.log("sced'd input: " + $sce.trustAsHtml(input));
         return $sce.trustAsHtml(input);
     }
 })
