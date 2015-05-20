@@ -7,6 +7,7 @@
 
 <head>
     <title>Jordan Muir</title>
+    <!-- todo: Consider deferring imports once they're local -->
     <!-- bower:js -->
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.js"></script>
@@ -20,8 +21,8 @@
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" ></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jordanMuir.js" ></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" defer ></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jordanMuir.js" defer ></script>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 

@@ -15,6 +15,7 @@ $primary-colour: #EFF1EE
 $secondary-colour: #5D6C76
 $tertiary-colour: #cfffe2
 
+// Ensure this array length matches mod value in view
 $project-listing-colours: #96d4ff, #ff9d91, #fff17c, #98eb94
 
 $header-height: 2em
@@ -200,8 +201,6 @@ header
       background-color: $secondary-colour
 
    &:hover
-      //background-color: $tertiary-colour
-
       .listing-item-text-container, .listing-item-title
          opacity: 1
 
@@ -218,6 +217,7 @@ header
 
    img
       width: 100%
+      display: block
 
 
 $num: 0
@@ -226,7 +226,6 @@ $num: 0
       &:hover
          background-color: $colour
    $num: $num + 1
-
 
 
 /********************************/
