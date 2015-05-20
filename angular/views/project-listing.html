@@ -10,9 +10,8 @@
 
                 <span class="listing-item-text-separator"></span>
 
-                <h3 class="listing-item-description">
-                    {{project.excerpt | extractSurroundingTags:'p' }}
-                    <!--{{project.excerpt | extractSurroundingTags:'p' | limitTo:100:0}}-->
+                <h3 class="listing-item-description" ng-bind-html="project.excerpt | extractSurroundingTags:'p' | trustAsHtml ">
+
                 </h3>
             </div>
             <!--</div>-->
