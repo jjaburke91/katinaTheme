@@ -7,5 +7,5 @@ jmApp.controller('aboutController', function( $scope, $rootScope, wp) {
         .error( function() {
             console.error("aboutController: Error retrieving about page.");
         });
-    
+
 });

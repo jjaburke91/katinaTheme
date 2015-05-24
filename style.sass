@@ -14,6 +14,7 @@ $dark-base-colour: #fff7e8
 $primary-colour: #EFF1EE
 $secondary-colour: #5D6C76
 $tertiary-colour: #cfffe2
+$darker-text-colour: #1a1e24
 
 // Ensure this array length matches mod value in view
 $project-listing-colours: #96d4ff, #ff9d91, #fff17c, #98eb94
@@ -64,9 +65,10 @@ html
    font-family: $font-stack
    background-color: $base-colour
 
-   a
-      text-decoration: none
-      color: $secondary-colour
+a
+   text-decoration: none
+   color: $secondary-colour
+   outline: 0
 
 #content
    position: absolute
@@ -83,8 +85,11 @@ button
    color: $secondary-colour
    border: 1.5px solid $secondary-colour
    cursor: pointer
+   outline: 0
    @include border-radius(25px)
 
+button::-moz-focus-inner
+   border: 0
 
 /************/
 /** Header **/
@@ -167,6 +172,7 @@ header
    opacity: $about-modal-opacity
    z-index: 99999
    background-color: $about-modal-colour
+   color: $darker-text-colour
 
 #about-modal-container
    position: absolute
@@ -196,6 +202,27 @@ header
    padding: 0
 
    cursor: pointer
+
+#about-modal-close-button
+   position: fixed
+   top: 0
+   left: 50%
+   transform: translateX(-50%)
+   margin: 1em auto 0 auto
+   padding: .5em
+   width: 90%
+   text-align: center
+
+
+   background-color: $about-modal-colour
+   color: $darker-text-colour
+   border: 2px solid $darker-text-colour
+   text-transform: uppercase
+
+   cursor: pointer
+
+   &:hover
+      background-color: $dark-base-colour
 
 
 /*********************/
