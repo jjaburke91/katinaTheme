@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 
-<body ng-app="jordan_muir_app" >
+<body ng-app="jordan_muir_app" ng-keydown="keypress($event)">
 
     <header>
         <div id="about-container">
@@ -50,8 +50,9 @@
     <div id="content" class="{{pageClass}}" ng-view>
     </div>
 
-    <div id="about-modal" class="fadeInOut" ng-show="aboutModal.visible" ng-keypress="($event.which === 72) ? aboutModal.closeModal() : null">
-        <!--Get esc. to close modal-->
+    <div id="about-modal" class="fadeInOut"
+         ng-controller="aboutController"
+         ng-show="aboutModal.visible" >
 
         <span id="about-modal-close" ng-click="aboutModal.closeModal()">
             <i class="fa fa-times fa-4x"></i>

@@ -22,8 +22,6 @@ jmApp.filter('extractSurroundingTags', function() {
             console.error(input);
         }
 
-        //console.log("input:");
-        //console.log(input);
         return result;
     }
 });
@@ -32,4 +30,4 @@ jmApp.filter('trustAsHtml', function($sce){
     return function(input){
         return $sce.trustAsHtml(input);
     }
-})
+});
