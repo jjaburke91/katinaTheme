@@ -20,6 +20,9 @@ $project-listing-colours: #96d4ff, #ff9d91, #fff17c, #98eb94
 
 $header-height: 2em
 
+$about-modal-opacity: 0.98
+$about-modal-colour: #33957a
+
 
 @mixin animation($str)
    animation: #{$str}
@@ -125,6 +128,9 @@ header
    padding-top: 8px
    text-transform: lowercase
 
+#about-container-link
+   cursor: pointer
+
 
 
 /***********/
@@ -145,6 +151,51 @@ header
 #about-page-container
    text-align: center
 
+/******************/
+/** About Modal ***/
+/******************/
+
+#about-modal
+   position: absolute
+   width: 100%
+   height: 100%
+   top: 0
+   left: 0
+   margin: 0
+   padding: 0
+
+   opacity: $about-modal-opacity
+   z-index: 99999
+   background-color: $about-modal-colour
+
+#about-modal-container
+   position: absolute
+   top: 50%
+   left: 50%
+   transform: translate(-50%, -50%)
+   -moz-transform: translate(-50%, -50%)
+   margin-top: -2em
+
+   min-width: 70%
+   max-height: 100%
+
+   text-align: center
+
+   #about-page-title
+      font-size: 2em
+
+   #about-page-content
+      font-size: 1.5em
+      width: 100%
+
+#about-modal-close
+   position: absolute
+   top: 0.1em
+   left: 0.8em
+   margin: 0
+   padding: 0
+
+   cursor: pointer
 
 
 /*********************/
@@ -219,7 +270,7 @@ header
       width: 100%
       display: block
 
-
+// Used for creating series of classes for the different on-hover background colours on project-listing page.
 $num: 0
 @each $colour in ($project-listing-colours)
    .project-listing-colour-#{$num}
@@ -234,13 +285,6 @@ $num: 0
 
 /** https://scotch.io/tutorials/animating-angularjs-apps-ngview **/
 // Ng-enter/leave-active defines where the transition goes.
-
-@keyframes fadeAndSlideFromRight
-   from
-      opacity: 0
-      transform: translateX(100%)
-   to
-      opacity: 1
 
 @keyframes fadeAndSlideFromLeft
    from
@@ -266,11 +310,14 @@ $num: 0
       opacity: 1
       transform: translateX(-100%)
 
+@keyframes aboutModal-fadeIn
+   to
+      opacity: $about-modal-opacity
 
-.about.ng-enter
-   @include animation(fadeAndSlideFromLeft 1s ease)
-.about.ng-leave
-   @include animation(fadeOutToLeft 1s ease)
+@keyframes aboutModal-fadeOut
+   to
+      opacity: 0
+
 
 
 .project.ng-enter
@@ -278,11 +325,22 @@ $num: 0
 .project.ng-leave
    @include animation(fadeOutToLeft 1s ease)
 
-
 .project-listing.ng-enter
    @include animation(fadeInFromLeft 1s ease)
 .project-listing.ng-leave
    @include animation(fadeOutToRight 1s ease)
+
+#about-modal.ng-hide-add
+   opacity: $about-modal-opacity
+#about-modal.ng-hide-add-active
+   @include animation(aboutModal-fadeOut 0.3s ease)
+
+#about-modal.ng-hide-remove
+   opacity: 0
+#about-modal.ng-hide-remove-active
+   @include animation(aboutModal-fadeIn 0.3s ease)
+
+
 
 .fadeInOut
    @include transition(all 0.3s ease)

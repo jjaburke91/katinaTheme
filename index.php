@@ -19,18 +19,18 @@
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>-->
 
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" defer ></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jordanMuir.js" defer ></script>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 
-<body ng-app="jordan_muir_app">
+<body ng-app="jordan_muir_app" >
 
     <header>
         <div id="about-container">
-            <a href="#/about">About</a>
+            <span id="about-container-link" ng-click="aboutModal.openModal()">About</span>
         </div>
 
         <div id="logo-container">
@@ -46,9 +46,23 @@
         </div>
     </header>
 
+
     <div id="content" class="{{pageClass}}" ng-view>
     </div>
 
+    <div id="about-modal" class="fadeInOut" ng-show="aboutModal.visible" ng-keypress="($event.which === 72) ? aboutModal.closeModal() : null">
+        <!--Get esc. to close modal-->
+
+        <span id="about-modal-close" ng-click="aboutModal.closeModal()">
+            <i class="fa fa-times fa-4x"></i>
+        </span>
+
+        <div id="about-modal-container">
+            <h1 id="about-page-title">About</h1>
+            <p id="about-page-content" ng-bind-html="aboutModal.content | extractSurroundingTags:'p' | trustAsHtml">
+            </p>
+        </div>
+    </div>
 
 </body>
 
