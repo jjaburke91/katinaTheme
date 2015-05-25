@@ -50,19 +50,19 @@
     <div id="content" class="{{pageClass}}" ng-view>
     </div>
 
-    <div id="about-modal" class="fadeInOut"
+    <div id="about-modal"
          ng-controller="aboutController"
          ng-show="aboutModal.visible" >
 
-        <!--<span id="about-modal-close"-->
-              <!--ng-click="aboutModal.closeModal()">-->
-            <!--<i class="fa fa-times fa-4x"></i>-->
-        <!--</span>-->
+        <span id="about-modal-close"
+              ng-click="aboutModal.closeModal()">
+            <i class="fa fa-times fa-4x"></i>
+        </span>
 
-        <button id="about-modal-close-button" class="fadeInOut"
+        <!-- <button id="about-modal-close-button" class="fadeInOut"
                 ng-click="aboutModal.closeModal()">
             Close
-        </button>
+        </button> -->
 
         <div id="about-modal-container">
             <h1 id="about-page-title">About</h1>
