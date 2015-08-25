@@ -1,26 +1,15 @@
 <div id="project-listing-container">
 
-    <!-- Ensure following mod value mathces number of colours defined in sass-->
-    <div class="project-listing-colour-{{($index) % 4}} listing-item" ng-repeat="project in projects track by $index">
-        <a href="{{project.link}}">
+    <!-- Ensure following mod value matches number of colours defined in sass-->
+    <!--<div class="project-listing-colour-{{($index) % 4}} listing-item" ng-repeat="project in projects track by $index">-->
 
-            <div class="listing-item-text-container fadeInOut">
-                <h2 class="listing-item-title">
-                    {{project.title}}
-                </h2>
+    <!--</div>-->
 
-                <span class="listing-item-text-separator"></span>
-
-                <h3 class="listing-item-description" ng-bind-html="project.content | extractSurroundingTags:'p' | trustAsHtml ">
-
-                </h3>
-            </div>
-
-            <div class="listing-item-image-container fadeInOut">
-                <img src="{{project.featured_image.guid}}" />
-            </div>
-
-        </a>
-    </div>
+    <project-listing-item
+            class="project-listing-colour-{{($index) % 4}} listing-item"
+            ng-repeat="project in projects"
+            project="project"
+            >
+    </project-listing-item>
 
 </div>

@@ -53,7 +53,10 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: [ 'angular/*.js', 'angular/controllers/*.js', 'angular/directives/*.js', 'tmp/*.js' ],
+                src: [ 'angular/*.js',
+                    'angular/controllers/*.js',
+                    'angular/directives/**/*.js',
+                    'tmp/*.js' ],
                 dest: 'dist/dist-app.js'
             }
         },
@@ -79,14 +82,24 @@ module.exports = function(grunt) {
 
         watch: {
             dev: {
-                files: [ 'Gruntfile.js', 'angular/*.js', 'angular/controllers/*.js', 'angular/directives/*.js', '*.html' ],
+                files: [ 'Gruntfile.js',
+                    'angular/*.js',
+                    'angular/controllers/*.js',
+                    'angular/directives/**/*.js', 'angular/directives/**/*.html',
+                    '**/.html', '*.html'
+                ],
                 tasks: [ 'html2js:dist', 'concat:dist', 'clean:temp' ],
                 options: {
                     atBegin: true
                 }
             },
             min: {
-                files: [ 'Gruntfile.js', 'angular/*.js', 'angular/controllers/*.js', 'angular/directives/*.js', '*.html' ],
+                files: [ 'Gruntfile.js',
+                    'angular/*.js',
+                    'angular/controllers/*.js',
+                    'angular/directives/**/*.js', 'angular/directives/**/*.html',
+                    '**/.html', '*.html'
+                ],
                 tasks: [ 'html2js:dist', 'concat:dist', 'clean:temp', 'uglify:dist' ],
                 options: {
                     atBegin: true

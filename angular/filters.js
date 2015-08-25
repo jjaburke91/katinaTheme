@@ -19,7 +19,7 @@ jmApp.filter('extractSurroundingTags', function() {
             result = result.replace(closingSearchString, "");
         } else {
             console.error("extractSurroundingTags: input is not a string:");
-            console.error(input);
+            //console.error(input);
         }
 
         return result;

@@ -1,8 +1,11 @@
 <div id="project-page-container">
-    <h1>project title</h1>
+    <h1>{{project.title}}</h1>
 
     <button id="view-description-btn" class="fadeInOut">
         <i class="fa fa-info fa-2x"></i>
         <i class="fa fa-plus"></i>
     </button>
+
+    <p ng-bind-html="project.content | extractSurroundingTags:'p' | trustAsHtml">
+    </p>
 </div>
