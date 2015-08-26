@@ -17,4 +17,9 @@ Current Status / Upcoming to-dos:
 * Project listing on-scroll events - displaying title underneath image?
 * Analyse what's going on with Digest cycles - consider tidying some of the filters formatting the information, too much going on just now.
 
+Documentation to add:
+* Custom controller for JSON API
+    * Retrieving the Attachments Plugin content.
+* Attachments plugin
+
 See for notes: https://trello.com/b/kuHzz3E8/jordanmuir-co-uk-notes
