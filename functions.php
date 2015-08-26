@@ -87,6 +87,8 @@ function remove_comment_support() {
 }
 
 
+
+
 /*****************************/
 /* Attachments configuraiton */
 /*****************************/
@@ -95,7 +97,7 @@ add_filter( 'attachments_settings_screen', '__return_false' ); // disable the Se
 add_filter( 'attachments_default_instance', '__return_false' ); // disable the default instance
 
 // Adding Attachments to Projects
-function my_attachments( $attachments )
+function project_attachments( $attachments )
 {
     $fields         = array(
         array(
@@ -104,30 +106,6 @@ function my_attachments( $attachments )
             'label'     => __( 'Caption', 'attachments' ),  // label to display
             'default'   => '',                       // default value upon selection
         ),
-        // Attachments has funcitonality for sorting already.
-        // array(
-        //     'name'      => 'order',                            // unique field name
-        //     'type'      => 'select',                            // registered field type
-        //     'label'     => __( 'Order on project page', 'attachments' ),       // label to display
-        //     'meta'      => array(                   // field-specific meta as defined by field class
-        //         'allow_null'    => false,            // allow null value? (adds 'empty' <option>)
-        //         'multiple'      => false,            // multiple <select>?
-        //         'options'       => array(           // the <option>s to use
-        //             '1'     => '1',
-        //             '2'     => '2',
-        //             '3'     => '3',
-        //             '4'     => '4',
-        //             '5'     => '5',
-        //             '6'     => '6',
-        //             '7'     => '7',
-        //             '8'     => '8',
-        //             '9'     => '9',
-        //             '10'    => '10',
-        //             '11'    => '11',
-        //             '12'    => '12'
-        //         )
-        //     ),
-        // ),
         array(
             'name'     => 'size',
             'type'     => 'select',
@@ -186,10 +164,11 @@ function my_attachments( $attachments )
 
     );
 
-    $attachments->register( 'my_attachments', $args ); // unique instance name
+    $attachments->register( 'project_attachments', $args ); // unique instance name
 }
 
-add_action( 'attachments_register', 'my_attachments' );
+add_action( 'attachments_register', 'project_attachments' );
+
 
 
 
@@ -197,46 +176,6 @@ add_action( 'attachments_register', 'my_attachments' );
 /* WP API Extensions */
 /***********************/
 
-add_filter( 'json_prepare_post', function ($data, $post, $context) {
-    $attachments = new Attachments( 'my_attachments', 23);
-    // $media_attachments = $data['media_attachments'];
-    // $data['media_attachments'] = "hello";
-    $index = 1;
-    while( $attachments->get() ) {
-        $data['media_attachments'][$attachments->id()]['img'] = $attachments->url();
-        $data['media_attachments'][$attachments->id()]['caption'] = $attachments->field('caption');
-        $data['media_attachments'][$attachments->id()]['size'] = $attachments->field('size');
-        $data['media_attachments'][$attachments->id()]['order'] = $index;
-
-        $index += 1;
-    }
-
-    // $data['custom_field'] = $attachments->get();
-    return $data;
-}, 10, 3 );
-//
-// // Custom project route
-// class custom_routes {
-//     function __construct() {
-//         add_filter( 'json_endpoints', array( $this, 'register_routes' ) );
-//     }
-//
-//     function register_routes( $routes ) {
-//         $routes['/projects'] = array(
-//             array( array( $this, 'new_session'), WP_JSON_Server::CREATABLE | WP_JSON_Server::ACCEPT_JSON )
-//         );
-//
-//         return $routes;
-//     }
-//
-//     function new_session( $data ) {
-//         // $data is the data you are sending to the route
-//         $response = new WP_JSON_Response();
-//         $response->set_data( $data );
-//         return $response;
-//     }
-// }
-// new custom_routes();
 
 function katina_api_init() {
     global $Katina_API_Projects;
@@ -253,7 +192,7 @@ class Katina_API_Projects {
         $routes['/katinaAPI/projects'] = array(
             array( array( $this, 'get_projects'), WP_JSON_Server::READABLE )
         );
-        $routes['/katinaAPI/project'] = array(
+        $routes['/katinaAPI/project/(?P<id>\d+)'] = array(
             array (array( $this, 'get_project'), WP_JSON_Server::READABLE )
         );
 
@@ -272,44 +211,65 @@ class Katina_API_Projects {
             $query->the_post();
             $post_id = $query->post->ID;
 
-            $attachments = new Attachments( 'my_attachments', $post_id );
+            $attachments = new Attachments( 'project_attachments', $post_id );
             $attachments->get();
 
             $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
 
-            array_push($response, new Json_Project(
+
+            $project = new Json_Project(
                 $post_id,
                 $query->post->post_title,
                 $query->post->post_name,
-                $image_array[0],
-                $attachments->field('size')
-            ));
+                $image_array[0]
+            );
+
+            $project->setGridSize($attachments->field('size'));
+
+            array_push($response, $project);
         }
 
         return $response;
     }
 
-    public function get_project() {
-        return "a project";
-    }
-
-    private function formatJson($content) {
-        // format JSON response, including only required fields
-        $required_fields = array(
-
+    public function get_project($id) {
+        $query = new WP_Query(
+            array(
+                'post_type' => 'jm_project',
+                'p' => $id
+            )
         );
 
-    }
+        while ($query->have_posts()) {
+            $query->the_post();
 
+            $attachments = new Attachments('project_attachments', $id);
+            $attachments->get();
+
+            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+
+            $project = new Json_Project(
+                $id,
+                $query->post->post_title,
+                $query->post->post_name,
+                $image_array[0]
+            );
+        }
+
+        return $project;
+    }
 }
 
 class Json_Project {
 
-    function __construct($id, $title, $slug, $img, $grid_size) {
+    public function __construct($id, $title, $slug, $img) {
         $this->id = $id;
         $this->title = $title;
         $this->slug = $slug;
-        $this->img = $img;
+        $this->thumbnail_img = $img;
+    }
+
+    public function setGridSize($grid_size) {
         $this->grid_size = $grid_size;
     }
 
