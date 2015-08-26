@@ -243,8 +243,7 @@ class Katina_API_Projects {
         while ($query->have_posts()) {
             $query->the_post();
 
-            $attachments = new Attachments('project_attachments', $id);
-            $attachments->get();
+            // $attachments->get();
 
             $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 
@@ -254,6 +253,10 @@ class Katina_API_Projects {
                 $query->post->post_name,
                 $image_array[0]
             );
+            $project->setProjectDescription($query->post->post_content);
+
+            $project->setAttachments( new Attachments('project_attachments', $id) );
+
         }
 
         return $project;
@@ -271,6 +274,24 @@ class Json_Project {
 
     public function setGridSize($grid_size) {
         $this->grid_size = $grid_size;
+    }
+
+    public function setProjectDescription($desc) {
+        $this->description = $desc;
+    }
+
+    public function setAttachments($attach) {
+        $index = 1;
+        $this->attachments = array();
+        while( $attach->get() ) {
+            $newAttachment;
+            $newAttachment['img'] = $attach->url();
+            $newAttachment['caption'] = $attach->field('caption');
+            $newAttachment['grid_size'] = $attach->field('size');
+            $newAttachment['order'] = $index;
+            $index += 1;
+            array_push($this->attachments, $newAttachment);
+        }
     }
 
 }
