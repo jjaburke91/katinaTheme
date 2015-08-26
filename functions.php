@@ -214,26 +214,99 @@ add_filter( 'json_prepare_post', function ($data, $post, $context) {
     // $data['custom_field'] = $attachments->get();
     return $data;
 }, 10, 3 );
+//
+// // Custom project route
+// class custom_routes {
+//     function __construct() {
+//         add_filter( 'json_endpoints', array( $this, 'register_routes' ) );
+//     }
+//
+//     function register_routes( $routes ) {
+//         $routes['/projects'] = array(
+//             array( array( $this, 'new_session'), WP_JSON_Server::CREATABLE | WP_JSON_Server::ACCEPT_JSON )
+//         );
+//
+//         return $routes;
+//     }
+//
+//     function new_session( $data ) {
+//         // $data is the data you are sending to the route
+//         $response = new WP_JSON_Response();
+//         $response->set_data( $data );
+//         return $response;
+//     }
+// }
+// new custom_routes();
 
-// Custom project route
-class custom_routes {
-    function __construct() {
-        add_filter( 'json_endpoints', array( $this, 'register_routes' ) );
-    }
+function katina_api_init() {
+    global $Katina_API_Projects;
 
-    function register_routes( $routes ) {
-        $routes['/projects'] = array(
-            array( array( $this, 'new_session'), WP_JSON_Server::CREATABLE | WP_JSON_Server::ACCEPT_JSON )
+    $Katina_API_Projects = new Katina_API_Projects();
+    add_filter( 'json_endpoints', array( $Katina_API_Projects, 'register_routes' ) );
+}
+
+add_action( 'wp_json_server_before_serve', 'katina_api_init' );
+
+class Katina_API_Projects {
+
+    public function register_routes( $routes ) {
+        $routes['/katinaAPI/projects'] = array(
+            array( array( $this, 'get_projects'), WP_JSON_Server::READABLE )
+        );
+        $routes['/katinaAPI/project'] = array(
+            array (array( $this, 'get_project'), WP_JSON_Server::READABLE )
         );
 
         return $routes;
     }
 
-    function new_session( $data ) {
-        // $data is the data you are sending to the route
-        $response = new WP_JSON_Response();
-        $response->set_data( $data );
+    public function get_projects() {
+        $query = new WP_Query(
+            array(
+                'post_type' => 'jm_project'
+            )
+        );
+        $response = array();
+
+        while ($query->have_posts() ){
+            $query->the_post();
+            $post_id = $query->post->ID;
+            $attachments = new Attachments( 'my_attachments', $post_id );
+
+            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
+
+            array_push($response, new Json_Project(
+                $post_id,
+                $query->post->post_title,
+                $query->post->post_name,
+                $image_array[0]
+            ));
+        }
+
         return $response;
     }
+
+    public function get_project() {
+        return "a project";
+    }
+
+    private function formatJson($content) {
+        // format JSON response, including only required fields
+        $required_fields = array(
+
+        );
+
+    }
+
 }
-new custom_routes();
+
+class Json_Project {
+
+    function __construct($id, $title, $slug, $img) {
+        $this->id = $id;
+        $this->title = $title;
+        $this->slug = $slug;
+        $this->img = $img;
+    }
+
+}
