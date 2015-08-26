@@ -271,7 +271,9 @@ class Katina_API_Projects {
         while ($query->have_posts() ){
             $query->the_post();
             $post_id = $query->post->ID;
+
             $attachments = new Attachments( 'my_attachments', $post_id );
+            $attachments->get();
 
             $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
 
@@ -279,7 +281,8 @@ class Katina_API_Projects {
                 $post_id,
                 $query->post->post_title,
                 $query->post->post_name,
-                $image_array[0]
+                $image_array[0],
+                $attachments->field('size')
             ));
         }
 
@@ -302,11 +305,12 @@ class Katina_API_Projects {
 
 class Json_Project {
 
-    function __construct($id, $title, $slug, $img) {
+    function __construct($id, $title, $slug, $img, $grid_size) {
         $this->id = $id;
         $this->title = $title;
         $this->slug = $slug;
         $this->img = $img;
+        $this->grid_size = $grid_size;
     }
 
 }
