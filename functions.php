@@ -123,15 +123,21 @@ function project_meta_save( $post_id, $post, $update ) {
 
     if( isset($_POST["grid-row-size-input"])) {
         // Maximum column is 6
-        if ($_POST["grid-row-size-input"] < 6)
+        if ($_POST["grid-row-size-input"] < 6) {
             $grid_row_size = $_POST["grid-row-size-input"];
+        } else {
+            $grid_row_size = 6;
+        }
     }
     update_post_meta($post_id, "grid-row-size-input", $grid_row_size);
 
     if( isset($_POST["grid-col-size-input"])) {
         // Maximum width is 6
-        if ($_POST["grid-col-size-input"] < 6)
+        if ($_POST["grid-col-size-input"] < 6) {
             $grid_col_size = $_POST["grid-col-size-input"];
+        } else {
+           $grid_col_size = 6;
+       }
     }
     update_post_meta($post_id, "grid-col-size-input", $grid_col_size);
 

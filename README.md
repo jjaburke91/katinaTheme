@@ -18,6 +18,7 @@
 * Analyse what's going on with Digest cycles. Consider tidying some of the filters formatting the information, too much going on just now.
 * Masonry Grid for home page.
 * More robust API call for About page. May require new route.
+* Cloudinary integration.
 
 ###Documentation to add:###
 
