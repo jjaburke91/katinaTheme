@@ -1,76 +1,6 @@
 <?php
 add_theme_support('post-thumbnails');
 
-// Create Project post type
-add_action( 'init', 'create_post_type' );
-function create_post_type() {
-    register_post_type( 'jm_project',
-        array(
-            'labels' => array(
-                'name' => __( 'Projects' ),
-                'singular_name' => __( 'Project' )
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'rewrite' => array('slug' => '#/project'), // Bit hacky but it worksm prefixes project URL with hashbang!
-            'menu_position' => 5,
-            'supports' => array(
-                'title',
-                'editor',
-                'thumbnail'
-                // 'custom-fields'
-            )
-        )
-    );
-};
-
-// Create custom meta box for Projects. http://code.tutsplus.com/tutorials/reusable-custom-meta-boxes-part-1-intro-and-basic-fields--wp-23259
-function add_custom_meta_box() {
-    add_meta_box(
-        'custom_meta_box', // $id
-        'Project Meta', // $title
-        'show_custom_meta_box', // $callback
-        'jm_project', // $page
-        'normal', // $context
-        'high'
-    ); // $priority
-}
-add_action('add_meta_boxes', 'add_custom_meta_box');
-
-// Defines the HTML visible for the meta box
-function show_custom_meta_box( $post) {
-    $value = get_post_meta( $post->ID, '_my_meta_value_key', true );
-
-    echo '<label for="project_date_field" >';
-    _e( 'Completion Date', 'project_date' );
-    echo '</label> ';
-    echo '<input style="text-align: left; width: 40em;" type="text" id="project_date_field" name="project_date_field" value="' . esc_attr( $value ) . '" size="25" />';
-}
-
-// Field Array
-$prefix = 'custom_';
-$custom_meta_fields = array(
-    array(
-        'label'=> 'Project Completion Date',
-        'desc'  => 'Date the project was completed.',
-        'id'    => $prefix.'text',
-        'type'  => 'text'
-    )
-);
-
-// Create Project Category taxonomy
-add_action('init', 'jm_category_init');
-function jm_category_init() {
-    register_taxonomy(
-        'jm_category',
-        'jm_project',
-        array(
-            'label' => __( 'Category' ),
-            'rewrite' => array( 'slug' => 'category' )
-        )
-    );
-}
-
 // Removes Posts and Comments section from Admin menu.
 add_action( 'admin_menu', 'my_remove_admin_menus' );
 function my_remove_admin_menus() {
@@ -87,10 +17,174 @@ function remove_comment_support() {
 }
 
 
+/********************/
+/* Custom Post Type */
+/********************/
+
+// Create Project post type
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+    register_post_type( 'jm_project',
+        array(
+            'labels' => array(
+                'name' => __( 'Projects' ),
+                'singular_name' => __( 'Project' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => '#/project'), // Bit hacky but it works prefixes project URL with hashbang!
+            'menu_position' => 5,
+            'supports' => array(
+                'title',
+                'editor',
+                'thumbnail'
+                // 'custom-fields'
+            )
+        )
+    );
+};
+
+
+
+/************/
+/* Meta Box */
+/************/
+
+/* Adds a meta box to the post edit screen */
+add_action( 'add_meta_boxes', 'project_meta_box' );
+function project_meta_box() {
+    $screens = array( 'jm_project', 'my_cpt' );
+    foreach ( $screens as $screen ) {
+        add_meta_box(
+            'project_meta_id',          // Unique ID
+            'Project Information',      // Box title
+            'project_meta_callback',    // Content callback
+            $screen                     // post type
+        );
+    }
+}
+
+// Defines the look and content of the meta box.
+function project_meta_callback ($object) {
+    wp_nonce_field( basename(__FILE__), 'meta-box-nonce');
+
+    ?>
+        <div>
+            <label for="completion-date-input">Completion Date:</label>
+            <input name="completion-date-input" type="text"
+                   value="<?php echo get_post_meta($object->ID, "completion-date-input", true); ?>">
+            </input>
+        </div>
+
+        <div>
+            <label for="grid-row-size-input">Home Page Row Size:</label>
+            <input name="grid-row-size-input" type="text"
+                   value="<?php echo get_post_meta($object->ID, "grid-row-size-input", true); ?>">
+            </input>
+        </div>
+
+        <div>
+            <label for="grid-col-size-input">Home Page Column Size:</label>
+            <input name="grid-col-size-input" type="text"
+                   value="<?php echo get_post_meta($object->ID, "grid-col-size-input", true); ?>">
+            </input>
+        </div>
+    <?php
+
+}
+
+add_action("save_post", "project_meta_save", 10, 3);
+function project_meta_save( $post_id, $post, $update ) {
+
+    // Verify nonce, don't save if fails.
+    if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__))) return $post_id;
+
+    // Verify user has permissions to save post.
+    if(!current_user_can("edit_post", $post_id)) return $post_id;
+
+    // Don't re-save if autosaving is occuring.
+    if(defined("DOING_AUTOSAVE") && DOING_AUTOSAVE) return $post_id;
+
+    // Don't save if meta post type doesn't match post type.
+    $slug = "jm_project";
+    if($slug != $post->post_type) return $post_id;
+
+    // Following defines default values for meta content.
+    $completion_date_value = "";
+    $grid_row_size = "2";
+    $grid_col_size = "2";
+
+    // Check if required valuese are set.
+    if( isset($_POST["completion-date-input"])) {
+        $completion_date_value = $_POST["completion-date-input"];
+    }
+    update_post_meta($post_id, "completion-date-input", $completion_date_value);
+
+    if( isset($_POST["grid-row-size-input"])) {
+        // Maximum column is 6
+        if ($_POST["grid-row-size-input"] < 6)
+            $grid_row_size = $_POST["grid-row-size-input"];
+    }
+    update_post_meta($post_id, "grid-row-size-input", $grid_row_size);
+
+    if( isset($_POST["grid-col-size-input"])) {
+        // Maximum width is 6
+        if ($_POST["grid-col-size-input"] < 6)
+            $grid_col_size = $_POST["grid-col-size-input"];
+    }
+    update_post_meta($post_id, "grid-col-size-input", $grid_col_size);
+
+}
+
+// Field Array
+// $prefix = 'custom_meta';
+// $custom_meta_fields = array(
+//     array(
+//         'label'=> 'Project Completion Date',
+//         'desc'  => 'Date the project was completed.',
+//         'id'    => $prefix.'text',
+//         'type'  => 'text'
+//     ),
+//     array(
+//         'label' => 'Grid Size',
+//         'desc' => 'Size of project on the home page',
+//         'id'   => $prefix.'select',
+//         'type' => 'select',
+//         'options' => array(
+//             '1x1'    => array(
+//                 'label' => "1x1",
+//                 'value' => "1x1"
+//             ),
+//             '2x2'    => array(
+//                 'label' => "2x2",
+//                 'value' => "2x2"
+//             )
+//         )
+//     )
+// );
+
+
+
+/***************************/
+/* Custom Project Taxonomy */
+/***************************/
+
+add_action('init', 'jm_category_init');
+function jm_category_init() {
+    register_taxonomy(
+        'jm_category',
+        'jm_project',
+        array(
+            'label' => __( 'Category' ),
+            'rewrite' => array( 'slug' => 'category' )
+        )
+    );
+}
+
 
 
 /*****************************/
-/* Attachments configuraiton */
+/* Attachments Configuration */
 /*****************************/
 
 add_filter( 'attachments_settings_screen', '__return_false' ); // disable the Settings screen
@@ -135,7 +229,7 @@ function project_attachments( $attachments )
         'position'      => 'normal',
 
         // meta box priority (string) (high, default, low, core)
-        'priority'      => 'high',
+        'priority'      => 'default',
 
         // allowed file type(s) (array) (image|video|text|audio|application)
         'filetype'      => array('image', 'video'), // consider how to use the video
@@ -243,8 +337,6 @@ class Katina_API_Projects {
         while ($query->have_posts()) {
             $query->the_post();
 
-            // $attachments->get();
-
             $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 
             $project = new Json_Project(
@@ -256,7 +348,6 @@ class Katina_API_Projects {
             $project->setProjectDescription($query->post->post_content);
 
             $project->setAttachments( new Attachments('project_attachments', $id) );
-
         }
 
         return $project;
@@ -284,7 +375,6 @@ class Json_Project {
         $index = 1;
         $this->attachments = array();
         while( $attach->get() ) {
-            $newAttachment;
             $newAttachment['img'] = $attach->url();
             $newAttachment['caption'] = $attach->field('caption');
             $newAttachment['grid_size'] = $attach->field('size');
