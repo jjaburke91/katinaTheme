@@ -136,33 +136,6 @@ function project_meta_save( $post_id, $post, $update ) {
 
 }
 
-// Field Array
-// $prefix = 'custom_meta';
-// $custom_meta_fields = array(
-//     array(
-//         'label'=> 'Project Completion Date',
-//         'desc'  => 'Date the project was completed.',
-//         'id'    => $prefix.'text',
-//         'type'  => 'text'
-//     ),
-//     array(
-//         'label' => 'Grid Size',
-//         'desc' => 'Size of project on the home page',
-//         'id'   => $prefix.'select',
-//         'type' => 'select',
-//         'options' => array(
-//             '1x1'    => array(
-//                 'label' => "1x1",
-//                 'value' => "1x1"
-//             ),
-//             '2x2'    => array(
-//                 'label' => "2x2",
-//                 'value' => "2x2"
-//             )
-//         )
-//     )
-// );
-
 
 
 /***************************/
@@ -199,21 +172,6 @@ function project_attachments( $attachments )
             'type'      => 'textarea',                      // registered field type
             'label'     => __( 'Caption', 'attachments' ),  // label to display
             'default'   => '',                       // default value upon selection
-        ),
-        array(
-            'name'     => 'size',
-            'type'     => 'select',
-            'label'    => __('Size of project on home page', 'attachments'),
-            'meta'     => array(
-                'allow_null' => false,
-                'multiple'   => false,
-                'options'    => array(
-                    '1x1'    => '1x1',
-                    '2x2'    => '2x2',
-                    '3x3'    => '3x3',
-                    '4x4'    => '4x4'
-                )
-            )
         )
     );
 
@@ -231,8 +189,10 @@ function project_attachments( $attachments )
         // meta box priority (string) (high, default, low, core)
         'priority'      => 'default',
 
+        //TODO: Consider how to use the video
         // allowed file type(s) (array) (image|video|text|audio|application)
-        'filetype'      => array('image', 'video'), // consider how to use the video
+        'filetype'      => array('image', 'video'),
+
 
         // include a note within the meta box (string)
         'note'          => 'Attach files here!',
@@ -305,11 +265,7 @@ class Katina_API_Projects {
             $query->the_post();
             $post_id = $query->post->ID;
 
-            $attachments = new Attachments( 'project_attachments', $post_id );
-            $attachments->get();
-
             $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
-
 
             $project = new Json_Project(
                 $post_id,
@@ -318,7 +274,11 @@ class Katina_API_Projects {
                 $image_array[0]
             );
 
-            $project->setGridSize($attachments->field('size'));
+            // $post_meta = get_post_meta($post_id, "", FALSE);
+            $project->setGridSize(
+                get_post_meta($post_id, "grid-row-size-input", TRUE),
+                get_post_meta($post_id, "grid-col-size-input", TRUE)
+            );
 
             array_push($response, $project);
         }
@@ -363,8 +323,13 @@ class Json_Project {
         $this->thumbnail_img = $img;
     }
 
-    public function setGridSize($grid_size) {
-        $this->grid_size = $grid_size;
+    // Defaults to 2x2
+    public function setGridSize($rows, $columns) {
+        if ( !isset($rows) || empty($rows) || is_null($rows) )
+            $rows = 2;
+        if ( !isset($columns) || empty($columns) || is_null($columns))
+            $columns = 2;
+        $this->grid_size = $rows . "x" . $columns;
     }
 
     public function setProjectDescription($desc) {
@@ -377,7 +342,6 @@ class Json_Project {
         while( $attach->get() ) {
             $newAttachment['img'] = $attach->url();
             $newAttachment['caption'] = $attach->field('caption');
-            $newAttachment['grid_size'] = $attach->field('size');
             $newAttachment['order'] = $index;
             $index += 1;
             array_push($this->attachments, $newAttachment);
