@@ -32,7 +32,7 @@ function create_post_type() {
             ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => '#/project'), // Bit hacky but it works prefixes project URL with hashbang!
+            // 'rewrite' => array('slug' => '#/project'), // Bit hacky but it works prefixes project URL with hashbang!
             'menu_position' => 5,
             'supports' => array(
                 'title',
@@ -49,6 +49,7 @@ function create_post_type() {
 /************/
 /* Meta Box */
 /************/
+// http://www.sitepoint.com/adding-custom-meta-boxes-to-wordpress/
 
 /* Adds a meta box to the post edit screen */
 add_action( 'add_meta_boxes', 'project_meta_box' );
@@ -246,7 +247,9 @@ class Katina_API_Projects {
         $routes['/katinaAPI/projects'] = array(
             array( array( $this, 'get_projects'), WP_JSON_Server::READABLE )
         );
-        $routes['/katinaAPI/project/(?P<id>\d+)'] = array(
+        // $routes['/katinaAPI/project/(?P<id>\d+)'] = array(
+        $routes['/katinaAPI/project/(?P<slug>[\w-]+)'] = array(
+
             array (array( $this, 'get_project'), WP_JSON_Server::READABLE )
         );
 
@@ -274,7 +277,6 @@ class Katina_API_Projects {
                 $image_array[0]
             );
 
-            // $post_meta = get_post_meta($post_id, "", FALSE);
             $project->setGridSize(
                 get_post_meta($post_id, "grid-row-size-input", TRUE),
                 get_post_meta($post_id, "grid-col-size-input", TRUE)
@@ -286,31 +288,34 @@ class Katina_API_Projects {
         return $response;
     }
 
-    public function get_project($id) {
+    public function get_project($slug) {
         $query = new WP_Query(
             array(
                 'post_type' => 'jm_project',
-                'p' => $id
+                'name' => $slug
             )
         );
 
         while ($query->have_posts()) {
             $query->the_post();
 
-            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), 'full' );
 
             $project = new Json_Project(
-                $id,
+                $query->post->ID,
                 $query->post->post_title,
                 $query->post->post_name,
                 $image_array[0]
             );
             $project->setProjectDescription($query->post->post_content);
 
-            $project->setAttachments( new Attachments('project_attachments', $id) );
+            $project->setAttachments( new Attachments('project_attachments', $query->post->ID) );
         }
 
-        return $project;
+        if ( !isset($project) )
+            return "Project '" . $slug . "' was not found.";
+        else
+            return $project;
     }
 }
 
