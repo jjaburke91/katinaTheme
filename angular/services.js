@@ -1,7 +1,10 @@
 jmApp.factory('wp', function($http) {
+    var projects_url = "wp-json/katinaAPI/projects/";
+    var project_by_slug_url = "wp-json/katinaAPI/project/";
+
     return {
         getProjects: function() {
-            return $http.get("wp-json/posts?type[]=jm_project&json_unescaped_unicode=1").then(
+            return $http.get(projects_url).then(
                 function success(response) {
                     return response.data;
                 },
@@ -10,26 +13,19 @@ jmApp.factory('wp', function($http) {
                 }
             );
         },
-        getProjectWithId: function(post_id) {
-            return $http.get("wp-json/posts/" + post_id).then(
+
+        getProjectWithSlug: function(project_slug) {
+            return $http.get(project_by_slug_url + project_slug).then(
                 function success(response) {
                     return response.data;
                 },
                 function error() {
-                    console.error("wp: Error retrieving project with ID " + post_id + ".");
+                    console.error("wp: Error retrieving project with name " + project_slug + ".");
                 }
             );
         },
-        getProjectWithName: function(post_name) {
-            return $http.get("wp-json/posts?type[]=jm_project&filter[s]=\"" + post_name + "\"").then(
-                function success(response) {
-                    return response.data;
-                },
-                function error() {
-                    console.error("wp: Error retrieving project with name " + post_name + ".");
-                }
-            );
-        },
+
+        // TODO: Hate how this is done - fix this.
         getAboutPage: function() {
             return $http.get("wp-json/posts/4").then(
                 function success(response) {

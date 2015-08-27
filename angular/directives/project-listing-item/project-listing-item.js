@@ -4,11 +4,6 @@ jmApp.directive('projectListingItem', function() {
         scope: {
             project: "=project"
         },
-        templateUrl: template_directory+'/angular/directives/project-listing-item/project-listing-item.html',
-        controller: "testController"
+        templateUrl: template_directory+'/angular/directives/project-listing-item/project-listing-item.html'
     }
 });
-
-jmApp.controller('testController', ["$scope",  function($scope) {
-    console.log("testContr been hit.");
-}]);

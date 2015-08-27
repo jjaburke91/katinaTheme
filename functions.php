@@ -32,7 +32,7 @@ function create_post_type() {
             ),
             'public' => true,
             'has_archive' => true,
-            // 'rewrite' => array('slug' => '#/project'), // Bit hacky but it works prefixes project URL with hashbang!
+            'rewrite' => array('slug' => '#/project'), // Bit hacky but it works prefixes project URL with hashbang!
             'menu_position' => 5,
             'supports' => array(
                 'title',
@@ -282,6 +282,9 @@ class Katina_API_Projects {
                 get_post_meta($post_id, "grid-col-size-input", TRUE)
             );
 
+            // Be cautious!! This returns localhost on dev env.
+            $project->setUrl( get_permalink($post_id) );
+
             array_push($response, $project);
         }
 
@@ -335,6 +338,10 @@ class Json_Project {
         if ( !isset($columns) || empty($columns) || is_null($columns))
             $columns = 2;
         $this->grid_size = $rows . "x" . $columns;
+    }
+
+    public function setUrl($url) {
+        $this->url = $url;
     }
 
     public function setProjectDescription($desc) {

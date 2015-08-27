@@ -38,9 +38,14 @@ jmApp.config(['$routeProvider', function($routeProvider) {
                 }
             }
         })
-        .when('/project/:postName', {
+        .when('/project/:project_slug', {
             templateUrl: template_directory+'/angular/views/project.html',
-            controller: 'projectController'
+            controller: 'projectController',
+            resolve: {
+                project: function(wp, $route) {
+                    return wp.getProjectWithSlug($route.current.params.project_slug);
+                }
+            }
         })
         .when('/error', {
             templateUrl: template_directory+'/angular/views/404.html',

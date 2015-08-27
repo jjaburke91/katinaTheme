@@ -66,8 +66,7 @@
 
         <div id="about-modal-container">
             <h1 id="about-page-title">About</h1>
-            <!--<p id="about-page-content" ng-bind-html="aboutModal.content | extractSurroundingTags:'p' | trustAsHtml">-->
-            </p>
+            <!--<p id="about-page-content" ng-bind-html="aboutModal.content | extractSurroundingTags:'p' | trustAsHtml"></p>-->
         </div>
     </div>
 
