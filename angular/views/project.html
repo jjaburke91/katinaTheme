@@ -1,5 +1,8 @@
 <div id="project-page-container">
+
     <div id="project-page-information-container">
+        <h1>{{project.title}}</h1>
+
         <p ng-bind-html="project.description | trustAsHtml"></p>
         <button id="view-description-btn" class="fadeInOut">
             <i class="fa fa-info fa-2x"></i>
@@ -7,24 +10,27 @@
         </button>
 
     </div>
-    <!--<h1>{{project.title}}</h1>-->
-
 
     <div id="project-page-carousel">
-        <button ng-click="previousImage()"><i class="fa fa-arrow-left"></i></button>
-        <div class="project-page-image-content-container" >
-             <!--ng-repeat="project_image in project.attachments | orderBy: project_image.order">-->
+        <!--<button ng-click="previousImage()"><i class="fa fa-arrow-left"></i></button>-->
+        <div class="project-page-image-content-container"
+             ng-repeat="project_image in project.attachments | orderBy: project_image.order">
 
             <div class="project-page-image-container">
-                <img src="{{images[imageSliderIndex].img}}" />
+                <img src="{{project_image.img}}" />
             </div>
 
-            <p>{{project_image.caption}}</p>
+            <!--<div class="project-page-image-container">-->
+                <!--<img src="{{images[imageSliderIndex].img}}" />-->
+            <!--</div>-->
+
+            <!--<p>{{project_image.caption}}</p>-->
 
         </div>
-        <button ng-click="nextImage()"><i class="fa fa-arrow-right"></i></button>
+        <!--<button ng-click="nextImage()"><i class="fa fa-arrow-right"></i></button>-->
+        {{imageSliderIndex+1}}/{{images.length}}
 
     </div>
-    {{imageSliderIndex+1}}/{{images.length}}
+
 
 </div>

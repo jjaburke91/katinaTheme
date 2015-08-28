@@ -274,7 +274,7 @@ class Katina_API_Projects {
             $query->the_post();
             $post_id = $query->post->ID;
 
-            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
+            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large');
 
             $project = new Json_Project(
                 $post_id,
@@ -308,7 +308,7 @@ class Katina_API_Projects {
         while ($query->have_posts()) {
             $query->the_post();
 
-            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), 'full' );
+            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), 'large' );
 
             $project = new Json_Project(
                 $query->post->ID,

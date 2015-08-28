@@ -11,6 +11,7 @@
 * Project meta box.
 * Project image upload and ordering.
 * Routing to project page.
+* Cloudinary Integration
 
 ###Current Status / Upcoming to-dos:###
 
@@ -18,7 +19,17 @@
 * Analyse what's going on with Digest cycles. Consider tidying some of the filters formatting the information, too much going on just now.
 * Masonry Grid for home page.
 * More robust API call for About page. May require new route.
-* Cloudinary integration.
+* Look into using Cloudinary for sitting image width better.
+
+### Things to remember ###
+* Google crawler
+    * Including what the blurb says
+* Cloudinary
+* Serving CV
+* Contact form
+* Embedding Videos
+* No image should be taller than the window height
+* Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
 
 ###Documentation to add:###
 
@@ -26,5 +37,10 @@
     * Retrieving the Attachments Plugin content.
 * Attachments plugin
 * Custom Meta Box
+
+### Plugins Used ###
+* Cloudinary
+* Attachments
+* WP-API
 
 See for notes: https://trello.com/b/kuHzz3E8/jordanmuir-co-uk-notes
