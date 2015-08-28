@@ -29,7 +29,7 @@ jmApp.factory('wp', function($http) {
         postContactForm: function(data) {
             console.log("Posting following contact data");
             console.log(data);
-            return $http.post(contact_form_post_url).then(
+            return $http.post(contact_form_post_url, data).then(
                 function success(response) {
                     console.log(response);
                 },

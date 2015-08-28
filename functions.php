@@ -257,9 +257,10 @@ class Katina_API_Projects {
             array( array( $this, 'get_project'), WP_JSON_Server::READABLE )
         );
         $routes['/katinaAPI/contact'] = array(
-            array( array( $this, "post_contact_form", WP_JSON_Server::CREATABLE
-                                                    | WP_JSON_Server::ACCEPT_RAW
-            ))
+            array( array( $this, "post_contact_form"), WP_JSON_Server::CREATABLE
+                                                    | WP_JSON_Server::ACCEPT_JSON
+                                                    | WP_JSON_Server::HIDDEN_ENDPOINT // Hides end-point from API index
+            )
         );
 
         return $routes;
