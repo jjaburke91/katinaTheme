@@ -253,10 +253,14 @@ class Katina_API_Projects {
         $routes['/katinaAPI/projects'] = array(
             array( array( $this, 'get_projects'), WP_JSON_Server::READABLE )
         );
-        // $routes['/katinaAPI/project/(?P<id>\d+)'] = array(
         $routes['/katinaAPI/project/(?P<slug>[\w-]+)'] = array(
-
-            array (array( $this, 'get_project'), WP_JSON_Server::READABLE )
+            array( array( $this, 'get_project'), WP_JSON_Server::READABLE )
+        );
+        $route['/katinaAPI/contact'] = array(
+            array( array( $this, "post_contact_form", WP_JSON_Server::CREATABLE
+                                                    | WP_JSON_Server::ACCEPT_JSON
+                                                    | WP_JSON_Server::HIDDEN_ENDPOINT // Hides end-point from API index
+            ))
         );
 
         return $routes;
@@ -325,6 +329,10 @@ class Katina_API_Projects {
             return "Project '" . $slug . "' was not found.";
         else
             return $project;
+    }
+
+    public function post_contact_form($data) {
+        return $data;
     }
 }
 
