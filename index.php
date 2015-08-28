@@ -54,8 +54,8 @@
     <div id="content" class="{{pageClass}}" ng-view>
     </div>
 
-    <div id="about-modal" class="modal"
-         ng-show="aboutModal.visible" >
+
+    <div id="about-modal" class="modal" ng-show="aboutModal.visible" >
 
         <span class="modal-close"
               ng-click="aboutModal.closeModal()">
@@ -73,8 +73,8 @@
         </div>
     </div>
 
-    <div id="contact-modal" class="modal"
-         ng-show="contactModal.visible">
+
+    <div id="contact-modal" class="modal" ng-show="contactModal.visible">
 
         <span class="modal-close"
               ng-click="contactModal.closeModal()">
@@ -82,8 +82,6 @@
         </span>
 
         <div id="contact-modal-container">
-            <!--<h1>Contact</h1>-->
-
             <contact-form></contact-form>
         </div>
 

@@ -1,6 +1,7 @@
 jmApp.factory('wp', function($http) {
     var projects_url = "wp-json/katinaAPI/projects/";
     var project_by_slug_url = "wp-json/katinaAPI/project/";
+    var contact_form_post_url = "wp-json/katinaAPI/contact/";
 
     return {
         getProjects: function() {
@@ -23,6 +24,19 @@ jmApp.factory('wp', function($http) {
                     console.error("wp: Error retrieving project with name " + project_slug + ".");
                 }
             );
+        },
+
+        postContactForm: function(data) {
+            console.log("Posting following contact data");
+            console.log(data);
+            return $http.post(contact_form_post_url).then(
+                function success(response) {
+                    console.log(response);
+                },
+                function error(response) {
+                    console.error(response);
+                }
+            )
         },
 
         // TODO: Hate how this is done - fix this.
