@@ -33,6 +33,10 @@
             <span id="about-container-link" ng-click="aboutModal.openModal()">About</span>
         </div>
 
+        <div id="contact-link-container">
+            <span id="contact-link" ng-click="contactModal.openModal()">Contact</span>
+        </div>
+
         <div id="logo-container">
             <a href="#/">
                 <h1>Jordan Muir</h1>
@@ -50,11 +54,10 @@
     <div id="content" class="{{pageClass}}" ng-view>
     </div>
 
-    <div id="about-modal"
-         ng-controller="aboutController"
+    <div id="about-modal" class="modal"
          ng-show="aboutModal.visible" >
 
-        <span id="about-modal-close"
+        <span class="modal-close"
               ng-click="aboutModal.closeModal()">
             <i class="fa fa-times fa-4x"></i>
         </span>
@@ -65,9 +68,25 @@
         </button> -->
 
         <div id="about-modal-container">
-            <h1 id="about-page-title">About</h1>
+            <h1>About</h1>
             <!--<p id="about-page-content" ng-bind-html="aboutModal.content | extractSurroundingTags:'p' | trustAsHtml"></p>-->
         </div>
+    </div>
+
+    <div id="contact-modal" class="modal"
+         ng-show="contactModal.visible">
+
+        <span class="modal-close"
+              ng-click="contactModal.closeModal()">
+            <i class="fa fa-times fa-4x"></i>
+        </span>
+
+        <div id="contact-modal-container">
+            <!--<h1>Contact</h1>-->
+
+            <contact-form></contact-form>
+        </div>
+
     </div>
 
 </body>

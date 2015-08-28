@@ -21,8 +21,8 @@ $project-listing-colours: #96d4ff, #ff9d91, #fff17c, #98eb94
 
 $header-height: 4em
 
-$about-modal-opacity: 0.98
-$about-modal-colour: #33957a
+$modal-opacity: 0.98
+$modal-colour: #33957a
 
 @mixin animation($str)
     animation: #{$str}
@@ -119,8 +119,7 @@ header
         float: left
 
 #logo-container
-    width: 48%
-    margin: 0 auto
+    width: 50%
     text-align: center
 
     h1
@@ -135,14 +134,23 @@ header
     padding-top: 5px
 
 #about-container
-    width: 25%
+    width: 5%
+    min-width: 45px
     text-align: left
     padding-top: 8px
     text-transform: lowercase
 
-#about-container-link
-    cursor: pointer
+    #about-container-link
+        cursor: pointer
 
+#contact-link-container
+    width: 20%
+    text-align: left
+    padding-top: 8px
+    text-transform: lowercase
+
+    #contact-link
+        cursor: pointer
 
 
 /***********/
@@ -194,11 +202,11 @@ header
 #about-page-container
     text-align: center
 
-/******************/
-/** About Modal ***/
-/******************/
+/*************/
+/** Modals ***/
+/*************/
 
-#about-modal
+.modal
     position: fixed
     width: 100%
     height: 100%
@@ -207,12 +215,15 @@ header
     margin: 0
     padding: 0
 
-    opacity: $about-modal-opacity
+    opacity: $modal-opacity
     z-index: 99999
-    background-color: $about-modal-colour
+    background-color: $modal-colour
     color: $darker-text-colour
 
-#about-modal-container
+#contact-modal
+    opacity: 1
+
+#about-modal-container, #contact-modal-container
     position: absolute
     top: 50%
     left: 50%
@@ -225,14 +236,14 @@ header
 
     text-align: center
 
-    #about-page-title
+    h1
         font-size: 2em
 
     #about-page-content
         font-size: 1.5em
         width: 100%
 
-#about-modal-close
+.modal-close
     position: absolute
     top: 0.1em
     left: 0.8em
@@ -241,6 +252,8 @@ header
 
     cursor: pointer
 
+
+// Following currently unused
 #about-modal-close-button
     position: fixed
     top: 0
@@ -252,7 +265,7 @@ header
     text-align: center
 
 
-    background-color: $about-modal-colour
+    background-color: $modal-colour
     color: $darker-text-colour
     border: 2px solid $darker-text-colour
     text-transform: uppercase
@@ -261,6 +274,52 @@ header
 
     &:hover
         background-color: $dark-base-colour
+
+
+
+/**********/
+/** Form **/
+/**********/
+$form-element-edge-colour: #266850
+
+#contact-form
+    max-width: 1050px
+    min-width: 300px
+    margin: 0 auto
+
+    font-size: 1.1em
+
+    button
+        background-color: $modal-colour
+        color: $darker-text-colour
+        border: 2px solid $form-element-edge-colour
+        padding: 1em 1.5em
+        text-transform: uppercase
+
+    .form-input-container
+        label, input, textarea
+            display: block
+            width: 100%
+            margin: 0 auto
+            font-size: 1.1em
+
+        label
+            padding: 1em
+            text-transform: lowercase
+
+        input, textarea
+            background-color: $modal-colour
+            text-align: center
+            padding: 1vw 1vh
+            border: 2px solid $form-element-edge-colour
+
+        textarea
+            font-family: inherit
+            height: 20vh
+            max-height: 25vh
+            max-width: 100%
+
+
 
 
 /*********************/
@@ -401,11 +460,11 @@ $num: 0
         opacity: 1
         transform: translateX(-100%)
 
-@keyframes aboutModal-fadeIn
+@keyframes modal-fadeIn
     to
-        opacity: $about-modal-opacity
+        opacity: $modal-opacity
 
-@keyframes aboutModal-fadeOut
+@keyframes modal-fadeOut
     to
         opacity: 0
 
@@ -421,16 +480,15 @@ $num: 0
 .project-listing.ng-leave
     @include animation(fadeOutToRight 1s ease)
 
-#about-modal.ng-hide-add
-    opacity: $about-modal-opacity
-#about-modal.ng-hide-add-active
-    @include animation(aboutModal-fadeOut 0.3s ease)
+.modal.ng-hide-add
+    opacity: $modal-opacity
+.modal.ng-hide-add-active
+    @include animation(modal-fadeOut 0.3s ease)
 
-#about-modal.ng-hide-remove
+.modal.ng-hide-remove
     opacity: 0
-#about-modal.ng-hide-remove-active
-    @include animation(aboutModal-fadeIn 0.3s ease)
-
+.modal.ng-hide-remove-active
+    @include animation(modal-fadeIn 0.3s ease)
 
 
 .fadeInOut

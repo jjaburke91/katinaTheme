@@ -1,0 +1,36 @@
+
+<form id="contact-form" name="contactForm" ng-submit="formSubmit(registerForm.$valid )" novalidate>
+
+    <div class="form-input-container">
+        <label class="form-label" for="form-name">Your Name</label>
+        <input id="form-name" name="form-name" type="text" />
+
+        <p class="form-error"></p>
+    </div>
+
+    <div class="form-input-container">
+        <label class="form-label" for="form-email">Your Email</label>
+        <input id="form-email" name="form-email" type="email" />
+
+        <p class="form-error"></p>
+    </div>
+
+    <div class="form-input-container">
+        <label class="form-label" for="form-subject">Subject</label>
+        <input id="form-subject" name="form-subject" type="text" />
+
+        <p class="form-error"></p>
+    </div>
+
+    <div class="form-input-container">
+        <label class="form-label" for="form-message">Message</label>
+        <textarea id="form-message" name="form-message"></textarea>
+
+        <p class="form-error"></p>
+    </div>
+
+    <button>
+        Send
+    </button>
+
+</form>
