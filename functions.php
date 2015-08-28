@@ -258,8 +258,8 @@ class Katina_API_Projects {
         );
         $routes['/katinaAPI/contact'] = array(
             array( array( $this, "post_contact_form"), WP_JSON_Server::CREATABLE
-                                                    | WP_JSON_Server::ACCEPT_JSON
-                                                    | WP_JSON_Server::HIDDEN_ENDPOINT // Hides end-point from API index
+                                                     | WP_JSON_Server::ACCEPT_JSON
+                                                     | WP_JSON_Server::HIDDEN_ENDPOINT // Hides end-point from API index
             )
         );
 
@@ -332,7 +332,13 @@ class Katina_API_Projects {
     }
 
     public function post_contact_form($data) {
-        return "Hello pal";
+
+        $name= $data['name'];
+        $email = $data['email'];
+        $subject = $data['subject'];
+        $message = $data['message'];
+
+        return $message;
     }
 }
 
