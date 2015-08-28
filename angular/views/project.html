@@ -12,7 +12,6 @@
     </div>
 
     <div id="project-page-carousel">
-        <!--<button ng-click="previousImage()"><i class="fa fa-arrow-left"></i></button>-->
         <div class="project-page-image-content-container"
              ng-repeat="project_image in project.attachments | orderBy: project_image.order">
 
@@ -20,17 +19,10 @@
                 <img src="{{project_image.img}}" />
             </div>
 
-            <!--<div class="project-page-image-container">-->
-                <!--<img src="{{images[imageSliderIndex].img}}" />-->
-            <!--</div>-->
-
-            <!--<p>{{project_image.caption}}</p>-->
+            <p>{{project_image.caption}}</p>
 
         </div>
-        <!--<button ng-click="nextImage()"><i class="fa fa-arrow-right"></i></button>-->
-        {{imageSliderIndex+1}}/{{images.length}}
 
     </div>
-
 
 </div>
