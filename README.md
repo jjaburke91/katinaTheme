@@ -33,6 +33,7 @@
 * Get sprites used for logos and icons.
 * Images on click - include caption.
 * Playing and ordering videos.
+* Set default image for when Jordan forgets to include featured image
 
 ###Documentation to add:###
 

@@ -342,32 +342,32 @@ $grid-cell-height: 200px
     @include set_cell_dimensions_height(1)
 
 .grid-1x2
-    @include set_cell_dimensions_width(2)
-    @include set_cell_dimensions_height(1)
-
-.grid-2x1
     @include set_cell_dimensions_width(1)
     @include set_cell_dimensions_height(2)
 
-.grid-1x3
-    @include set_cell_dimensions_width(3)
+.grid-2x1
+    @include set_cell_dimensions_width(2)
     @include set_cell_dimensions_height(1)
 
-.grid-3x1
+.grid-1x3
     @include set_cell_dimensions_width(1)
     @include set_cell_dimensions_height(3)
+
+.grid-3x1
+    @include set_cell_dimensions_width(3)
+    @include set_cell_dimensions_height(1)
 
 .grid-2x2
     @include set_cell_dimensions_width(2)
     @include set_cell_dimensions_height(2)
 
 .grid-2x3
-    @include set_cell_dimensions_width(3)
-    @include set_cell_dimensions_height(2)
-
-.grid-3x2
     @include set_cell_dimensions_width(2)
     @include set_cell_dimensions_height(3)
+
+.grid-3x2
+    @include set_cell_dimensions_width(3)
+    @include set_cell_dimensions_height(2)
 
 .grid-3x3
     @include set_cell_dimensions_width(3)
@@ -384,10 +384,11 @@ $grid-cell-height: 200px
         clear: both
 
 .grid-item
-    padding: .2em
+    padding: .4em
 
 .grid-img
-    width: 100%
+    max-width: 100%
+    width: 100% // Think this line causes some odd loading issues with images! Be cautious.
     height: 100%
 
 

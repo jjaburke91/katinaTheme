@@ -267,9 +267,11 @@ class Katina_API_Projects {
     }
 
     public function get_projects() {
+        // TODO: Max posts per page? Sync this with front end.
         $query = new WP_Query(
             array(
-                'post_type' => 'jm_project'
+                'post_type' => 'jm_project',
+                'posts_per_page' => '50'
             )
         );
         $response = array();
