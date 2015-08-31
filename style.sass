@@ -327,30 +327,63 @@ $form-element-edge-colour: #266850
 /*********************/
 
 // 8 column grid
-$grid-cell-width: 12.5%
+$grid-cell-width: 200px
+$grid-cell-height: 200px
 
-@mixin set_row_width($num_rows)
-    width: $grid-cell-width * $num_rows !important
-    max-width: $grid-cell-width * $num_rows !important
-    min-width: $grid-cell-width * $num_rows !important
+@mixin set_cell_dimensions_width($num_rows)
+    width:     ($grid-cell-width * $num_rows)
+
+@mixin set_cell_dimensions_height($num_cols)
+    height:     ($grid-cell-height * $num_cols)
+
 
 .grid-1x1
-    @include set_row_width(1)
+    @include set_cell_dimensions_width(1)
+    @include set_cell_dimensions_height(1)
+
+.grid-1x2
+    @include set_cell_dimensions_width(2)
+    @include set_cell_dimensions_height(1)
+
+.grid-2x1
+    @include set_cell_dimensions_width(1)
+    @include set_cell_dimensions_height(2)
+
 
 .grid-2x2
-    @include set_row_width(2)
+    @include set_cell_dimensions_width(2)
+    @include set_cell_dimensions_height(2)
 
 .grid-3x3
-    @include set_row_width(3)
+    @include set_cell_dimensions_width(3)
+    @include set_cell_dimensions_height(3)
 
-.grid-4x4
-    @include set_row_width(4)
 
-.grid-5x5
-    @include set_row_width(5)
 
-.grid-6x6
-    @include set_row_width(5)
+.listing-grid
+    //border: 1px solid grey
+    margin: 0 auto
+
+    &:after
+        content: ''
+        display: block
+        clear: both
+
+.grid-item
+    //border: 1px solid gold
+    //float: left
+    padding: .2em
+
+.grid-img
+    max-width: 100%
+    height: 100%
+
+
+
+
+
+
+
 
 
 #project-listing-container

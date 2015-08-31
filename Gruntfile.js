@@ -86,7 +86,7 @@ module.exports = function(grunt) {
                     'angular/*.js',
                     'angular/controllers/*.js',
                     'angular/directives/**/*.js', 'angular/directives/**/*.html',
-                    '**/.html', '*.html'
+                    '**/.html', 'angular/**/*.html', '*.html'
                 ],
                 tasks: [ 'html2js:dist', 'concat:dist', 'clean:temp' ],
                 options: {

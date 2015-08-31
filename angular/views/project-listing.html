@@ -1,15 +1,19 @@
-<div id="project-listing-container">
+<div id="project-listing-container" class="listing-grid">
 
     <!-- Ensure following mod value matches number of colours defined in sass-->
     <!--<div class="project-listing-colour-{{($index) % 4}} listing-item" ng-repeat="project in projects track by $index">-->
 
     <!--</div>-->
 
+
+    <!--class="project-listing-colour-{{($index) % 4}} grid-{{project.grid_size}} listing-item-container"-->
+
     <project-listing-item
-            class="project-listing-colour-{{($index) % 4}} grid-{{project.grid_size}} listing-item-container"
+            class="grid-item grid-{{project.grid_size}}"
             ng-repeat="project in projects"
             project="project"
             >
     </project-listing-item>
+
 
 </div>

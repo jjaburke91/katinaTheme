@@ -31,6 +31,8 @@
 * No image should be taller than the window height
 * Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
 * Get sprites used for logos and icons.
+* Images on click - include caption.
+* Playing and ordering videos.
 
 ###Documentation to add:###
 
