@@ -262,6 +262,9 @@ class Katina_API_Projects {
                                                      | WP_JSON_Server::HIDDEN_ENDPOINT // Hides end-point from API index
             )
         );
+        $routes['/katinaAPI/nextPost/(?P<id>[\w-]+)'] = array(
+            array( array( $this, 'get_next_post'), WP_JSON_Server::READABLE )
+        );
 
         return $routes;
     }
@@ -311,7 +314,7 @@ class Katina_API_Projects {
             )
         );
 
-        while ($query->have_posts()) {
+        if ($query->have_posts()) {
             $query->the_post();
 
             $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), 'large' );
@@ -325,6 +328,11 @@ class Katina_API_Projects {
             $project->setProjectDescription($query->post->post_content);
 
             $project->setAttachments( new Attachments('project_attachments', $query->post->ID) );
+
+            if ( get_next_post())
+                $project->setNextPostSlug( get_next_post()->post_name );
+            if ( get_previous_post())
+                $project->setPreviousPostSlug( get_previous_post()->post_name );
         }
 
         if ( !isset($project) )
@@ -398,6 +406,25 @@ class Katina_API_Projects {
 
         return $response;
     }
+
+    public function get_next_post($id) {
+        $query = new WP_Query(
+            array(
+                'post_type' => 'jm_project',
+                'p' => $id
+            )
+        );
+
+        if( $query->have_posts() ) {
+            $query->the_post();
+            $previous_post = get_previous_post();
+            $next_post = get_next_post();
+        }
+        if ( !is_null($next_post) )
+            return $previous_post;
+        else
+            return -1;
+    }
 }
 
 class FormResponse {
@@ -453,6 +480,14 @@ class Json_Project {
             $index += 1;
             array_push($this->attachments, $newAttachment);
         }
+    }
+
+    public function setNextPostSlug($slug){
+        $this->next_post = $slug;
+    }
+
+    public function setPreviousPostSlug($slug) {
+        $this->previous_post = $slug;
     }
 
 }
