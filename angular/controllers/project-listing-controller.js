@@ -13,7 +13,8 @@ jmApp.controller('projectListingController', ["$scope", "$rootScope", "wp", "pro
             itemSelector : '.grid-item',
             columnWidth: 200,
             isAnimated: true,
-            isFitWidth: true
+            isFitWidth: true,
+            transitionDuration: '0.3s'
         });
     });
 
