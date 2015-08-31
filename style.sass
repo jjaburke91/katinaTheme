@@ -158,7 +158,6 @@ header
 /***********/
 
 #project-page-container
-    border: 1px solid red
     display: block
 
     max-width: 95%
@@ -175,18 +174,15 @@ header
 
 #project-page-information-container
     // Getting absolute container to fit rest of height needs some thought
-    border: 1px solid green
     position: absolute
     width: 20em
 
 #project-page-carousel
-    border: 1px solid blue
+    //border: 1px solid blue
     max-width: 100%
     min-width: 100%
 
 .project-page-image-content-container
-    border: 1px solid gold
-
     max-width: 100%
     min-width: 100%
 
@@ -482,61 +478,3 @@ $num: 0
 
 /** https://scotch.io/tutorials/animating-angularjs-apps-ngview **/
 // Ng-enter/leave-active defines where the transition goes.
-
-@keyframes fadeAndSlideFromLeft
-    from
-        opacity: 0
-        transform: translateX(-100%)
-    to
-        opacity: 1
-
-@keyframes fadeInFromLeft
-    from
-        opacity: 0
-        transform: translateX(100%)
-    to
-        opacity: 1
-
-@keyframes fadeOutToRight
-    to
-        opacity: 1
-        transform: translateX(100%)
-
-@keyframes fadeOutToLeft
-    to
-        opacity: 1
-        transform: translateX(-100%)
-
-@keyframes modal-fadeIn
-    to
-        opacity: $modal-opacity
-
-@keyframes modal-fadeOut
-    to
-        opacity: 0
-
-
-
-.project.ng-enter
-    @include animation(fadeAndSlideFromLeft 1s ease)
-.project.ng-leave
-    @include animation(fadeOutToLeft 1s ease)
-
-.project-listing.ng-enter
-    @include animation(fadeInFromLeft 1s ease)
-.project-listing.ng-leave
-    @include animation(fadeOutToRight 1s ease)
-
-.modal.ng-hide-add
-    opacity: $modal-opacity
-.modal.ng-hide-add-active
-    @include animation(modal-fadeOut 0.3s ease)
-
-.modal.ng-hide-remove
-    opacity: 0
-.modal.ng-hide-remove-active
-    @include animation(modal-fadeIn 0.3s ease)
-
-
-.fadeInOut
-    @include transition(all 0.3s ease)

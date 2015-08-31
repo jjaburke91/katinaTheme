@@ -23,6 +23,7 @@
 * Look into using Cloudinary for sitting image width better.
 * Embedding Videos
 * Contact form
+* Change colour and behaviour of what happens when you highlight text
 
 ### Things to remember ###
 * Google crawler
