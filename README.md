@@ -12,28 +12,27 @@
 * Project image upload and ordering.
 * Routing to project page.
 * Cloudinary Integration
+* Masonry Grid for home page.
+* Integrate zoom.js
 
 ###Current Status / Upcoming to-dos:###
 
 * Mobile friendly - text sizing.
 * Analyse what's going on with Digest cycles. Consider tidying some of the filters formatting the information, too much going on just now.
-* Masonry Grid for home page.
 * More robust API call for About page. May require new route.
 * Look into using Cloudinary for sitting image width better.
+* Embedding Videos
+* Contact form
 
 ### Things to remember ###
 * Google crawler
     * Including what the blurb says
-* Cloudinary
 * Serving CV
-* Contact form
-* Embedding Videos
 * No image should be taller than the window height
-* Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
-* Get sprites used for logos and icons.
-* Images on click - include caption.
-* Playing and ordering videos.
+* Get sprites used for logos and icons?
+* Images on click - include caption?
 * Set default image for when Jordan forgets to include featured image
+* Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
 
 ###Documentation to add:###
 
@@ -41,6 +40,7 @@
     * Retrieving the Attachments Plugin content.
 * Attachments plugin
 * Custom Meta Box
+* Cloudinary
 
 ### Plugins Used ###
 * Cloudinary

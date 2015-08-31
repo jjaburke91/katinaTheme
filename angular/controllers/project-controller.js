@@ -1,5 +1,5 @@
-jmApp.controller('projectController', ['$scope', 'project', function( $scope, project) {
-    $scope.pageClass = "project";
+jmApp.controller('projectController', ['$scope', '$rootScope', 'project', function( $scope, $rootScope, project) {
+    $rootScope.page_title = project.title;
     $scope.project = project;
     console.log(project);
 

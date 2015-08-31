@@ -1,8 +1,7 @@
 jmApp.controller('projectListingController', ["$scope", "$rootScope", "wp", "projects", function( $scope, $rootScope, wp, projects) {
-    $scope.pageClass = "project-listing";
+    $rootScope.page_title = "Jordan Muir";
     $scope.projects = projects;
     console.log(projects);
-
 
 
     // TODO: Healthy containing this content in a controller?

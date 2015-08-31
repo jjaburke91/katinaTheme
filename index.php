@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="jordan_muir_app" ng-keydown="keypress($event)">
 
 <script type="text/javascript">
     var template_directory = "<?php bloginfo('template_directory');?>";
 </script>
 
 <head>
-    <title>Jordan Muir</title>
+    <title>{{page_title}}</title>
+
     <!-- bower:js -->
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.js"></script>
@@ -33,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 
-<body ng-app="jordan_muir_app" ng-keydown="keypress($event)">
+<body >
 
     <header>
         <div id="about-container">
