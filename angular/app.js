@@ -1,28 +1,36 @@
 var jmApp = angular.module('jordan_muir_app', ['ngRoute', 'ngAnimate']);
 
-jmApp.run( function($rootScope, wp, $templateCache) {
+jmApp.run( ["$rootScope", function($rootScope) {
+    $rootScope.template_directory = template_directory;
 
-        $templateCache.removeAll();
-
-        $rootScope.template_directory = template_directory;
-
-        // About Modal functions, could this be exported to a service or factory?
-        $rootScope.aboutModal = {};
+    // About Modal functions, could this be exported to a service or factory?
+    $rootScope.aboutModal = {};
+    $rootScope.aboutModal.visible = false;
+    $rootScope.aboutModal.openModal = function() {
+        $rootScope.aboutModal.visible = true;
+        console.log($rootScope.aboutModal.visible);
+    };
+    $rootScope.aboutModal.closeModal = function() {
         $rootScope.aboutModal.visible = false;
-        $rootScope.aboutModal.openModal = function() {
-            $rootScope.aboutModal.visible = true;
-        };
-        $rootScope.aboutModal.closeModal = function() {
-            $rootScope.aboutModal.visible = false;
-        };
+    };
 
-        $rootScope.keypress = function(event) {
-            if (event.keyCode === 27) {
-                $rootScope.aboutModal.closeModal();
-            }
+    $rootScope.contactModal = {};
+    $rootScope.contactModal.visible = true;
+    $rootScope.contactModal.openModal = function() {
+        $rootScope.contactModal.visible = true;
+    };
+    $rootScope.contactModal.closeModal = function() {
+        $rootScope.contactModal.visible = false;
+    };
+
+    $rootScope.keypress = function(event) {
+        if (event.keyCode === 27) {
+            $rootScope.aboutModal.closeModal();
+            $rootScope.contactModal.closeModal();
         }
+    }
 
-    });
+}]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache
 

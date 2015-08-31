@@ -253,10 +253,14 @@ class Katina_API_Projects {
         $routes['/katinaAPI/projects'] = array(
             array( array( $this, 'get_projects'), WP_JSON_Server::READABLE )
         );
-        // $routes['/katinaAPI/project/(?P<id>\d+)'] = array(
         $routes['/katinaAPI/project/(?P<slug>[\w-]+)'] = array(
-
-            array (array( $this, 'get_project'), WP_JSON_Server::READABLE )
+            array( array( $this, 'get_project'), WP_JSON_Server::READABLE )
+        );
+        $routes['/katinaAPI/contact'] = array(
+            array( array( $this, "post_contact_form"), WP_JSON_Server::CREATABLE
+                                                     | WP_JSON_Server::ACCEPT_JSON
+                                                     | WP_JSON_Server::HIDDEN_ENDPOINT // Hides end-point from API index
+            )
         );
 
         return $routes;
@@ -326,6 +330,89 @@ class Katina_API_Projects {
         else
             return $project;
     }
+
+    public function post_contact_form($data) {
+        $response = new FormResponse();
+
+        if ( isset($data) ) {
+            if ( isset( $data['name']) ) {
+                if (strlen( $data['name']) > 100 || strlen($data['name']) < 5) {
+                    $response->setSuccess(false);
+                    $response->setFormError('name', 'Name field must be between 5 and 100 characters long.');
+                } else {
+                    $name = $data['name'];
+                }
+
+            }
+
+            if ( isset( $data['email']) && $response->success ) {
+                if (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim( $data['email'] )) ){
+                    $response->setSuccess(false);
+                    $response->setFormError('email', 'Please enter a valid email address.');
+                } else {
+                    $email = $data['email'];
+                }
+
+            }
+
+            if ( isset( $data['subject']) && $response->success ) {
+                if (strlen( $data['subject']) > 200 || strlen( $data['subject']) < 5) {
+                    $response->setSuccess(false);
+                    $response->setFormError('subject', 'Subject field must be between 6 and 200 characters.');
+                } else {
+                    $subject = $data['subject'];
+                }
+
+            }
+
+            if (isset( $data['message']) && $response->success ) {
+                $message = trim($data['message']);
+
+                if ( strlen($message) > 1000 || strlen($message) < 20) {
+                    $response->setSuccess(false);
+                    $response->setFormError('message', 'Message field must be between 20 and 1000 characters.');
+                }
+
+            }
+
+        }
+
+        if ( $response->success) {
+            $emailTo = get_option('tz_email');
+
+            if (!isset($emailTo) || ($emailTo == '') ){
+                $emailTo = get_option('admin_email');
+            }
+
+            $emailTo = "jamesjburke91@gmail.com";
+
+            $subject = '[jordanmuir.co.uk] Message From '.$name;
+            $body = "Name: $name \n\nEmail: $email \n\nMessage:\n $message";
+            $headers = 'From: '.$name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;
+
+            wp_mail($emailTo, $subject, $body, $headers);
+            $emailSent = true;
+        }
+
+        return $response;
+    }
+}
+
+class FormResponse {
+    public function  __construct() {
+        $this->success = true;
+    }
+
+    public function setSuccess($success) {
+        $this->success = $success;
+    }
+
+    public function setFormError($field, $message) {
+        $this->formError = new StdClass();
+        $this->formError->field = $field;
+        $this->formError->message = $message;
+    }
+
 }
 
 class Json_Project {

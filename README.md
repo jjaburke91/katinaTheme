@@ -30,6 +30,7 @@
 * Embedding Videos
 * No image should be taller than the window height
 * Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
+* Get sprites used for logos and icons.
 
 ###Documentation to add:###
 
