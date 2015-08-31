@@ -16,7 +16,7 @@
              ng-repeat="project_image in project.attachments | orderBy: project_image.order">
 
             <div class="project-page-image-container">
-                <img src="{{project_image.img}}" />
+                <img src="{{project_image.img}}" data-action="zoom" />
             </div>
 
             <p>{{project_image.caption}}</p>
