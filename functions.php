@@ -330,9 +330,9 @@ class Katina_API_Projects {
             $project->setAttachments( new Attachments('project_attachments', $query->post->ID) );
 
             if ( get_next_post())
-                $project->setNextPostSlug( get_next_post()->post_name );
+                $project->setNextPostUrl( get_permalink( get_next_post()->ID) );
             if ( get_previous_post())
-                $project->setPreviousPostSlug( get_previous_post()->post_name );
+                $project->setPreviousPostUrl( get_permalink( get_previous_post()->ID) );
         }
 
         if ( !isset($project) )
@@ -482,11 +482,11 @@ class Json_Project {
         }
     }
 
-    public function setNextPostSlug($slug){
+    public function setNextPostUrl($slug){
         $this->next_post = $slug;
     }
 
-    public function setPreviousPostSlug($slug) {
+    public function setPreviousPostUrl($slug) {
         $this->previous_post = $slug;
     }
 
