@@ -46,7 +46,7 @@ jmApp.config(['$routeProvider', function($routeProvider) {
                 }
             }
         })
-        .when('/project/:project_slug', {
+        .when('/project/:project_slug/', { // NOTE: The '/' at end of URL has affect on ng-leave and ng-enter
             templateUrl: template_directory+'/angular/views/project.html',
             controller: 'projectController',
             resolve: {
