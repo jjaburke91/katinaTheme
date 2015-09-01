@@ -463,7 +463,8 @@ class Json_Project {
     }
 
     public function setUrl($url) {
-        $this->url = $url;
+        // Removing the URL before '#', required for Angular state transitions to work correctly, namely ng-leave.
+        $this->url = strstr($url, '#');
     }
 
     public function setProjectDescription($desc) {
@@ -483,11 +484,11 @@ class Json_Project {
     }
 
     public function setNextPostUrl($slug){
-        $this->next_post = $slug;
+        $this->next_post = strstr($slug, '#');
     }
 
     public function setPreviousPostUrl($slug) {
-        $this->previous_post = $slug;
+        $this->previous_post = strstr($slug, '#');
     }
 
 }

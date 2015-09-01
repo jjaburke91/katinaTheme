@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         // Converts all the views to a js file
         html2js: {
             dist: {
-                src: [ 'angular/views/*.html' ],
+                src: [ 'angular/views/*.html', 'angular/directives/**/*.html'],
                 dest: 'tmp/views.js'
             }
         },

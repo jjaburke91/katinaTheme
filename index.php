@@ -18,7 +18,7 @@
     <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
 
-    <!--Zoom dependancies-->
+    <!-- Zoom dependencies-->
     <script src="<?php bloginfo('template_directory'); ?>/lib/zoom/transition.js" type="text/javascript"></script>
     <script src="<?php bloginfo('template_directory'); ?>/lib/zoom/zoom.js" type="text/javascript"></script>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/lib/zoom/zoom.css" />
@@ -26,8 +26,6 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
-
-    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>-->
 
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" defer ></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jordanMuir.js" defer ></script>
@@ -59,7 +57,7 @@
     </header>
 
 
-    <div id="content" class="{{pageClass}}" ng-view>
+    <div id="content" class="view-transition" ng-view>
     </div>
 
 

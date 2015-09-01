@@ -36,6 +36,12 @@ $modal-colour: #33957a
     -moz-transition: #{$str}
     -o-transition: #{$str}
 
+@mixin transition-delay($str)
+    transition-delay: $str
+    -webkit-transition-delay: $str
+    -moz-transition-delay: $str
+    -o-transition: $str
+
 @mixin border-radius($str)
     -webkit-border-radius: $str
     -moz-border-radius: $str
@@ -477,4 +483,27 @@ $num: 0
 /********************************/
 
 /** https://scotch.io/tutorials/animating-angularjs-apps-ngview **/
-// Ng-enter/leave-active defines where the transition goes.
+
+// ng-enter = starting point on entering view
+// ng-leave = starting point on leaving view
+// *-active = final point on *ing view
+
+.view-transition
+    @include transition(0.7s linear all)
+
+.view-transition.ng-enter
+    @include transition-delay(0.8s)
+    z-index: 9999
+    opacity: 0
+
+.view-transition.ng-enter.ng-enter-active
+    @include transition-delay(0.8s)
+    opacity: 1
+
+.view-transition.ng-leave
+    z-index: 9999
+    opacity: 1
+
+.view-transition.ng-leave.ng-leave-active
+    opacity: 0
+
