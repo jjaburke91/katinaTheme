@@ -88,7 +88,6 @@ a
     top: 0
     left: 0
     width: 100%
-    //height: 100%
     margin: ($header-height + 1.5em) 0em .5em 0em
     color: $secondary-colour
 
@@ -338,7 +337,6 @@ $grid-cell-height: 200px
 @mixin set_cell_dimensions_height($num_cols)
     height:     ($grid-cell-height * $num_cols)
 
-
 .grid-1x1
     @include set_cell_dimensions_width(1)
     @include set_cell_dimensions_height(1)
@@ -375,8 +373,6 @@ $grid-cell-height: 200px
     @include set_cell_dimensions_width(3)
     @include set_cell_dimensions_height(3)
 
-
-
 .listing-grid
     margin: 0 auto
     text-align: center
@@ -394,13 +390,9 @@ $grid-cell-height: 200px
     width: 100% // Think this line causes some odd loading issues with images! Be cautious.
     height: 100%
 
-
-
-
-
-
-
-
+    @include transition(0.1s linear all)
+    &:hover
+        margin: -0.5em
 
 #project-listing-container
     text-align: center
@@ -408,9 +400,7 @@ $grid-cell-height: 200px
 .listing-item-container
     position: relative
     display: inline-block
-
     padding: .3% .5%
-
     z-index: 9999
 
     .listing-item
