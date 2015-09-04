@@ -222,7 +222,7 @@ header
     color: $darker-text-colour
 
 #contact-modal
-    opacity: 1
+    opacity: $modal-opacity
 
 #about-modal-container, #contact-modal-container
     position: absolute
@@ -479,14 +479,14 @@ $num: 0
 // *-active = final point on *ing view
 
 .view-transition
-    @include transition(0.7s linear all)
+    @include transition(0.5s linear all)
 
 .view-transition.ng-enter
     z-index: 9999
     opacity: 0
 
 .view-transition.ng-enter.ng-enter-active
-    @include transition-delay(0.8s)
+    @include transition-delay(0.6s)
     opacity: 1
 
 .view-transition.ng-leave
@@ -495,3 +495,26 @@ $num: 0
 
 .view-transition.ng-leave.ng-leave-active
     opacity: 0
+
+.modal-transition
+    @include transition(0.5s linear all)
+
+@keyframes fadeOut
+    0%
+        opacity: $modal-opacity
+    100%
+        opacity: 0
+
+@keyframes fadeIn
+    0%
+        opacity: 0
+    100%
+        opacity: $modal-opacity
+
+
+
+.modal-transition.ng-hide-add
+    @include animation(0.5s fadeOut ease)
+
+.modal-transition.ng-hide-remove
+    @include animation(0.5s fadeIn ease)

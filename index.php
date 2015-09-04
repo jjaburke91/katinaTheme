@@ -61,7 +61,7 @@
     </div>
 
 
-    <div id="about-modal" class="modal" ng-show="aboutModal.visible" >
+    <div id="about-modal" class="modal modal-transition" ng-show="aboutModal.visible" >
 
         <span class="modal-close"
               ng-click="aboutModal.closeModal()">
@@ -80,7 +80,7 @@
     </div>
 
 
-    <div id="contact-modal" class="modal" ng-show="contactModal.visible">
+    <div id="contact-modal" class="modal modal-transition" ng-show="contactModal.visible">
 
         <span class="modal-close"
               ng-click="contactModal.closeModal()">
