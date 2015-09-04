@@ -11,10 +11,10 @@ jmApp.directive('contactForm', function() {
 jmApp.controller('contactFormController', ["$scope", "wp", function($scope, wp) {
 
     $scope.contactFormData = {
-        name: "name",
-        email: "email@email.com",
-        subject: "bla bla",
-        message: "bla bla bla bla "
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
     };
 
     $scope.submitContactForm = function(valid) {

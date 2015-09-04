@@ -15,7 +15,7 @@ jmApp.run( ["$rootScope", function($rootScope) {
     };
 
     $rootScope.contactModal = {};
-    $rootScope.contactModal.visible = false;
+    $rootScope.contactModal.visible = true;
     $rootScope.contactModal.openModal = function() {
         $rootScope.contactModal.visible = true;
     };

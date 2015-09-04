@@ -5,6 +5,7 @@
     <div class="form-input-container">
         <label class="form-label" for="form-name">Your Name</label>
         <input id="form-name" name="form-name" type="text"
+               ng-class="{'form-input-highlight': contactFormData.name != ''}"
                ng-model="contactFormData.name" />
 
         <p class="form-error"></p>
@@ -13,6 +14,7 @@
     <div class="form-input-container">
         <label class="form-label" for="form-email">Your Email</label>
         <input id="form-email" name="form-email" type="email"
+               ng-class="{'form-input-highlight': contactFormData.email != ''}"
                ng-model="contactFormData.email"/>
 
         <p class="form-error"></p>
@@ -21,20 +23,22 @@
     <div class="form-input-container">
         <label class="form-label" for="form-subject">Subject</label>
         <input id="form-subject" name="form-subject" type="text"
+               ng-class="{'form-input-highlight': contactFormData.subject != ''}"
                ng-model="contactFormData.subject"/>
 
         <p class="form-error"></p>
     </div>
 
     <div class="form-input-container">
-        <label class="form-label" for="form-message">Message</label>
+        <label class="form-label form-label-message" for="form-message">Message</label>
         <textarea id="form-message" name="form-message"
+                  ng-class="{'form-textarea-highlight': contactFormData.message != ''}"
                   ng-model="contactFormData.message"></textarea>
 
         <p class="form-error"></p>
     </div>
 
-    <button type="submit">
+    <button type="submit" ng-class="{'form-button-valid': (contactForm.$valid == true)}">
         Send
     </button>
 

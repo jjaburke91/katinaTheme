@@ -85,7 +85,7 @@
         </span>
 
         <div id="contact-modal-container">
-            <contact-form></contact-form>
+            <contact-form ng-show="contactModal.visible"></contact-form>
         </div>
 
     </div>
