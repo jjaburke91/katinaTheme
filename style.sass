@@ -19,7 +19,7 @@ $darker-text-colour: #1a1e24
 // Ensure this array length matches mod value in view
 $project-listing-colours: #96d4ff, #ff9d91, #fff17c, #98eb94
 
-$header-height: 4em
+$header-height: 3em
 
 $modal-opacity: 0.98
 $modal-colour: #33957a
@@ -109,53 +109,37 @@ button::-moz-focus-inner
 
 header
     position: fixed
-    width: 100%
+    width: 500px
     height: $header-height
     top: 0
     left: 0
-    padding: 1em
+
+    padding-top: 2px
+    padding-right: 7px
+    @include border-radius(0 0 35px 0)
 
     background-color: $primary-colour
+    //background-color: transparent
     color: $secondary-colour
+
+    // displays it's content's evenly spaced
+    display: flex
+    justify-content: space-between
 
     z-index: 99900
 
     div
-        float: left
-
-#logo-container
-    width: 50%
-    text-align: center
-
-    h1
-        z-index: 999999
-        background-color: transparent
-        margin: 0
-        text-transform: uppercase
-
-#media-icon-container
-    width: 25%
-    text-align: right
-    padding-top: 5px
-
-#about-container
-    width: 5%
-    min-width: 45px
-    text-align: left
-    padding-top: 8px
-    text-transform: lowercase
-
-    #about-container-link
+        display: inline-block
+        margin: 0 auto
         cursor: pointer
 
-#contact-link-container
-    width: 20%
-    text-align: left
-    padding-top: 8px
-    text-transform: lowercase
+        height: $header-height
+        line-height: $header-height
 
-    #contact-link
-        cursor: pointer
+        h1
+            z-index: 999999
+            margin: 0
+            text-transform: uppercase
 
 
 /***********/
@@ -284,7 +268,7 @@ header
 $form-element-edge-colour: #266850
 
 #contact-form
-    max-width: 1050px
+    max-width: 900px
     min-width: 300px
     margin: 0 auto
 
@@ -312,7 +296,19 @@ $form-element-edge-colour: #266850
             background-color: $modal-colour
             text-align: center
             padding: 1vw 1vh
-            border: 2px solid $form-element-edge-colour
+
+        input
+            border: none
+            border-bottom: 1px solid $form-element-edge-colour
+
+        input:focus
+            border-bottom: 4px solid $form-element-edge-colour
+
+        textarea
+            border: 1px solid $form-element-edge-colour
+        textarea:focus
+            border: 4px solid $form-element-edge-colour
+
 
         textarea
             font-family: inherit
@@ -385,14 +381,14 @@ $grid-cell-height: 200px
 .grid-item
     padding: .4em
 
+    @include transition(0.25s ease all)
+    &:hover
+        padding: 0
+
 .grid-img
     max-width: 100%
     width: 100% // Think this line causes some odd loading issues with images! Be cautious.
     height: 100%
-
-    @include transition(0.1s linear all)
-    &:hover
-        margin: -0.5em
 
 #project-listing-container
     text-align: center
@@ -496,8 +492,13 @@ $num: 0
 .view-transition.ng-leave.ng-leave-active
     opacity: 0
 
-.modal-transition
-    @include transition(0.5s linear all)
+
+.modal-transition.ng-hide-add
+    @include animation(0.3s fadeOut ease)
+
+.modal-transition.ng-hide-remove
+    @include animation(0.3s fadeIn ease)
+
 
 @keyframes fadeOut
     0%
@@ -510,11 +511,3 @@ $num: 0
         opacity: 0
     100%
         opacity: $modal-opacity
-
-
-
-.modal-transition.ng-hide-add
-    @include animation(0.5s fadeOut ease)
-
-.modal-transition.ng-hide-remove
-    @include animation(0.5s fadeIn ease)

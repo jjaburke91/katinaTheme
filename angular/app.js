@@ -32,7 +32,7 @@ jmApp.run( ["$rootScope", function($rootScope) {
 
 }]);
 
-//todo: Don't think we should be using template directory in the routing, bypassing template cache
+//todo: Don't think we should be using template directory in the routing, bypassing template cache?
 
 jmApp.config(['$routeProvider', function($routeProvider) {
 

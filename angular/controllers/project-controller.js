@@ -3,5 +3,7 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
     $scope.project = project;
     console.log(project);
 
+    window.scrollBy(0,0);
+
 
 }]);

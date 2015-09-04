@@ -35,25 +35,20 @@
 <body >
 
     <header>
-        <div id="about-container">
-            <span id="about-container-link" ng-click="aboutModal.openModal()">About</span>
-        </div>
-
-        <div id="contact-link-container">
-            <span id="contact-link" ng-click="contactModal.openModal()">Contact</span>
-        </div>
-
-        <div id="logo-container">
+        <div>
             <a href="#/">
                 <h1>Jordan Muir</h1>
             </a>
         </div>
 
-        <div id="media-icon-container">
-            <a class="media-icon" href="http://www.linkedin.com/pub/jordan-muir/75/447/896" target="_blank">
-                <i class="fa fa-linkedin fa-lg"></i>
-            </a>
-        </div>
+        <div ng-click="aboutModal.openModal()">about</div>
+        <div ng-click="contactModal.openModal()">contact</div>
+
+        <!--<div id="media-icon-container">-->
+            <!--<a class="media-icon" href="http://www.linkedin.com/pub/jordan-muir/75/447/896" target="_blank">-->
+                <!--<i class="fa fa-linkedin fa-lg"></i>-->
+            <!--</a>-->
+        <!--</div>-->
     </header>
 
 
@@ -61,7 +56,9 @@
     </div>
 
 
-    <div id="about-modal" class="modal modal-transition" ng-show="aboutModal.visible" >
+    <div id="about-modal" class="modal modal-transition"
+         ng-show="aboutModal.visible"
+         ng-controller="aboutController">
 
         <span class="modal-close"
               ng-click="aboutModal.closeModal()">
@@ -75,7 +72,7 @@
 
         <div id="about-modal-container">
             <h1>About</h1>
-            <!--<p id="about-page-content" ng-bind-html="aboutModal.content | extractSurroundingTags:'p' | trustAsHtml"></p>-->
+            <p id="about-page-content" ng-bind-html="aboutModal.content | extractSurroundingTags:'p' | trustAsHtml"></p>
         </div>
     </div>
 

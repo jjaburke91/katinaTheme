@@ -1,4 +1,11 @@
 jmApp.controller('aboutController', function( $scope, $rootScope, wp) {
-    $scope.aboutModal.content = wp.getAboutPage();
+    wp.getAboutPage().then(
+        function success(response) {
+            $scope.aboutModal.content = response.content;
+        },
+        function error(response){
+            console.error("Error retrieving about page.");
+        }
+    );
 
 });
