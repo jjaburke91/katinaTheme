@@ -35,14 +35,21 @@
 <body >
 
     <header>
-        <div>
+        <div id="title-container">
             <a href="#/">
-                <h1>Jordan Muir</h1>
+                <span class="image-center-helper"></span>
+                <img src="<?php bloginfo('template_directory'); ?>/img/jordan_muir_logo_sml.png">
             </a>
         </div>
 
-        <div ng-click="aboutModal.openModal()">about</div>
-        <div ng-click="contactModal.openModal()">contact</div>
+        <div id="about-link-container" ng-click="aboutModal.openModal()">
+            <span class="image-center-helper"></span>
+            <img src="<?php bloginfo('template_directory'); ?>/img/about_text_icon_sml.png">
+        </div>
+        <div id="contact-link-container" ng-click="contactModal.openModal()">
+            <span class="image-center-helper"></span>
+            <img src="<?php bloginfo('template_directory'); ?>/img/contact_text_icon_sml.png">
+        </div>
 
         <!--<div id="media-icon-container">-->
             <!--<a class="media-icon" href="http://www.linkedin.com/pub/jordan-muir/75/447/896" target="_blank">-->

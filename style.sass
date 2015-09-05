@@ -21,6 +21,7 @@ $darker-text-colour: #1a1e24
 $project-listing-colours: #96d4ff, #ff9d91, #fff17c, #98eb94
 
 $header-height: 3em
+$side-margins: 3em
 
 $modal-opacity: 0.98
 $modal-colour: #33957a
@@ -89,7 +90,7 @@ a
     top: 0
     left: 0
     width: 100%
-    margin: ($header-height + .4em) 0em .5em 0em
+    margin: ($header-height + 1.6em) $side-margins .5em $side-margins
     color: $secondary-colour
 
 button
@@ -110,16 +111,12 @@ button::-moz-focus-inner
 
 header
     position: fixed
-    width: 500px
+    width: 650px
     height: $header-height
     top: 0
     left: 0
+    margin: 0 $side-margins
 
-    padding-top: 2px
-    padding-right: 7px
-    @include border-radius(0 0 35px 0)
-
-    //background-color: $primary-colour
     background-color: transparent
     color: $secondary-colour
 
@@ -129,13 +126,35 @@ header
 
     z-index: 99900
 
+    #title-container
+        img
+            height: 30px
+            max-height: 30px
+            vertical-align: bottom
+
+
+    #about-link-container
+        margin: 0 auto
+        img
+            max-height: 15px
+            vertical-align: bottom
+
+
+    #contact-link-container
+        margin: 0 auto
+        img
+            max-height: 15px
+            vertical-align: bottom
+
+
+    .image-center-helper
+        display: inline-block
+        height: 100%
+        vertical-align: middle
+
     div
         display: inline-block
-        margin: 0 auto
         cursor: pointer
-
-        height: $header-height
-        line-height: $header-height
 
         h1
             z-index: 999999
