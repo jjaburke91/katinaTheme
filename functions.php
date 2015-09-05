@@ -283,7 +283,7 @@ class Katina_API_Projects {
             $query->the_post();
             $post_id = $query->post->ID;
 
-            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large');
+            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'large'); // TODO: Custom size here?
 
             $project = new Json_Project(
                 $post_id,
@@ -329,9 +329,9 @@ class Katina_API_Projects {
 
             $project->setAttachments( new Attachments('project_attachments', $query->post->ID) );
 
-            if ( get_next_post())
+            if ( get_next_post() )
                 $project->setNextPostUrl( get_permalink( get_next_post()->ID) );
-            if ( get_previous_post())
+            if ( get_previous_post() )
                 $project->setPreviousPostUrl( get_permalink( get_previous_post()->ID) );
         }
 
@@ -425,6 +425,7 @@ class Katina_API_Projects {
         else
             return -1;
     }
+
 }
 
 class FormResponse {
@@ -475,12 +476,21 @@ class Json_Project {
         $index = 1;
         $this->attachments = array();
         while( $attach->get() ) {
-            $newAttachment['img'] = $attach->url();
+            $newAttachment['img'] = $this->set_image_options($attach->url(), "w_1500,h_900,c_fit/");
             $newAttachment['caption'] = $attach->field('caption');
             $newAttachment['order'] = $index;
             $index += 1;
             array_push($this->attachments, $newAttachment);
         }
+    }
+
+    private function set_image_options($url, $image_options_str) {
+        $search_str = 'upload/';
+        $upload_index = strrpos($url, $search_str);
+        if ( $upload_index != false ) {
+            return substr_replace($url, $image_options_str, $upload_index+strlen($search_str), 0);
+        }
+        return $url;
     }
 
     public function setNextPostUrl($slug){
