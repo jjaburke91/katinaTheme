@@ -16,10 +16,18 @@
         <div id="about-left-panel">
             <p id="about-page-content" ng-bind-html="aboutModal.content | trustAsHtml"></p>
             <div id="about-media-links">
-                <img class="media-icon" src="{{template_directory}}/img/media-icons/Email.svg" />
-                <img class="media-icon" src="{{template_directory}}/img/media-icons/LinkedIn.svg" />
-                <img class="media-icon-less-padding" src="{{template_directory}}/img/media-icons/CV.svg" />
-                <img class="media-icon-less-padding" src="{{template_directory}}/img/media-icons/Folio.svg" />
+                <a href="mailto:hello@jordanmuir.co.uk">
+                    <img class="media-icon" src="{{template_directory}}/img/media-icons/Email.svg" />
+                </a>
+                <a href="https://www.linkedin.com/pub/jordan-muir/75/447/896" target="_blank">
+                    <img class="media-icon" src="{{template_directory}}/img/media-icons/LinkedIn.svg" />
+                </a>
+                <a href="{{template_directory}}/share/Jordan Muir CV.pdf" download>
+                    <img class="media-icon-less-padding" src="{{template_directory}}/img/media-icons/CV.svg" />
+                </a>
+                <a href="{{template_directory}}/share/Jordan Muir Portfolio.pdf" download>
+                    <img class="media-icon-less-padding" src="{{template_directory}}/img/media-icons/Folio.svg" />
+                </a>
             </div>
         </div>
 
