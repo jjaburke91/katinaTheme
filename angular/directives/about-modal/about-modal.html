@@ -1,0 +1,32 @@
+<div id="about-modal" class="modal modal-transition"
+     ng-show="aboutModal.visible">
+
+    <span class="modal-close"
+          ng-click="aboutModal.closeModal()">
+        <i class="fa fa-times fa-4x"></i>
+    </span>
+
+    <!-- <button id="about-modal-close-button" class="fadeInOut"
+            ng-click="aboutModal.closeModal()">
+        Close
+    </button> -->
+
+    <div id="about-modal-container">
+        <h1>About</h1>
+        <div id="about-left-panel">
+            <p id="about-page-content" ng-bind-html="aboutModal.content | trustAsHtml"></p>
+            <div id="about-media-links">
+                <img class="media-icon" src="{{template_directory}}/img/media-icons/Email.svg" />
+                <img class="media-icon" src="{{template_directory}}/img/media-icons/LinkedIn.svg" />
+                <img class="media-icon media-icon-less-padding" src="{{template_directory}}/img/media-icons/CV.svg" />
+                <img class="media-icon media-icon-less-padding" src="{{template_directory}}/img/media-icons/Folio.svg" />
+            </div>
+        </div>
+
+        <div id="about-photo-container">
+            <!--<img src="{{template_directory}}/img/jordancheeser.png"/>-->
+        </div>
+    </div>
+
+
+</div>

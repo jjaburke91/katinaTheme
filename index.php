@@ -34,55 +34,12 @@
 
 <body >
 
-    <header>
-        <div id="title-container">
-            <a href="#/">
-                <span class="image-center-helper"></span>
-                <img src="<?php bloginfo('template_directory'); ?>/img/jordan_muir_logo_sml.png">
-            </a>
-        </div>
-
-        <div id="about-link-container" ng-click="aboutModal.openModal()">
-            <span class="image-center-helper"></span>
-            <img src="<?php bloginfo('template_directory'); ?>/img/about_text_icon_sml.png">
-        </div>
-        <div id="contact-link-container" ng-click="contactModal.openModal()">
-            <span class="image-center-helper"></span>
-            <img src="<?php bloginfo('template_directory'); ?>/img/contact_text_icon_sml.png">
-        </div>
-
-        <!--<div id="media-icon-container">-->
-            <!--<a class="media-icon" href="http://www.linkedin.com/pub/jordan-muir/75/447/896" target="_blank">-->
-                <!--<i class="fa fa-linkedin fa-lg"></i>-->
-            <!--</a>-->
-        <!--</div>-->
-    </header>
-
+    <jm-header></jm-header>
 
     <div id="content" class="view-transition" ng-view>
     </div>
 
-
-    <div id="about-modal" class="modal modal-transition"
-         ng-show="aboutModal.visible"
-         ng-controller="aboutController">
-
-        <span class="modal-close"
-              ng-click="aboutModal.closeModal()">
-            <i class="fa fa-times fa-4x"></i>
-        </span>
-
-        <!-- <button id="about-modal-close-button" class="fadeInOut"
-                ng-click="aboutModal.closeModal()">
-            Close
-        </button> -->
-
-        <div id="about-modal-container">
-            <h1>About</h1>
-            <p id="about-page-content" ng-bind-html="aboutModal.content | extractSurroundingTags:'p' | trustAsHtml"></p>
-        </div>
-    </div>
-
+    <about-modal></about-modal>
 
     <div id="contact-modal" class="modal modal-transition" ng-show="contactModal.visible">
 

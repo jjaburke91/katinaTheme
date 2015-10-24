@@ -3,7 +3,6 @@ jmApp.controller('projectListingController', ["$scope", "$rootScope", "wp", "pro
     $scope.projects = projects;
     console.log(projects);
 
-
     // TODO: Healthy containing this content in a controller?
     var $container = $('.listing-grid');
 

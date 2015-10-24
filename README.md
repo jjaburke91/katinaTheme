@@ -24,6 +24,7 @@
 * Embedding Videos
 * Contact form
 * Change colour and behaviour of what happens when you highlight text
+* Sass compilation in Gruntfile
 
 ### Things to remember ###
 * Google crawler

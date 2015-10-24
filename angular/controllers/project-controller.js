@@ -4,10 +4,6 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
 
     $scope.project_highlight = "text-highlight-" + Math.floor( (Math.random()*6)+1); // make sure this is the same as highlight-colours available in stylesheet.
 
-
     console.log(project);
-
-    window.scrollBy(0,0);
-
 
 }]);

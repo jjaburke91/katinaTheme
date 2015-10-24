@@ -41,7 +41,7 @@ jmApp.factory('wp', function($http) {
 
         // TODO: Hate how this is done - fix this.
         getAboutPage: function() {
-            return $http.get("wp-json/posts/4").then(
+            return $http.get("wp-json/pages/9").then(
                 function success(response) {
                     return response.data;
                 },

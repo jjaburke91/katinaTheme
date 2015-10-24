@@ -27,6 +27,17 @@ module.exports = function(grunt) {
             }
         },
 
+        sass: {
+            options: {
+                sourceMap: true
+            },
+            dist: {
+                files: {
+                    'style.css': 'style.sass'
+                }
+            }
+        },
+
         // installs all bower dependencies to /lib
         bower: {
             install: {
@@ -83,24 +94,26 @@ module.exports = function(grunt) {
         watch: {
             dev: {
                 files: [ 'Gruntfile.js',
+                    'style.sass',
                     'angular/*.js',
                     'angular/controllers/*.js',
                     'angular/directives/**/*.js', 'angular/directives/**/*.html',
                     '**/.html', 'angular/**/*.html', '*.html'
                 ],
-                tasks: [ 'html2js:dist', 'concat:dist', 'clean:temp' ],
+                tasks: [ 'html2js:dist', 'sass', 'concat:dist', 'clean:temp' ],
                 options: {
                     atBegin: true
                 }
             },
             min: {
                 files: [ 'Gruntfile.js',
+                    'style.sass',
                     'angular/*.js',
                     'angular/controllers/*.js',
                     'angular/directives/**/*.js', 'angular/directives/**/*.html',
                     '**/.html', '*.html'
                 ],
-                tasks: [ 'html2js:dist', 'concat:dist', 'clean:temp', 'uglify:dist' ],
+                tasks: [ 'html2js:dist', 'sass', 'concat:dist', 'clean:temp', 'uglify:dist' ],
                 options: {
                     atBegin: true
                 }
@@ -117,10 +130,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-task');
+    grunt.loadNpmTasks('grunt-sass');
 
-    grunt.registerTask('dev', [ 'bower', 'watch:dev' ]);
+    grunt.registerTask('dev', [ 'bower', 'sass', 'watch:dev' ]);
     grunt.registerTask('test', [ 'bower' ]);
     grunt.registerTask('minified', [ 'bower', 'watch:min' ]);
-    grunt.registerTask('package', [ 'bower', 'html2js:dist', 'concat:dist', 'uglify:dist', 'clean:temp' ]);
+    grunt.registerTask('package', [ 'bower', 'sass', 'html2js:dist', 'concat:dist', 'uglify:dist', 'clean:temp' ]);
 
 };
