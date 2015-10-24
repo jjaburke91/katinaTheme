@@ -16,15 +16,32 @@ $primary-colour: #EFF1EE
 $secondary-colour: #5D6C76
 $tertiary-colour: #cfffe2
 $darker-text-colour: #1a1e24
+$header-text-colour: #D1D3D4
+
 
 // Ensure this array length matches mod value in view
-$project-listing-colours: #96d4ff, #ff9d91, #fff17c, #98eb94
+$colour-palette: #FFE571, #29C780, #FF7175, #C3ADE8, #FFAD94, #9FDDED
+
+.text-highlight-1
+    color: nth($colour-palette, 1)
+.text-highlight-2
+    color: nth($colour-palette, 2)
+.text-highlight-3
+    color: nth($colour-palette, 3)
+.text-highlight-4
+    color: nth($colour-palette, 4)
+.text-highlight-5
+    color: nth($colour-palette, 5)
+.text-highlight-6
+    color: nth($colour-palette, 6)
+
 
 $header-height: 3em
 $side-margins: 3em
 
 $modal-opacity: 0.98
-$modal-colour: #33957a
+$about-modal-colour: #ff7175
+$contact-modal-colour: #9fdded
 
 @mixin animation($str)
     animation: #{$str}
@@ -90,17 +107,8 @@ a
     top: 0
     left: 0
     width: 100%
-    margin: ($header-height + 1.6em) $side-margins .5em $side-margins
+    padding: ($header-height+1em) $side-margins .5em $side-margins
     color: $secondary-colour
-
-button
-    padding: 7px 10px
-    background: $base-colour
-    color: $secondary-colour
-    border: 1.5px solid $secondary-colour
-    cursor: pointer
-    outline: 0
-    @include border-radius(25px)
 
 button::-moz-focus-inner
     border: 0
@@ -169,11 +177,9 @@ header
 #project-page-container
     display: block
 
-    max-width: 99%
-    width: 99%
+    max-width: 100%
+    width: 100%
     height: 85vh
-
-    margin: auto
 
     text-align: center
 
@@ -182,19 +188,21 @@ header
         text-transform: uppercase
 
 #project-page-information-container
-    margin-top: $header-height + 1em
     margin-bottom: 2.5em
-    padding: 0
+    padding-bottom: 1.5em
     width: 100%
     display: block
     text-align: left
+
+    border-bottom: 2px solid #E6E7E8
 
     #project-page-title
         width: 600px
         float: left
         font-family: $alt-font-stack
         text-transform: capitalize
-        padding: .5em
+        padding: .5em 0
+        font-size: 1.4em
 
         h1
             padding: 0
@@ -202,23 +210,17 @@ header
 
     #project-page-description
         display: block
-        padding: 0 5em 0 0
+        font-family: $alt-font-stack
+        padding: .5em 2em .5em 7em
+        margin: 0
         overflow: auto
-        font-size: 1.1em
-        p
-            padding: .5em 0 .5em 1em
-            margin: 0
-            border-left: 1px solid $secondary-colour
+        font-size: 1.05em
+        color: $header-text-colour
 
-    &:after // clearfix
+    &:after // clear-fix
         content: ""
         display: table
         clear: both
-//
-//.project-page-grid
-//
-//
-//.project-page-grid-item
 
 
 
@@ -253,11 +255,19 @@ header
 
     opacity: $modal-opacity
     z-index: 99999
-    background-color: $modal-colour
     color: $darker-text-colour
 
 #contact-modal
     opacity: $modal-opacity
+    background-color: $contact-modal-colour
+
+    #contact-modal-container
+        background-color: $contact-modal-colour
+
+#about-modal
+    background-color: $about-modal-colour
+    color: #FFF
+    font-family: $alt-font-stack
 
 #about-modal-container, #contact-modal-container
     position: absolute
@@ -286,66 +296,52 @@ header
     margin: 0
     padding: 0
 
-    cursor: pointer
-
-
-// Following currently unused
-#about-modal-close-button
-    position: fixed
-    top: 0
-    left: 50%
-    transform: translateX(-50%)
-    margin: 1em auto 0 auto
-    padding: .5em
-    width: 90%
-    text-align: center
-
-
-    background-color: $modal-colour
-    color: $darker-text-colour
-    border: 2px solid $darker-text-colour
-    text-transform: uppercase
+    color: #FFF
 
     cursor: pointer
-
-    &:hover
-        background-color: $dark-base-colour
-
 
 
 /**********/
 /** Form **/
 /**********/
 $form-element-edge-colour: #266850
-$form-highlight-colour: nth($project-listing-colours, 1)
+$form-highlight-colour: nth($colour-palette, 1)
 $form-highlight-feature: 3px solid $form-highlight-colour
 
 #contact-form
     max-width: 700px
     min-width: 300px
     margin: 0 auto
+    background-color: $contact-modal-colour
+    color: #FFF
 
     font-size: 1.2em
 
     button
-        background-color: $modal-colour
-        color: $darker-text-colour
-        border: 2px solid $form-element-edge-colour
-        padding: 1em 1.5em
-        text-transform: uppercase
         float: right
+        padding: .5em .5em
+        margin-right: .5em
+        color: inherit
+        background-color: inherit
+        border: none
+        text-transform: uppercase
+        font-size: 1.2em
+        cursor: pointer
+        @include transition(0.3s linear all)
     .form-button-valid
-        background-color: $form-highlight-colour !important
+        border-bottom: 2px solid $form-highlight-colour
 
     .form-input-container
         width: 100%
         text-align: left
         overflow: auto
         display: flex
+        color: inherit
 
         label, input, textarea
             display: inline-block
             font-size: 1.1em
+            color: #FFF
 
         label
             width: 100px
@@ -360,7 +356,7 @@ $form-highlight-feature: 3px solid $form-highlight-colour
 
         input, textarea
             display: block
-            background-color: $modal-colour
+            background-color: inherit
             text-align: left
             padding: 1vw 1vh
             flex: 1
@@ -378,6 +374,7 @@ $form-highlight-feature: 3px solid $form-highlight-colour
 
         textarea
             border: 1px solid $form-element-edge-colour
+            @include border-radius(25px)
         textarea:focus
             border: $form-highlight-feature
         .form-textarea-highlight
@@ -388,7 +385,6 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             height: 20vh
             max-height: 25vh
             max-width: 100%
-
 
 /*********************/
 /** Project-Listing **/
@@ -528,7 +524,7 @@ $grid-cell-height: 200px
 
 // Used for creating series of classes for the different on-hover background colours on project-listing page.
 $num: 0
-@each $colour in ($project-listing-colours)
+@each $colour in ($colour-palette)
     .project-listing-colour-#{$num}
         &:hover
             background-color: $colour

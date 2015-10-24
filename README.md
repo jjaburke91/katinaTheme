@@ -35,6 +35,12 @@
 * Set default image for when Jordan forgets to include featured image
 * Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
 
+### Live Build ###
+* Browserify
+* Minification
+* Cloudinary - make sure of no issues here
+
+
 ###Documentation to add:###
 
 * Custom controller for JSON API
