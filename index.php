@@ -13,6 +13,7 @@
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
 
     <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
@@ -28,7 +29,7 @@
     <!-- endbower -->
 
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" defer ></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jordanMuir.js" defer ></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/lib/jordanMuir.js" defer ></script>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 

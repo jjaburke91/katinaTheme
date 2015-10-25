@@ -35,7 +35,7 @@
 ### Things to remember ###
 * Google crawler
     * Including what the blurb says
-* -Get sprites used for logos and icons?-
+* ~~Get sprites used for logos and icons?~~
 * Images on click - include caption?
 * Set default image for when Jordan forgets to include featured image
 * Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)

@@ -28,5 +28,8 @@
     "grunt-html2js": "^0.3.2",
     "grunt-sass": "^1.0.0",
     "grunt-wiredep": "^2.0.0"
+  },
+  "dependencies": {
+    "bower": "^1.6.5"
   }
 }
