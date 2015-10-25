@@ -71,11 +71,13 @@ $contact-modal-colour: #9fdded
     -moz-box-sizing: $box-model
     box-sizing: $box-model
 
-@mixin linear-gradient($value)
-    background: -webkit-linear-gradient($value)
-    background: -o-linear-gradient($value)
-    background: -moz-linear-gradient($value)
-    background: linear-gradient($value)
+@mixin text-highlight-color($color)
+    ::-moz-selection
+        background: 0
+        color: $color
+    ::selection
+        background: 0
+        color: $color
 
 /**** Testing Ifs ****/
 
@@ -102,6 +104,8 @@ html
 
     font-family: $font-stack
     background-color: $base-colour
+
+    @include text-highlight-color( nth($colour-palette, 2))
 
 a
     text-decoration: none

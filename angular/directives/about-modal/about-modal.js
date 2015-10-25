@@ -1,8 +1,6 @@
 jmApp.directive('aboutModal', function() {
 
     function controller($scope, $rootScope, wp) {
-        console.log("aboutModal loading");
-
         wp.getAboutPage().then(
             function success(response) {
                 $scope.aboutModal.content = response.content;
