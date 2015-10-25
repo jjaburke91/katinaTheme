@@ -1,5 +1,19 @@
 # jordanmuir.co.uk #
 
+###Current Status / Upcoming to-dos:###
+
+* Mobile friendly - text sizing.
+* More robust API call for About page.
+* Look into using Cloudinary for sitting image width better.
+* Embedding Videos
+* Contact Form
+* Media Queries (Project Page, About Page...)
+* Hide header on image zoom.
+* On scroll events:
+    * Hide header on down scroll. Show on up scroll.
+    * Move next / previous image icons on scroll down.
+* Bug fix on listing page when grid isn't laid out properly.
+
 ###Recently Completed Tasks:###
 
 * Integration of wp-json.
@@ -14,24 +28,14 @@
 * Cloudinary Integration
 * Masonry Grid for home page.
 * Integrate zoom.js
-
-###Current Status / Upcoming to-dos:###
-
-* Mobile friendly - text sizing.
-* Analyse what's going on with Digest cycles. Consider tidying some of the filters formatting the information, too much going on just now.
-* More robust API call for About page. May require new route.
-* Look into using Cloudinary for sitting image width better.
-* Embedding Videos
-* Contact form
 * Change colour and behaviour of what happens when you highlight text
 * Sass compilation in Gruntfile
+* No image should be taller than the window height
 
 ### Things to remember ###
 * Google crawler
     * Including what the blurb says
-* Serving CV
-* No image should be taller than the window height
-* Get sprites used for logos and icons?
+* -Get sprites used for logos and icons?-
 * Images on click - include caption?
 * Set default image for when Jordan forgets to include featured image
 * Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
