@@ -203,13 +203,22 @@ header
         text-transform: uppercase
 
     $project-changer-padding: 25px
-    .prev-project-container, .next-project-container
-        top: 50%
-        transform: translate(-50%)
+    .project-changer
         position: fixed
+        top: 65px
         font-size: 16px
-        i
-            color: #D1D3D4
+        transform: translate(-50%)
+
+        @include transition(all 0.8s ease-in-out)
+
+        color: rgb(209, 211, 212)
+
+        &:hover
+            color: rgba(209, 211, 212, 1)
+
+        &.fixed-project-changer
+            position: fixed
+            top: 50%
 
     .prev-project-container
         left: $project-changer-padding
@@ -231,7 +240,7 @@ header
         float: left
         font-family: $alt-font-stack
         text-transform: capitalize
-        padding: .5em 0
+        padding: 0 0 .5em 0
         font-size: 1.4em
 
         h1

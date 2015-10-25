@@ -8,8 +8,6 @@ jmApp.directive('jmHeader', function() {
                 headerHeight = $('header').outerHeight(),
                 headerIsHidden = false;
 
-            console.log('Header height = ' + headerHeight);
-
             return function() {
                 var currentScrollTop = $(this).scrollTop();
 
