@@ -144,10 +144,11 @@ header
     z-index: 99900
 
     //transition: all 0.2s 5s ease-in-out
-    @include transition(all 0.2s 0.5s ease-in-out)
+    @include transition(all 0.2s 0.4s ease-in-out)
 
     &.hide-header
         top: 0-$header-height
+        @include transition-delay(0.1s) // Sets transition delay when showing
 
     #title-container
         img
