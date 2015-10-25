@@ -18,7 +18,7 @@
     </div>
 
     <div id="project-page-carousel">
-        <div class="project-page-image-content-container"
+        <div class="project-page-image-content-container project-image-col-width-{{project_image.column_width || 1}}"
              ng-repeat="project_image in project.attachments | orderBy: project_image.order">
 
             <div class="project-page-image-container">

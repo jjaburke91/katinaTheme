@@ -179,6 +179,19 @@ function project_attachments( $attachments )
             'type'      => 'textarea',                      // registered field type
             'label'     => __( 'Caption', 'attachments' ),  // label to display
             'default'   => '',                       // default value upon selection
+        ),
+        array(
+            'name'      => 'column_width',
+            'type'      => 'select',
+            'label'     => __('Image Column Width', 'attachments'),
+            'meta'      => array(
+                            'allow_null'    => false,
+                            'multiple'      => false,
+                            'options'       => array(
+                                '1'     => '1',
+                                '2'     => '2'
+                                )
+                            ),
         )
     );
 
@@ -478,6 +491,7 @@ class Json_Project {
         while( $attach->get() ) {
             $newAttachment['img'] = $this->set_image_options($attach->url(), "w_1500,h_900,c_fit/");
             $newAttachment['caption'] = $attach->field('caption');
+            $newAttachment['column_width'] = $attach->field('column_width');
             $newAttachment['order'] = $index;
             $index += 1;
             array_push($this->attachments, $newAttachment);

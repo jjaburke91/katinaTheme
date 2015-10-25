@@ -5,7 +5,7 @@ jmApp.run( ["$rootScope", function($rootScope) {
 
     // About Modal functions, could this be exported to a service or factory?
     $rootScope.aboutModal = {};
-    $rootScope.aboutModal.visible = true;
+    $rootScope.aboutModal.visible = false;
     $rootScope.aboutModal.openModal = function() {
         $rootScope.aboutModal.visible = true;
         console.log($rootScope.aboutModal.visible);
