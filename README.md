@@ -34,7 +34,8 @@
 
 ### Things to remember ###
 * Google crawler
-    * Including what the blurb says
+    * Including what the blurb says.
+    * Get google webmaster tools on board to help with SEO config.
 * ~~Get sprites used for logos and icons?~~
 * Images on click - include caption?
 * Set default image for when Jordan forgets to include featured image

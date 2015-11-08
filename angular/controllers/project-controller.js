@@ -8,25 +8,18 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
         var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16,
             isFixed = false;
 
-        console.log('detecting fixed scrolll');
-
         return function() {
-            console.log( $(this).scrollTop());
-            console.log( projectInformationScrollTop);
 
             if ( $(this).scrollTop() >= projectInformationScrollTop && !isFixed) {
                 $('.project-changer').addClass('fixed-project-changer');
                 isFixed = true;
-                console.log("changing to fixed");
             } else if( $(this).scrollTop() <= projectInformationScrollTop && isFixed) {
                 $('.project-changer').removeClass('fixed-project-changer');
                 isFixed = false;
-                console.log("changing to absolute");
             }
         }
     }
 
     $(window).scroll(_.throttle( detectScrollToMoveProjectArrows(), 500) );
-
 
 }]);

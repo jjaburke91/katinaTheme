@@ -43,6 +43,10 @@ $modal-opacity: 0.98
 $about-modal-colour: #ff7175
 $contact-modal-colour: #9fdded
 
+$mobile-wide: 1000px
+$mobile-small: 750px
+$mobile-very-small: 500px
+
 @mixin animation($str)
     animation: #{$str}
     -webkit-animation: #{$str}
@@ -116,8 +120,13 @@ a
     top: 0
     left: 0
     width: 100%
-    padding: ($header-height+1em) $side-margins .5em $side-margins
+    padding: ($header-height+1em) $side-margins .5em
     color: $secondary-colour
+
+    @media(max-width: $mobile-small)
+        padding: ($header-height+1em) 1em .5em
+
+
 
 button::-moz-focus-inner
     border: 0
@@ -144,10 +153,11 @@ header
     z-index: 99900
 
     //transition: all 0.2s 5s ease-in-out
-    @include transition(all 0.2s 0.4s ease-in-out)
+    @include transition(all 0.6s 0.4s ease-in-out)
 
     &.hide-header
-        top: 0-$header-height
+        //top: 0-$header-height
+        opacity: 0
         @include transition-delay(0.1s) // Sets transition delay when showing
 
     #title-container
@@ -185,6 +195,14 @@ header
             margin: 0
             text-transform: uppercase
 
+    @media(max-width: $mobile-small)
+        margin: 0
+        width: 100%
+        padding: 0 1em
+
+    @media(max-width: $mobile-very-small)
+        #title-container
+            display: none
 
 /***********/
 /** Pages **/
@@ -218,6 +236,7 @@ header
 
         &.fixed-project-changer
             position: fixed
+            top: 50%
             top: 50%
 
     .prev-project-container
@@ -282,12 +301,18 @@ header
             max-width: 100%
             max-height: 80vh
 
-#view-description-btn
-    &:hover
-        background-color: $tertiary-colour
 
-#about-page-container
-    text-align: center
+#project-page-container
+    @media(max-width: $mobile-small)
+        #project-page-title
+            width: 100%
+            text-align: center
+        #project-page-description
+            width: 100%
+            display: inline-block
+        .prev-project-container, .next-project-container
+            display: none
+
 
 /*************/
 /** Modals ***/
@@ -317,6 +342,9 @@ header
     background-color: $about-modal-colour
     color: #FFF
     font-family: $alt-font-stack
+
+#about-page-container
+    text-align: center
 
 #about-modal-container, #contact-modal-container
     position: absolute
@@ -376,6 +404,18 @@ header
         img
             width: 100%
 
+#about-modal
+    @media(max-width: $mobile-wide)
+        #about-photo-container
+            display: none
+        #about-left-panel
+            width: 100%
+    @media(max-width: $mobile-very-small)
+        #about-modal-container
+            min-width: 85%
+            h1
+                margin-bottom: 20px
+
 
 .modal-close
     position: absolute
@@ -431,6 +471,7 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             font-size: 1.1em
             color: #FFF
 
+
         label
             width: 100px
             float: left
@@ -462,7 +503,7 @@ $form-highlight-feature: 3px solid $form-highlight-colour
 
         textarea
             border: 1px solid $form-element-edge-colour
-            @include border-radius(25px)
+            @include border-radius(8px)
         textarea:focus
             border: $form-highlight-feature
         .form-textarea-highlight
