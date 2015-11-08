@@ -28,7 +28,14 @@ jmApp.run( ["$rootScope", function($rootScope) {
             $rootScope.aboutModal.closeModal();
             $rootScope.contactModal.closeModal();
         }
-    }
+    };
+
+    $rootScope.$on("$routeChangeSuccess", function ( ) {
+        $('html, body').animate({
+            scrollTop: $("jm-header").offset().top,
+            easing: 'easeInOutCirc'
+        }, 1200);
+    });
 
 }]);
 
