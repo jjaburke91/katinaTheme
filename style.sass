@@ -6,8 +6,15 @@
     font-family: "CircularStd_Bold"
     src: url("fonts/CircularStd-Bold.otf") format("opentype")
 
+@font-face
+    font-family: "Gotham_Medium"
+    src: url("fonts/Gotham-Medium.otf") format("opentype")
+
+
+
 $font-stack: 'CircularStd_Book', 'Open Sans', sans-serif
 $alt-font-stack: 'CircularStd_Bold', 'Open Sans', sans-serif
+$header-font-stack: 'Gotham_Medium', 'CircularStd_Bold', 'Open Sans', sans-serif
 
 $base-colour: #FFFFFF
 $dark-base-colour: #fff7e8
@@ -36,8 +43,8 @@ $colour-palette: #FFE571, #29C780, #FF7175, #C3ADE8, #FFAD94, #9FDDED
     color: nth($colour-palette, 6)
 
 
-$header-height: 3em
-$side-margins: 3em
+$header-height: 66px
+$side-margins: 80px
 
 $modal-opacity: 0.98
 $about-modal-colour: #ff7175
@@ -120,11 +127,11 @@ a
     top: 0
     left: 0
     width: 100%
-    padding: ($header-height+1em) $side-margins .5em
+    padding: ($header-height+10px) $side-margins .5em
     color: $secondary-colour
 
     @media(max-width: $mobile-small)
-        padding: ($header-height+1em) 1em .5em
+        padding: ($header-height+10px) 1em .5em
 
 
 
@@ -137,72 +144,54 @@ button::-moz-focus-inner
 
 header
     position: fixed
-    width: 650px
     height: $header-height
+    width: 100%
     top: 0
     left: 0
-    margin: 0 $side-margins
+    margin: 0
+
+    font-family: $header-font-stack
 
     background-color: transparent
-    color: $secondary-colour
-
-    // displays it's content's evenly spaced
-    display: flex
-    justify-content: space-between
-
     z-index: 99900
 
-    //transition: all 0.2s 5s ease-in-out
-    @include transition(all 0.6s 0.4s ease-in-out)
+    @include transition(opacity 0.6s 0.4s ease-in-out)
 
-    &.hide-header
-        //top: 0-$header-height
-        opacity: 0
-        @include transition-delay(0.1s) // Sets transition delay when showing
-
-    #title-container
-        img
-            height: 30px
-            max-height: 30px
-            vertical-align: bottom
-
-
-    #about-link-container
-        margin: 0 auto
-        img
-            max-height: 15px
-            vertical-align: bottom
-
-
-    #contact-link-container
-        margin: 0 auto
-        img
-            max-height: 15px
-            vertical-align: bottom
-
-
-    .image-center-helper
-        display: inline-block
-        height: 100%
-        vertical-align: middle
+    h2
+        margin: 0
+        color: rgba(209, 211, 212, 0.9)
 
     div
         display: inline-block
         cursor: pointer
 
-        h1
-            z-index: 999999
+    #title-container, #about-contact-container
+        position: absolute
+        top: 19px
+
+    #title-container
+        left: $side-margins
+        margin-left: 13px
+        h2
+            font-size: 26px
+
+    #about-contact-container
+        right: $side-margins
+        h2
+            font-size: 22px
+        #about-link, #contact-link
             margin: 0
-            text-transform: uppercase
+            display: inline-block
+            color: rgba(209, 211, 212, 0.9)
+        #contact-link
+            margin: 0 10px 0 70px
 
-    @media(max-width: $mobile-small)
-        margin: 0
-        width: 100%
-        padding: 0 1em
 
-    @media(max-width: $mobile-very-small)
-        #title-container
-            display: none
+
+    &.hide-header
+        opacity: 0
+        @include transition-delay(0.1s) // Sets transition delay when showing
+
 
 /***********/
 /** Pages **/

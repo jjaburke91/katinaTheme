@@ -25,7 +25,7 @@ jmApp.directive('jmHeader', function() {
             }
         }
 
-        $(window).scroll(_.throttle( detectScrollDirection(), 500) );
+        //$(window).scroll(_.throttle( detectScrollDirection(), 500) );
     }
 
     return {

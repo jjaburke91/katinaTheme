@@ -1,18 +1,13 @@
 <header>
-    <div id="title-container">
+     <div id="title-container">
         <a href="#/">
-            <span class="image-center-helper"></span>
-            <img src="{{template_dir}}/img/jordanmuir_img.svg">
+            <h2>Jordan Muir</h2>
         </a>
     </div>
 
-    <div id="about-link-container" ng-click="aboutModal.openModal()">
-        <span class="image-center-helper"></span>
-        <img src="{{template_dir}}/img/about_img.svg">
-    </div>
-    <div id="contact-link-container" ng-click="contactModal.openModal()">
-        <span class="image-center-helper"></span>
-        <img src="{{template_dir}}/img/contact_img.svg">
+    <div id="about-contact-container" >
+        <h2 id="about-link" ng-click="aboutModal.openModal()">About</h2>
+        <h2 id="contact-link" ng-click="contactModal.openModal()">Contact</h2>
     </div>
 
 </header>
