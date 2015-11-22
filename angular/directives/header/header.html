@@ -1,13 +1,17 @@
 <header>
-     <div id="title-container">
-        <a href="#/">
-            <h2>Jordan Muir</h2>
-        </a>
-    </div>
+    <div id="header-content">
+         <div id="title-container">
+            <a href="#/">
+                <h2>Jordan Muir</h2>
+            </a>
+        </div>
 
-    <div id="about-contact-container" >
-        <h2 id="about-link" ng-click="aboutModal.openModal()">About</h2>
-        <h2 id="contact-link" ng-click="contactModal.openModal()">Contact</h2>
-    </div>
+        <span id="header-colour-trim" ng-if="headerColourTrim" class="{{projectTitleColour}}"
+              ng-style="{'width': projectTitleWidth+'px' }"></span>
 
+        <div id="about-contact-container" >
+            <h2 id="about-link" ng-click="aboutModal.openModal()">About</h2>
+            <h2 id="contact-link" ng-click="contactModal.openModal()">Contact</h2>
+        </div>
+    </div>
 </header>
