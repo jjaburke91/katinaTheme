@@ -1,7 +1,10 @@
 jmApp.directive('jmHeader', function() {
 
-    function controller($scope, $rootScope) {
+    function controller($scope, $rootScope, $state) {
         $scope.template_dir = $rootScope.template_directory;
+
+        $scope.isHomePage = $state.current;
+        console.log($state.current);
 
         function detectScrollDirection() {
             var lastScrollTop = $(this).scrollTop(),

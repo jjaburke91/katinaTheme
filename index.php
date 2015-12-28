@@ -14,6 +14,7 @@
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-animate/angular-animate.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/underscore/underscore.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
 
     <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
@@ -37,8 +38,7 @@
 
     <jm-header></jm-header>
 
-    <div id="content" class="view-transition" ng-view>
-    </div>
+    <div id="content" class="view-transition" ui-view> </div>
 
     <about-modal></about-modal>
 

@@ -177,7 +177,7 @@ function project_attachments( $attachments )
         array(
             'name'      => 'caption',                       // unique field name
             'type'      => 'textarea',                      // registered field type
-            'label'     => __( 'Caption', 'attachments' ),  // label to display
+            'label'     => __( 'Caption / Video URL', 'attachments' ),  // label to display
             'default'   => '',                       // default value upon selection
         ),
         array(
@@ -365,7 +365,6 @@ class Katina_API_Projects {
                 } else {
                     $name = $data['name'];
                 }
-
             }
 
             if ( isset( $data['email']) && $response->success ) {

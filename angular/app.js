@@ -1,4 +1,8 @@
-var jmApp = angular.module('jordan_muir_app', ['ngRoute', 'ngAnimate']);
+var jmApp = angular.module('jordan_muir_app', [
+    //'ngRoute',
+    'ngAnimate',
+    'ui.router'
+]);
 
 jmApp.run( ["$rootScope", function($rootScope) {
     $rootScope.template_directory = template_directory;
@@ -45,35 +49,29 @@ jmApp.run( ["$rootScope", function($rootScope) {
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?
+jmApp.config(['$stateProvider', function($stateProvider, $urlRouterProvider) {
 
-jmApp.config(['$routeProvider', function($routeProvider) {
+    //$urlRouterProvider.otherwise('/');
 
-    $routeProvider
-        .when('/', {
-            templateUrl: template_directory+'/angular/views/project-listing.html',
+    $stateProvider
+        .state('project-listing', {
+            url: '/',
             controller: 'projectListingController',
+            templateUrl: template_directory+'/angular/views/project-listing.html',
             resolve: {
                 projects: function(wp) {
                     return wp.getProjects();
                 }
             }
         })
-        .when('/project/:project_slug/', { // NOTE: The '/' at end of URL has affect on ng-leave and ng-enter
+        .state('project', { // NOTE: The '/' at end of URL has affect on ng-leave and ng-enter
+            url: '/project/:project_slug/',
             templateUrl: template_directory+'/angular/views/project.html',
             controller: 'projectController',
             resolve: {
-                project: function(wp, $route) {
-                    return wp.getProjectWithSlug($route.current.params.project_slug);
+                project: function(wp, $stateParams) {
+                    return wp.getProjectWithSlug($stateParams.project_slug);
                 }
             }
-        })
-        .when('/error', {
-            templateUrl: template_directory+'/angular/views/404.html',
-            controller: 'errorController'
-        })
-        .otherwise({
-            redirectTo: '/error'
         });
-
-    //$locationProvider.html5Mode(false);
 }]);

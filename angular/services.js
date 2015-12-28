@@ -6,7 +6,7 @@ jmApp.factory('wp', function($http) {
     return {
         getProjects: function() {
             return $http.get(projects_url).then(
-                function success(response) {
+                function success(response) {2
                     return response.data;
                 },
                 function error() {
