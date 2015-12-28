@@ -8,11 +8,8 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
         $rootScope.projectTitleColour = $scope.project_highlight;
         $rootScope.projectTitleWidth = $('#project-page-title').width() || 0;
 
-        console.log("setting colour and width");
-        console.log($rootScope.projectTitleWidth);
-
         $rootScope.$digest();
-    }, 2000);
+    }, 1000);
 
     function detectScrollToMoveProjectArrows() {
         var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16,
@@ -29,5 +26,7 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
         }
     }
 
-    $(window).scroll(_.throttle( detectScrollToMoveProjectArrows(), 500) );
+    $(window).scroll(
+        _.throttle( detectScrollToMoveProjectArrows(), 500)
+    );
 }]);

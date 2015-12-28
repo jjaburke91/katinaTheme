@@ -3,6 +3,8 @@ jmApp.controller('projectListingController', ["$scope", "$rootScope", "wp", "pro
     $scope.projects = projects;
     console.log(projects);
 
+    setTimeout($rootScope.clearHeaderTrim(), 300);
+
     // Stops bug where masonry aligns the images before the content has actually been retrieved.
     $scope.masonryLoaded = false;
     var $container = $('.listing-grid');

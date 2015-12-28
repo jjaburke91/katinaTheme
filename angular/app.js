@@ -37,6 +37,11 @@ jmApp.run( ["$rootScope", function($rootScope) {
         }, 1200);
     });
 
+    $rootScope.clearHeaderTrim = function() {
+        $rootScope.projectTitleColour = null;
+        $rootScope.projectTitleWidth = 0;
+    }
+
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?

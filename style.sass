@@ -158,7 +158,7 @@ header
     margin: 0
 
     font-family: $header-font-stack
-    
+
     background-color: white
     box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
     z-index: 99900
@@ -186,12 +186,12 @@ header
         left: $side-margins
         margin-left: 13px
         h2
-            font-size: 26px
+            font-size: 23px
 
     #about-contact-container
         right: $side-margins
         h2
-            font-size: 22px
+            font-size: 20px
         #about-link, #contact-link
             margin: 0
             display: inline-block
@@ -205,7 +205,7 @@ header
 
     #header-colour-trim
         display: block
-        width: 2px
+        width: 0
         height: $header-height
         border-bottom: 2px solid grey
         @include transition(all 0.5s)
@@ -427,7 +427,7 @@ header
 .modal-close
     position: absolute
     top: 0.1em
-    left: 0.8em
+    right: 0.8em
     margin: 0
     padding: 0
 
@@ -478,9 +478,8 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             font-size: 1.1em
             color: #FFF
 
-
         label
-            width: 100px
+            width: 102px
             float: left
             padding: 1em 0
             margin: 1.5em 0
@@ -505,14 +504,17 @@ $form-highlight-feature: 3px solid $form-highlight-colour
         input:focus
             animation: bottom-border-draw 0.5s linear
             border-bottom: $form-highlight-feature
+            outline: none
         .form-input-highlight
             border-bottom: $form-highlight-feature
 
         textarea
             border: 1px solid $form-element-edge-colour
             @include border-radius(8px)
+            resize: none;
         textarea:focus
             border: $form-highlight-feature
+            outline: none
         .form-textarea-highlight
             border: $form-highlight-feature
 
