@@ -463,8 +463,12 @@ $form-highlight-feature: 3px solid $form-highlight-colour
         font-size: 1.2em
         cursor: pointer
         @include transition(0.3s linear all)
-    .form-button-valid
-        border-bottom: 2px solid $form-highlight-colour
+
+        &:focus
+            outline: none
+
+        &.form-button-valid
+            border-bottom: 2px solid $form-highlight-colour
 
     .form-input-container
         width: 100%
@@ -486,8 +490,8 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             text-transform: lowercase
             text-align: right
 
-        .form-label-message
-            margin: .6em 0
+            &.form-label-message
+                margin: .6em 0
 
         input, textarea
             display: block
@@ -505,18 +509,18 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             animation: bottom-border-draw 0.5s linear
             border-bottom: $form-highlight-feature
             outline: none
-        .form-input-highlight
-            border-bottom: $form-highlight-feature
+            &.form-input-highlight
+                border-bottom: $form-highlight-feature
 
         textarea
             border: 1px solid $form-element-edge-colour
             @include border-radius(8px)
-            resize: none;
+            resize: none
         textarea:focus
             border: $form-highlight-feature
             outline: none
-        .form-textarea-highlight
-            border: $form-highlight-feature
+            &.form-textarea-highlight
+                border: $form-highlight-feature
 
         textarea
             font-family: inherit
