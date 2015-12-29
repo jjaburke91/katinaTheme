@@ -1,20 +1,20 @@
 <div id="project-page-container">
-
     <div id="project-page-information-container">
-        <div id="project-page-title-container">
-            <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
-        </div>
-
-        <div id="project-page-description" ng-bind-html="project.description | trustAsHtml">
-        </div>
-
         <a class="prev-project-container project-changer" ng-show="project.previous_post" href="{{project.previous_post}}" ng-click="clearHeaderTrim()">
             <i class="fa fa-angle-left fa-3x"></i>
         </a>
 
+        <div id="project-page-title-container">
+            <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
+        </div>
+
+        <div id="project-page-description" ng-bind-html="project.description | trustAsHtml"></div>
+
         <a class="next-project-container project-changer" ng-show="project.next_post" href="{{project.next_post}}" ng-click="clearHeaderTrim()">
             <i class="fa fa-angle-right fa-3x"></i>
         </a>
+
+        <span id="header-colour-trim" class="{{projectTitleColour}}" ng-style="{'width': projectTitleWidth+'px' }"></span>
     </div>
 
     <div id="project-page-carousel">
@@ -22,10 +22,10 @@
              ng-repeat="project_image in project.attachments | orderBy: project_image.order">
 
             <div class="project-page-image-container">
-                <img src="{{project_image.img}}" data-action="zoom" />
+                <img src="{{project_image.img}}" data-action="zoom"/>
             </div>
 
-            <p>{{project_image.caption}}</p>
+            <p ng-bind="project_image.caption"></p>
         </div>
     </div>
 

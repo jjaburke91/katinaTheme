@@ -231,6 +231,7 @@ header
 
 #project-page-container
     display: block
+    position: relative
 
     max-width: 100%
     width: 100%
@@ -241,35 +242,29 @@ header
         font-size: .7em
         text-transform: uppercase
 
-    $project-changer-padding: 25px
     .project-changer
-        position: fixed
-        top: 99px
-        font-size: 16px
-        transform: translate(-50%)
+        position: absolute
+        top: 5px
+        display: inline-block
+        color: rgba(209, 211, 212, 0.8)
 
-        @include transition(all 0.8s ease-in-out)
-
-        color: rgb(209, 211, 212)
+        i
+            margin-top: -6px
+            font-size: 35px
 
         &:hover
             color: rgba(209, 211, 212, 1)
 
-        &.fixed-project-changer
-            position: fixed
-            top: 50%
+        &.next-project-container
+            right: 0
 
-    .prev-project-container
-        left: $project-changer-padding
-
-    .next-project-container
-        right: $project-changer-padding
+        &.prev-project-container
+            left: 0
 
 #project-page-information-container
-    margin-bottom: 2.5em
-    padding-bottom: 1.5em
-    width: 100%
     display: block
+    margin: 0 50px 25px
+    padding-bottom: 15px
     text-align: left
 
     border-bottom: 2px solid #E6E7E8
