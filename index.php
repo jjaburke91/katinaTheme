@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 
-<body >
+<body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible}">
 
     <jm-header></jm-header>
 
