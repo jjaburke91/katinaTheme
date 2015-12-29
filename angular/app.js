@@ -62,6 +62,9 @@ jmApp.config(['$stateProvider', function($stateProvider, $urlRouterProvider) {
                 projects: function(wp) {
                     return wp.getProjects();
                 }
+            },
+            onExit: function($rootScope) {
+                $rootScope.headerTrimWidth = '0px';
             }
         })
         .state('project', { // NOTE: The '/' at end of URL has affect on ng-leave and ng-enter

@@ -24,4 +24,9 @@ jmApp.controller('projectListingController', ["$scope", "$rootScope", "wp", "pro
         $scope.$digest();
     }, 500);
 
+    window.setTimeout( function() {
+        $rootScope.headerTrimWidth = '100%';
+        $rootScope.$digest();
+    }, 800);
+
 }]);
