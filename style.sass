@@ -217,17 +217,18 @@ header
             #contact-link
                 margin: 0 10px 0 70px
 
-        #header-colour-trim
-            display: block
-            width: 0
-            height: $header-height
-            border-bottom: 2px solid grey
-            @include transition(all 0.5s)
-
-
 /***********/
 /** Pages **/
 /***********/
+
+#title-colour-trim
+    display: block
+    position: absolute
+    bottom: 0
+    width: 0
+    //height: $header-height
+    border-bottom: 2px solid grey
+    @include transition(all 0.5s)
 
 #project-page-container
     display: block
@@ -285,11 +286,12 @@ header
     #project-page-description
         display: block
         width: 65%
-        //font-family: $alt-font-stack
         padding: .5em 2em .5em 2em
         margin: 0
         overflow: auto
+
         font-size: 13px
+        line-height: 22px
         color: $header-text-colour
 
     &:after // clear-fix

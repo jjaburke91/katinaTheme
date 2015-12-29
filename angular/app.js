@@ -72,6 +72,9 @@ jmApp.config(['$stateProvider', function($stateProvider, $urlRouterProvider) {
                 project: function(wp, $stateParams) {
                     return wp.getProjectWithSlug($stateParams.project_slug);
                 }
+            },
+            onExit: function($rootScope) {
+                $rootScope.projectTitleWidth = 0;
             }
         });
 }]);
