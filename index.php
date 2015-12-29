@@ -38,7 +38,9 @@
 
     <jm-header></jm-header>
 
-    <div id="content" class="view-transition" ui-view> </div>
+    <div id="content-container">
+        <div id="content" class="view-transition" ui-view> </div>
+    </div>
 
     <about-modal></about-modal>
 
