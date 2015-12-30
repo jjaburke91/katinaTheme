@@ -31,6 +31,10 @@ jmApp.run( ["$rootScope", function($rootScope) {
             $rootScope.aboutModal.closeModal();
             $rootScope.contactModal.closeModal();
         }
+        if (event.keyCode === 74) {
+            $rootScope.comingSoon = false
+        }
+
     };
 
     $rootScope.$on("$routeChangeSuccess", function ( ) {
@@ -43,7 +47,9 @@ jmApp.run( ["$rootScope", function($rootScope) {
     $rootScope.clearHeaderTrim = function() {
         $rootScope.projectTitleColour = null;
         $rootScope.projectTitleWidth = 0;
-    }
+    };
+
+    $rootScope.comingSoon = true;
 
 }]);
 

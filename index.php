@@ -34,7 +34,14 @@
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 </head>
 
-<body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible}">
+<body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible || comingSoon}">
+
+    <div class="coming-soon-overlay" ng-if="comingSoon">
+        <div class="coming-soon-container">
+            <h1>Jordan Muir<h1>
+            <h2>arriving early Jan 2016...</h2>
+        </div>
+    </div>
 
     <jm-header></jm-header>
 
