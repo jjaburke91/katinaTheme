@@ -1,5 +1,4 @@
 var jmApp = angular.module('jordan_muir_app', [
-    //'ngRoute',
     'ngAnimate',
     'ui.router'
 ]);
@@ -49,9 +48,9 @@ jmApp.run( ["$rootScope", function($rootScope) {
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?
-jmApp.config(['$stateProvider', function($stateProvider, $urlRouterProvider) {
+jmApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    //$urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
         .state('project-listing', {
