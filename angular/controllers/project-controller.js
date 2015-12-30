@@ -1,6 +1,7 @@
 jmApp.controller('projectController', ['$scope', '$rootScope', 'project', function( $scope, $rootScope, project) {
     $rootScope.page_title = project.title;
     $scope.project = project;
+    $scope.showProjectInformation = true;
     console.log(project);
 
     $scope.project_highlight = "text-highlight-" + Math.floor( (Math.random()*6)+1); // make sure this is the same as highlight-colours available in stylesheet.
@@ -12,6 +13,10 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
 
         $rootScope.$digest();
     }, 1400);
+
+    $scope.toggleProjectInformation = function() {
+        $scope.showProjectInformation = !$scope.showProjectInformation;
+    };
 
 /*    function detectScrollToMoveProjectArrows() {
      var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16,

@@ -232,9 +232,8 @@ header
 #title-colour-trim
     display: block
     position: absolute
-    bottom: 0
+    bottom: -2px
     width: 0
-    //height: $header-height
     border-bottom: 2px solid
     @include transition(all 0.5s)
 
@@ -265,20 +264,16 @@ header
             color: rgba(209, 211, 212, 1)
 
         &.next-project-container
-            right: 0
+            right: -40px
 
         &.prev-project-container
-            left: 0
+            left: -40px
 
     .project-video-container
         position: relative
-        //max-width: 800px
         height: 0
         padding-bottom: 56.25%
         padding-top: 25px
-        //max-width: 100%
-        //height: 80vh
-        //max-height: 450px
 
         margin: 10px auto
 
@@ -289,13 +284,37 @@ header
             width: 100%
             height: 100%
 
+    #project-page-media
+        padding-top: 140px
+        overflow: auto
+
 #project-page-information-container
+    position: fixed
+    top: $header-height
+    left: 90px
+    right: 90px
+
     display: block
     margin: 0 50px 25px
-    padding-bottom: 15px
-    text-align: left
+    padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
 
     border-bottom: 2px solid #E6E7E8
+    background-color: white
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
+
+    text-align: left
+
+    max-height: 300px // Dummy value to allow for transition
+    @include transition(all 0.5s linear)
+
+    overflow: auto
+
+    &.hide
+        max-height: 15px
+        padding-bottom: 0
+
+        .see-more-information
+            bottom: 0px
 
     #project-page-title-container
         width: 35%
@@ -320,6 +339,30 @@ header
         font-size: 13px
         line-height: 22px
         color: $header-text-colour
+
+        max-height: 200px // Dummy value to allow for transition
+
+        @include transition(max-height 0.5s linear)
+
+        &.hide-description
+            position: relative
+            max-height: 0
+            //transform: scaleY(0)
+
+
+    .see-more-information
+        position: absolute
+        bottom: -20px
+        left: 50%
+        transform: translateX(-50%)
+
+        width: 26px
+        cursor: pointer
+
+        @include transition(bottom 0.6s linear)
+
+        span
+            font-size: 7px
 
     &:after // clear-fix
         content: ""
