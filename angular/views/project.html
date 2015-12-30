@@ -20,14 +20,24 @@
     <span></span>
 
     <div id="project-page-carousel">
-        <div class="project-page-image-content-container project-image-col-width-{{project_image.column_width || 1}}"
-             ng-repeat="project_image in project.attachments | orderBy: project_image.order">
+        <div class="project-page-image-content-container project-image-col-width-{{project_media.column_width && project_media.type == 'image' ? (project_media.column_width || 1) : 2}}"
+             ng-repeat="project_media in project.attachments | orderBy: project_media.order">
 
-            <div class="project-page-image-container">
-                <img src="{{project_image.img}}" data-action="zoom"/>
+            <div class="project-video-container project-youtube-video" ng-if="project_media.type == 'video' && (project_media.src.indexOf('.youtube.') > -1)">
+                <iframe type="text/html" frameborder="0"
+                        ng-src="{{project_media.src + '?origin=www.jordanmuir.co.uk&controls=2&showinfo=0&rel=0&iv_load_policy=3&fs=1' | trustAsResourceUrl}}"></iframe>
             </div>
 
-            <p ng-bind="project_image.caption"></p>
+            <div class="project-video-container project-vimeo-video" ng-if="project_media.type == 'video' && (project_media.src.indexOf('.vimeo.') > -1)">
+                <iframe ng-src="{{project_media.src + '?badge=0&byline=0&portrait=0&title=0' | trustAsResourceUrl}}"
+                        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+
+            <div class="project-page-image-container" ng-if="project_media.type == 'image'">
+                <img src="{{project_media.img}}" data-action="zoom"/>
+            </div>
+
+            <p ng-bind="project_media.caption" ng-if="project_media.type == 'image'"></p>
         </div>
     </div>
 

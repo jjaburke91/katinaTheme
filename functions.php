@@ -192,6 +192,19 @@ function project_attachments( $attachments )
                                 '2'     => '2'
                                 )
                             ),
+        ),
+        array(
+            'name'      => 'media_type',
+            'type'      => 'select',
+            'label'     => __('Media Type', 'attachments'),
+            'meta'      => array(
+                            'allow_null'    => false,
+                            'multiple'      => false,
+                            'options'       => array(
+                                'image'     => 'image',
+                                'video'     => 'video'
+                                )
+                            )
         )
     );
 
@@ -489,9 +502,16 @@ class Json_Project {
         $this->attachments = array();
         while( $attach->get() ) {
             $newAttachment['img'] = $this->set_image_options($attach->url(), "w_1500,h_900,c_fit/");
-            $newAttachment['caption'] = $attach->field('caption');
             $newAttachment['column_width'] = $attach->field('column_width');
             $newAttachment['order'] = $index;
+            $newAttachment['type'] = $attach->field('media_type');
+
+            if ($newAttachment['type'] == 'image') {
+                $newAttachment['caption'] = $attach->field('caption');
+            } else {
+                $newAttachment['src'] = $attach->field('caption');
+            }
+
             $index += 1;
             array_push($this->attachments, $newAttachment);
         }
