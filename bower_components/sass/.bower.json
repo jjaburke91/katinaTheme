@@ -1,0 +1,14 @@
+{
+  "name": "sass",
+  "homepage": "https://github.com/sass/sass",
+  "version": "3.4.19",
+  "_release": "3.4.19",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.4.19",
+    "commit": "f4a7ddbc412aa71efa451d526d8182c575687e01"
+  },
+  "_source": "git://github.com/sass/sass.git",
+  "_target": "~3.4.13",
+  "_originalSource": "sass/sass"
+}
