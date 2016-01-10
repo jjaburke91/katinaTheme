@@ -5,13 +5,10 @@
 * Mobile friendly - text sizing.
 * More robust API call for About page.
 * Look into using Cloudinary for sitting image width better.
-* Embedding Videos
 * Contact Form
 * Media Queries (Project Page, About Page...)
 * Hide header on image zoom.
-* On scroll events:
-    * Hide header on down scroll. Show on up scroll.
-    * Move next / previous image icons on scroll down.
+* Hide project information on scroll.
 * Bug fix on listing page when grid isn't laid out properly.
 
 ###Recently Completed Tasks:###
@@ -31,6 +28,9 @@
 * Change colour and behaviour of what happens when you highlight text
 * Sass compilation in Gruntfile
 * No image should be taller than the window height
+* Embedding Videos
+* End-point for retrieving the about page properly
+* Set meta description for each page (SEO) - https://support.google.com/webmasters/answer/35624#1
 
 ### Things to remember ###
 * Google crawler

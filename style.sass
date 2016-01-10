@@ -145,10 +145,32 @@ a
         @media(max-width: $mobile-small)
             padding: ($header-height+10px) 1em .5em
 
-
-
 button::-moz-focus-inner
     border: 0
+
+
+.coming-soon-overlay
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: white
+
+    z-index: 9999999
+
+    .coming-soon-container
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%)
+        margin-top: -70px
+
+        text-align: center
+        h1, h2
+            color: $header-text-colour
+            font-family: $header-font-stack
+
 
 /************/
 /** Header **/
