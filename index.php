@@ -39,7 +39,7 @@
     <div class="coming-soon-overlay" ng-if="comingSoon">
         <div class="coming-soon-container">
             <h1>Jordan Muir<h1>
-            <h2>arriving early Jan 2016...</h2>
+            <h2>arriving early Jan 2012...</h2>
         </div>
     </div>
 
