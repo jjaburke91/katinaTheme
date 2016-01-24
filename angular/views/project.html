@@ -43,9 +43,9 @@
 
             <div class="project-page-image-container" ng-if="project_media.type == 'image'">
                 <img src="{{project_media.img}}" data-action="zoom"/>
+                <p ng-bind="project_media.caption" ng-if="project_media.type == 'image'"></p>
             </div>
 
-            <p ng-bind="project_media.caption" ng-if="project_media.type == 'image'"></p>
         </div>
     </div>
 

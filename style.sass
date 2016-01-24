@@ -139,7 +139,7 @@ a
     position: relative
     #content
         width: 100%
-        padding: ($header-height+24px) $side-margins .5em
+        padding: ($header-height+24px) $side-margins 60px
         color: $secondary-colour
 
         @media(max-width: $mobile-small)
@@ -327,6 +327,7 @@ header
     @include transition(max-height 0.5s linear)
 
     overflow: hidden
+    z-index: 99999
 
     #project-page-information-content
         margin: 0 50px
@@ -424,6 +425,7 @@ header
         width: 100%
 
     .project-page-image-container
+        display: inline-block
         padding: 10px
         margin: 0 auto
         img
@@ -431,6 +433,11 @@ header
             max-width: 100%
             max-height: 80vh
             min-height: 420px
+        p
+            text-align: left
+            font-size: 12px
+            margin: 0
+
 
 
 #project-page-container
