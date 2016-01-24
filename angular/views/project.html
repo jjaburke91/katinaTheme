@@ -28,7 +28,7 @@
     </div>
 
     <div id="project-page-media">
-        <div class="project-page-image-content-container project-image-col-width-{{project_media.column_width && project_media.type == 'image' ? (project_media.column_width || 1) : 2}}"
+        <div class="project-page-image-content-container project-image-col-width-{{project_media.column_width}}"
              ng-repeat="project_media in project.attachments | orderBy: project_media.order">
 
             <div class="project-video-container project-youtube-video" ng-if="project_media.type == 'video' && (project_media.src.indexOf('.youtube.') > -1)">
