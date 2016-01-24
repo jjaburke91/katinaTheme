@@ -18,22 +18,29 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
         $scope.showProjectInformation = !$scope.showProjectInformation;
     };
 
-/*    function detectScrollToMoveProjectArrows() {
-     var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16,
-     isFixed = false;
+    function detectScrollToMoveProjectArrows() {
+        var previousScrollTop = 0;
+        var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16;
+        var projectInformationHeight = $('#project-page-information-container').height();
+        isFixed = false;
 
-     return function() {
-     if ( $(this).scrollTop() >= projectInformationScrollTop && !isFixed) {
-     $('.project-changer').addClass('fixed-project-changer');
-     isFixed = true;
-     } else if( $(this).scrollTop() <= projectInformationScrollTop && isFixed) {
-     $('.project-changer').removeClass('fixed-project-changer');
-     isFixed = false;
-     }
-     }
-     }
+        return function() {
+            var thisScrollTop = $(this).scrollTop();
+            var hide = thisScrollTop >= (projectInformationHeight + projectInformationScrollTop);
+            if ( hide && (previousScrollTop < thisScrollTop) && $scope.showProjectInformation) {
+                console.log("hiding info");
+                $scope.showProjectInformation = false;
+                $scope.$digest();
+            } else if( (previousScrollTop > thisScrollTop) && !$scope.showProjectInformation) {
+                console.log("showing info");
+                $scope.showProjectInformation = true;
+                $scope.$digest();
+            }
+            previousScrollTop = thisScrollTop;
+        }
+    }
 
-     $(window).scroll(
-     _.throttle( detectScrollToMoveProjectArrows(), 500)
-     );*/
-}]);
+    $(window).scroll(
+        _.throttle( detectScrollToMoveProjectArrows(), 500)
+    );
+}]);;

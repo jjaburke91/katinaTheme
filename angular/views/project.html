@@ -4,24 +4,28 @@
             <i class="fa fa-angle-left fa-3x"></i>
         </a>
 
-        <div id="project-page-title-container" ng-click="toggleProjectInformation()">
-            <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
-        </div>
+        <div id="project-page-information-content">
 
-        <div id="project-page-description"
-             ng-bind-html="project.description | trustAsHtml"></div>
+            <div id="project-page-title-container" ng-click="toggleProjectInformation()">
+                <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
+            </div>
+
+            <div id="project-page-description"
+                 ng-bind-html="project.description | trustAsHtml"></div>
+
+            <div class="see-more-information" ng-click="toggleProjectInformation()" ng-if="!showProjectInformation">
+                <span class="fa fa-circle {{project_highlight}}" ></span>
+                <span class="fa fa-circle {{project_highlight}}" ></span>
+                <span class="fa fa-circle {{project_highlight}}" ></span>
+            </div>
+
+            <span id="title-colour-trim" class="{{projectTitleColour}}" ng-style="{'width': projectTitleWidth+'px' }"></span>
+        </div>
 
         <a class="next-project-container project-changer" ng-show="project.next_post" href="{{project.next_post}}" >
             <i class="fa fa-angle-right fa-3x"></i>
         </a>
 
-        <div class="see-more-information" ng-click="toggleProjectInformation()">
-            <span class="fa fa-circle {{project_highlight}}" ></span>
-            <span class="fa fa-circle {{project_highlight}}" ></span>
-            <span class="fa fa-circle {{project_highlight}}" ></span>
-        </div>
-
-        <span id="title-colour-trim" class="{{projectTitleColour}}" ng-style="{'width': projectTitleWidth+'px' }"></span>
     </div>
 
     <div id="project-page-media">

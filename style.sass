@@ -205,7 +205,7 @@ header
         @include transition-delay(0.1s) // Sets transition delay when showing
 
     #header-content
-        margin: 32px $side-margins 0
+        margin: 32px ($side-margins+44px) 0
         height: $header-height - 32px
 
         &.bottom-border
@@ -286,10 +286,10 @@ header
             color: rgba(209, 211, 212, 1)
 
         &.next-project-container
-            right: -40px
+            right: 0
 
         &.prev-project-container
-            left: -40px
+            left: 0
 
     .project-video-container
         position: relative
@@ -317,26 +317,38 @@ header
     right: 90px
 
     display: block
-    margin: 0 50px 25px
-    padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
+    //padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
 
-    border-bottom: 2px solid #E6E7E8
     background-color: white
-    box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
 
     text-align: left
 
-    max-height: 300px // Dummy value to allow for transition
-    @include transition(all 0.5s linear)
+    max-height: 200px // Dummy value to allow for transition
+    @include transition(max-height 0.5s linear)
 
-    overflow: auto
+    overflow: hidden
+
+    #project-page-information-content
+        margin: 0 50px
+        padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
+        border-bottom: 2px solid #E6E7E8
+        box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
+
 
     &.hide
-        max-height: 15px
-        padding-bottom: 0
+        max-height: 0
+
+        .project-page-description
+            max-height: 0
+            .project-desc
+                max-height: 0
 
         .see-more-information
             bottom: 0px
+
+        .project-page-title-container
+            max-height: 0
+
 
     #project-page-title-container
         width: 35%
@@ -346,6 +358,8 @@ header
         padding: 0 0 .5em 0
         font-size: 13px
 
+        max-height: 200px
+
         h1
             padding: 0
             margin: 0
@@ -354,7 +368,7 @@ header
     #project-page-description
         display: block
         width: 65%
-        padding: .5em 2em .5em 2em
+        padding: .5em 0
         margin: 0
         overflow: auto
 
@@ -364,13 +378,10 @@ header
 
         max-height: 200px // Dummy value to allow for transition
 
+        .desc
+            max-height: 200px
+
         @include transition(max-height 0.5s linear)
-
-        &.hide-description
-            position: relative
-            max-height: 0
-            //transform: scaleY(0)
-
 
     .see-more-information
         position: absolute
@@ -392,7 +403,6 @@ header
         clear: both
 
 
-
 .project-page-image-content-container
     display: inline-block
     float: left
@@ -410,6 +420,7 @@ header
             display: inline-block
             max-width: 100%
             max-height: 80vh
+            min-height: 420px
 
 
 #project-page-container
@@ -682,7 +693,7 @@ $grid-cell-height: 200px
     @include set_cell_dimensions_height(3)
 
 .listing-grid
-    margin: 0 auto
+    //margin: 0 40px // margin: 0 auto here to center
     text-align: center
 
     &:after
@@ -701,6 +712,9 @@ $grid-cell-height: 200px
     max-width: 100%
     width: 100% // Think this line causes some odd loading issues with images! Be cautious.
     height: 100%
+
+#project-listing-margin
+    margin: 0 40px;
 
 #project-listing-container
     text-align: center
