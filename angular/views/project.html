@@ -10,8 +10,7 @@
                 <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
             </div>
 
-            <div id="project-page-description"
-                 ng-bind-html="project.description | trustAsHtml"></div>
+            <div id="project-page-description" ng-class="{'hide-description': !showProjectInformation}" ng-bind-html="project.description | trustAsHtml"></div>
 
             <div class="see-more-information" ng-click="toggleProjectInformation()" ng-if="!showProjectInformation">
                 <span class="fa fa-circle {{project_highlight}}" ></span>

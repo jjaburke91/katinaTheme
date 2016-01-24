@@ -254,7 +254,7 @@ header
 #title-colour-trim
     display: block
     position: absolute
-    bottom: -2px
+    bottom: 0
     width: 0
     border-bottom: 2px solid
     @include transition(all 0.5s)
@@ -333,21 +333,26 @@ header
         padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
         border-bottom: 2px solid #E6E7E8
         box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
-
+        min-height: 40px
 
     &.hide
-        max-height: 0
-
-        .project-page-description
-            max-height: 0
-            .project-desc
-                max-height: 0
-
         .see-more-information
-            bottom: 0px
+            bottom: 13px
 
-        .project-page-title-container
-            max-height: 0
+    //&>.hide
+    //    max-height: 1em
+    //
+    //    .project-page-description
+    //        overflow: hidden
+    //        max-height: 0
+    //        .project-desc
+    //            max-height: 0
+    //
+    //    .see-more-information
+    //        bottom: 14px;
+    //
+    //    .project-page-title-container
+    //        max-height: 0
 
 
     #project-page-title-container
@@ -370,7 +375,7 @@ header
         width: 65%
         padding: .5em 0
         margin: 0
-        overflow: auto
+        overflow: hidden
 
         font-size: 13px
         line-height: 22px
@@ -381,18 +386,23 @@ header
         .desc
             max-height: 200px
 
+        &.hide-description
+            max-height: 0
+
         @include transition(max-height 0.5s linear)
 
     .see-more-information
         position: absolute
-        bottom: -20px
+        bottom: -10px
         left: 50%
         transform: translateX(-50%)
 
         width: 26px
         cursor: pointer
 
-        @include transition(bottom 0.6s linear)
+        @include transition(bottom 0.2s linear)
+        -webkit-transition-delay: 0.6s /* Safari */
+        transition-delay: 0.6s
 
         span
             font-size: 7px
@@ -714,7 +724,7 @@ $grid-cell-height: 200px
     height: 100%
 
 #project-listing-margin
-    margin: 0 40px;
+    margin: 0 40px
 
 #project-listing-container
     text-align: center

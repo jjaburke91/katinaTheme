@@ -43,4 +43,4 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
     $(window).scroll(
         _.throttle( detectScrollToMoveProjectArrows(), 500)
     );
-}]);;
+}]);
