@@ -1,10 +1,12 @@
-<div id="project-listing-container" class="listing-grid" ng-hide="!masonryLoaded">
+<div id="project-listing-margin">
+    <div id="project-listing-container" class="listing-grid" ng-hide="!masonryLoaded">
 
-    <project-listing-item
-            class="grid-item grid-{{project.grid_size}}"
-            ng-repeat="project in projects"
-            project="project"
-            >
-    </project-listing-item>
+        <project-listing-item
+                class="grid-item grid-{{project.grid_size}}"
+                ng-repeat="project in projects"
+                project="project"
+                >
+        </project-listing-item>
+    </div>
 
 </div>

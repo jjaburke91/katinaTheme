@@ -29,6 +29,8 @@
 * Sass compilation in Gruntfile
 * No image should be taller than the window height
 * Embedding Videos
+* End-point for retrieving the about page properly
+* Set meta description for each page (SEO) - https://support.google.com/webmasters/answer/35624#1
 
 ### Things to remember ###
 * Google crawler

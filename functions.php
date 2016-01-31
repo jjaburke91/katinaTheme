@@ -343,7 +343,7 @@ class Katina_API_Projects {
         if ($query->have_posts()) {
             $query->the_post();
 
-            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), 'large' );
+            $image_array = wp_get_attachment_image_src( get_post_thumbnail_id( $query->post->ID ), 'full' );
 
             $project = new Json_Project(
                 $query->post->ID,

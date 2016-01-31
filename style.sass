@@ -125,7 +125,8 @@ html
     @include text-highlight-color( nth($colour-palette, 2))
 
 body
-    margin: 0
+    margin: 0 auto
+    max-width: 1250px
 
 a
     text-decoration: none
@@ -139,7 +140,7 @@ a
     position: relative
     #content
         width: 100%
-        padding: ($header-height+24px) $side-margins .5em
+        padding: ($header-height+24px) $side-margins 60px
         color: $secondary-colour
 
         @media(max-width: $mobile-small)
@@ -205,7 +206,7 @@ header
         @include transition-delay(0.1s) // Sets transition delay when showing
 
     #header-content
-        margin: 32px $side-margins 0
+        margin: 32px ($side-margins+44px) 0
         height: $header-height - 32px
 
         &.bottom-border
@@ -256,7 +257,6 @@ header
     position: absolute
     bottom: 0
     width: 0
-    //height: $header-height
     border-bottom: 2px solid
     @include transition(all 0.5s)
 
@@ -294,15 +294,11 @@ header
 
     .project-video-container
         position: relative
-        //max-width: 800px
         height: 0
         padding-bottom: 56.25%
         padding-top: 25px
-        //max-width: 100%
-        //height: 80vh
-        //max-height: 450px
 
-        margin: 10px auto
+        margin: 10px 2px
 
         iframe
             position: absolute
@@ -311,13 +307,55 @@ header
             width: 100%
             height: 100%
 
+    #project-page-media
+        padding-top: 140px
+        overflow: auto
+
 #project-page-information-container
+    position: fixed
+    top: $header-height
+    left: 90px
+    right: 90px
+
     display: block
-    margin: 0 50px 25px
-    padding-bottom: 15px
+    //padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
+
+    background-color: white
+
     text-align: left
 
-    border-bottom: 2px solid #E6E7E8
+    max-height: 200px // Dummy value to allow for transition
+    @include transition(max-height 0.5s linear)
+
+    overflow: hidden
+    z-index: 99999
+
+    #project-page-information-content
+        margin: 0 50px
+        padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
+        border-bottom: 2px solid #E6E7E8
+        box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
+        min-height: 40px
+
+    &.hide
+        .see-more-information
+            bottom: 13px
+
+    //&>.hide
+    //    max-height: 1em
+    //
+    //    .project-page-description
+    //        overflow: hidden
+    //        max-height: 0
+    //        .project-desc
+    //            max-height: 0
+    //
+    //    .see-more-information
+    //        bottom: 14px;
+    //
+    //    .project-page-title-container
+    //        max-height: 0
+
 
     #project-page-title-container
         width: 35%
@@ -327,6 +365,8 @@ header
         padding: 0 0 .5em 0
         font-size: 13px
 
+        max-height: 200px
+
         h1
             padding: 0
             margin: 0
@@ -335,19 +375,44 @@ header
     #project-page-description
         display: block
         width: 65%
-        padding: .5em 2em .5em 2em
+        padding: .5em 0
         margin: 0
-        overflow: auto
+        overflow: hidden
 
         font-size: 13px
         line-height: 22px
         color: $header-text-colour
 
+        max-height: 200px // Dummy value to allow for transition
+
+        .desc
+            max-height: 200px
+
+        &.hide-description
+            max-height: 0
+
+        @include transition(max-height 0.5s linear)
+
+    .see-more-information
+        position: absolute
+        bottom: -10px
+        left: 50%
+        transform: translateX(-50%)
+
+        width: 26px
+        cursor: pointer
+
+        @include transition(bottom 0.2s linear)
+        -webkit-transition-delay: 0.6s /* Safari */
+        transition-delay: 0.6s
+
+        span
+            font-size: 7px
+
     &:after // clear-fix
         content: ""
         display: table
         clear: both
-
 
 
 .project-page-image-content-container
@@ -361,12 +426,20 @@ header
         width: 100%
 
     .project-page-image-container
-        padding: 10px
+        display: inline-block
+        padding: 10px 2px
         margin: 0 auto
+        width: 100%
         img
             display: inline-block
             max-width: 100%
-            max-height: 80vh
+            //width: 100%
+            min-height: 420px
+        p
+            text-align: left
+            font-size: 12px
+            margin: 0
+
 
 
 #project-page-container
@@ -509,6 +582,7 @@ $form-highlight-feature: 3px solid $form-highlight-colour
     margin: 0 auto
     background-color: $contact-modal-colour
     color: #FFF
+    overflow: auto
 
     font-size: 1.2em
 
@@ -557,9 +631,9 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             display: block
             background-color: inherit
             text-align: left
-            padding: 1vw 1vh
+            padding: 20px 10px
             flex: 1
-            margin: 1.5em 1em
+            margin: 15px 10px
             @include transition(0.3s linear all)
 
         input
@@ -576,17 +650,17 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             border: 1px solid $form-element-edge-colour
             @include border-radius(8px)
             resize: none
+            font-family: inherit
+            height: 20vh
+            max-height: 25vh
+            max-width: 100%
+            margin-top: 38px
         textarea:focus
             border: $form-highlight-feature
             outline: none
             &.form-textarea-highlight
                 border: $form-highlight-feature
 
-        textarea
-            font-family: inherit
-            height: 20vh
-            max-height: 25vh
-            max-width: 100%
 
 /*********************/
 /** Project-Listing **/
@@ -639,7 +713,7 @@ $grid-cell-height: 200px
     @include set_cell_dimensions_height(3)
 
 .listing-grid
-    margin: 0 auto
+    //margin: 0 40px // margin: 0 auto here to center
     text-align: center
 
     &:after
@@ -658,6 +732,9 @@ $grid-cell-height: 200px
     max-width: 100%
     width: 100% // Think this line causes some odd loading issues with images! Be cautious.
     height: 100%
+
+#project-listing-margin
+    margin: 0 40px
 
 #project-listing-container
     text-align: center
