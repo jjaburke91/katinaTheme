@@ -308,8 +308,7 @@ header {
     width: 100%; }
     .project-page-image-content-container .project-page-image-container img {
       display: inline-block;
-      max-width: 100%;
-      min-height: 420px; }
+      max-width: 100%; }
     .project-page-image-content-container .project-page-image-container p {
       text-align: left;
       font-size: 12px;
