@@ -456,7 +456,7 @@ angular.module("../angular/directives/about-modal/about-modal.html", []).run(["$
     "                    <img class=\"media-icon\" src=\"{{template_directory}}/img/media-icons/Email.svg\" />\n" +
     "                </a>\n" +
     "                <a href=\"https://www.linkedin.com/pub/jordan-muir/75/447/896\" target=\"_blank\">\n" +
-    "                    <img class=\"media-icon\" src=\"{{template_directory}}/img/media-icons/LinkedIn.svg\" />\n" +
+    "                    <img class=\"media-icon\" src=\"{{template_directory}}/img/media-icons/linkin.svg\" />\n" +
     "                </a>\n" +
     "                <a href=\"{{template_directory}}/share/Jordan Muir CV.pdf\" download>\n" +
     "                    <img class=\"media-icon-less-padding\" src=\"{{template_directory}}/img/media-icons/CV.svg\" />\n" +
