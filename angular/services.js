@@ -41,7 +41,7 @@ jmApp.factory('wp', function($http) {
 
         // TODO: Hate how this is done - fix this.
         getAboutPage: function() {
-            var aboutPageId = window.location.hostname.contains('.dev') ? 9 : 323;
+            var aboutPageId = window.location.hostname.indexOf('.dev') > 0 ? 9 : 323;
 
             return $http.get("wp-json/pages/" + aboutPageId).then(
                 function success(response) {
