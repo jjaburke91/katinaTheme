@@ -135,7 +135,7 @@ jmApp.filter('trustAsHtml', function($sce){
     return {
         getProjects: function() {
             return $http.get(projects_url).then(
-                function success(response) {2
+                function success(response) {
                     return response.data;
                 },
                 function error() {
@@ -187,6 +187,7 @@ jmApp.filter('trustAsHtml', function($sce){
 });;jmApp.controller('projectController', ['$scope', '$rootScope', 'project', function( $scope, $rootScope, project) {
     $rootScope.page_title = project.title;
     $scope.project = project;
+    $scope.showProjectInformation = true;
     console.log(project);
 
     $scope.project_highlight = "text-highlight-" + Math.floor( (Math.random()*6)+1); // make sure this is the same as highlight-colours available in stylesheet.
@@ -199,24 +200,35 @@ jmApp.filter('trustAsHtml', function($sce){
         $rootScope.$digest();
     }, 1400);
 
-/*    function detectScrollToMoveProjectArrows() {
-     var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16,
-     isFixed = false;
+    $scope.toggleProjectInformation = function() {
+        $scope.showProjectInformation = !$scope.showProjectInformation;
+    };
 
-     return function() {
-     if ( $(this).scrollTop() >= projectInformationScrollTop && !isFixed) {
-     $('.project-changer').addClass('fixed-project-changer');
-     isFixed = true;
-     } else if( $(this).scrollTop() <= projectInformationScrollTop && isFixed) {
-     $('.project-changer').removeClass('fixed-project-changer');
-     isFixed = false;
-     }
-     }
-     }
+    function detectScrollToMoveProjectArrows() {
+        var previousScrollTop = 0;
+        var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16;
+        var projectInformationHeight = $('#project-page-information-container').height();
+        isFixed = false;
 
-     $(window).scroll(
-     _.throttle( detectScrollToMoveProjectArrows(), 500)
-     );*/
+        return function() {
+            var thisScrollTop = $(this).scrollTop();
+            var hide = thisScrollTop >= (projectInformationHeight + projectInformationScrollTop);
+            if ( hide && (previousScrollTop < thisScrollTop) && $scope.showProjectInformation) {
+                console.log("hiding info");
+                $scope.showProjectInformation = false;
+                $scope.$digest();
+            } else if( (previousScrollTop > thisScrollTop) && !$scope.showProjectInformation) {
+                console.log("showing info");
+                $scope.showProjectInformation = true;
+                $scope.$digest();
+            }
+            previousScrollTop = thisScrollTop;
+        }
+    }
+
+    $(window).scroll(
+        _.throttle( detectScrollToMoveProjectArrows(), 500)
+    );
 }]);
 ;jmApp.controller('projectListingController', ["$scope", "$rootScope", "wp", "projects", function( $scope, $rootScope, wp, projects) {
     $rootScope.page_title = "Jordan Muir";
@@ -348,14 +360,16 @@ angular.module("../angular/views/404.html", []).run(["$templateCache", function(
 
 angular.module("../angular/views/project-listing.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/views/project-listing.html",
-    "<div id=\"project-listing-container\" class=\"listing-grid\" ng-hide=\"!masonryLoaded\">\n" +
+    "<div id=\"project-listing-margin\">\n" +
+    "    <div id=\"project-listing-container\" class=\"listing-grid\" ng-hide=\"!masonryLoaded\">\n" +
     "\n" +
-    "    <project-listing-item\n" +
-    "            class=\"grid-item grid-{{project.grid_size}}\"\n" +
-    "            ng-repeat=\"project in projects\"\n" +
-    "            project=\"project\"\n" +
-    "            >\n" +
-    "    </project-listing-item>\n" +
+    "        <project-listing-item\n" +
+    "                class=\"grid-item grid-{{project.grid_size}}\"\n" +
+    "                ng-repeat=\"project in projects\"\n" +
+    "                project=\"project\"\n" +
+    "                >\n" +
+    "        </project-listing-item>\n" +
+    "    </div>\n" +
     "\n" +
     "</div>");
 }]);
@@ -363,28 +377,36 @@ angular.module("../angular/views/project-listing.html", []).run(["$templateCache
 angular.module("../angular/views/project.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/views/project.html",
     "<div id=\"project-page-container\">\n" +
-    "    <div id=\"project-page-information-container\">\n" +
+    "    <div id=\"project-page-information-container\" ng-class=\"{'hide': !showProjectInformation}\">\n" +
     "        <a class=\"prev-project-container project-changer\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >\n" +
     "            <i class=\"fa fa-angle-left fa-3x\"></i>\n" +
     "        </a>\n" +
     "\n" +
-    "        <div id=\"project-page-title-container\">\n" +
-    "            <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
-    "        </div>\n" +
+    "        <div id=\"project-page-information-content\">\n" +
     "\n" +
-    "        <div id=\"project-page-description\" ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
+    "            <div id=\"project-page-title-container\" ng-click=\"toggleProjectInformation()\">\n" +
+    "                <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <div id=\"project-page-description\" ng-class=\"{'hide-description': !showProjectInformation}\" ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
+    "\n" +
+    "            <div class=\"see-more-information\" ng-click=\"toggleProjectInformation()\" ng-if=\"!showProjectInformation\">\n" +
+    "                <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <span id=\"title-colour-trim\" class=\"{{projectTitleColour}}\" ng-style=\"{'width': projectTitleWidth+'px' }\"></span>\n" +
+    "        </div>\n" +
     "\n" +
     "        <a class=\"next-project-container project-changer\" ng-show=\"project.next_post\" href=\"{{project.next_post}}\" >\n" +
     "            <i class=\"fa fa-angle-right fa-3x\"></i>\n" +
     "        </a>\n" +
     "\n" +
-    "        <span id=\"title-colour-trim\" class=\"{{projectTitleColour}}\" ng-style=\"{'width': projectTitleWidth+'px' }\"></span>\n" +
     "    </div>\n" +
     "\n" +
-    "    <span></span>\n" +
-    "\n" +
-    "    <div id=\"project-page-carousel\">\n" +
-    "        <div class=\"project-page-image-content-container project-image-col-width-{{project_media.column_width && project_media.type == 'image' ? (project_media.column_width || 1) : 2}}\"\n" +
+    "    <div id=\"project-page-media\">\n" +
+    "        <div class=\"project-page-image-content-container project-image-col-width-{{project_media.column_width}}\"\n" +
     "             ng-repeat=\"project_media in project.attachments | orderBy: project_media.order\">\n" +
     "\n" +
     "            <div class=\"project-video-container project-youtube-video\" ng-if=\"project_media.type == 'video' && (project_media.src.indexOf('.youtube.') > -1)\">\n" +
@@ -399,9 +421,9 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
     "\n" +
     "            <div class=\"project-page-image-container\" ng-if=\"project_media.type == 'image'\">\n" +
     "                <img src=\"{{project_media.img}}\" data-action=\"zoom\"/>\n" +
+    "                <p ng-bind=\"project_media.caption\" ng-if=\"project_media.type == 'image'\"></p>\n" +
     "            </div>\n" +
     "\n" +
-    "            <p ng-bind=\"project_media.caption\" ng-if=\"project_media.type == 'image'\"></p>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +

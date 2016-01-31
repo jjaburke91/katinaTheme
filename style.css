@@ -55,7 +55,8 @@ html {
     color: #29C780; }
 
 body {
-  margin: 0; }
+  margin: 0 auto;
+  max-width: 1250px; }
 
 a {
   text-decoration: none;
@@ -69,7 +70,7 @@ a {
   position: relative; }
   #content-container #content {
     width: 100%;
-    padding: 104px 80px 0.5em;
+    padding: 104px 80px 60px;
     color: #5D6C76; }
     @media (max-width: 750px) {
       #content-container #content {
@@ -132,7 +133,7 @@ header {
     -moz-transition-delay: 0.1s;
     -o-transition: 0.1s; }
   header #header-content {
-    margin: 32px 80px 0;
+    margin: 32px 124px 0;
     height: 48px; }
     header #header-content.bottom-border {
       border-bottom: 2px solid #e6e7e8; }
@@ -209,27 +210,48 @@ header {
     height: 0;
     padding-bottom: 56.25%;
     padding-top: 25px;
-    margin: 10px auto; }
+    margin: 10px 2px; }
     #project-page-container .project-video-container iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%; }
+  #project-page-container #project-page-media {
+    padding-top: 140px;
+    overflow: auto; }
 
 #project-page-information-container {
+  position: fixed;
+  top: 80px;
+  left: 90px;
+  right: 90px;
   display: block;
-  margin: 0 50px 25px;
-  padding-bottom: 15px;
+  background-color: white;
   text-align: left;
-  border-bottom: 2px solid #E6E7E8; }
+  max-height: 200px;
+  transition: max-height 0.5s linear;
+  -webkit-transition: max-height 0.5s linear;
+  -moz-transition: max-height 0.5s linear;
+  -o-transition: max-height 0.5s linear;
+  overflow: hidden;
+  z-index: 99999; }
+  #project-page-information-container #project-page-information-content {
+    margin: 0 50px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #E6E7E8;
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px;
+    min-height: 40px; }
+  #project-page-information-container.hide .see-more-information {
+    bottom: 13px; }
   #project-page-information-container #project-page-title-container {
     width: 35%;
     float: left;
     font-family: "CircularStd_Bold", "Open Sans", sans-serif;
     text-transform: capitalize;
     padding: 0 0 0.5em 0;
-    font-size: 13px; }
+    font-size: 13px;
+    max-height: 200px; }
     #project-page-information-container #project-page-title-container h1 {
       padding: 0;
       margin: 0;
@@ -237,12 +259,36 @@ header {
   #project-page-information-container #project-page-description {
     display: block;
     width: 65%;
-    padding: 0.5em 2em 0.5em 2em;
+    padding: .5em 0;
     margin: 0;
-    overflow: auto;
+    overflow: hidden;
     font-size: 13px;
     line-height: 22px;
-    color: #D1D3D4; }
+    color: #D1D3D4;
+    max-height: 200px;
+    transition: max-height 0.5s linear;
+    -webkit-transition: max-height 0.5s linear;
+    -moz-transition: max-height 0.5s linear;
+    -o-transition: max-height 0.5s linear; }
+    #project-page-information-container #project-page-description .desc {
+      max-height: 200px; }
+    #project-page-information-container #project-page-description.hide-description {
+      max-height: 0; }
+  #project-page-information-container .see-more-information {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 26px;
+    cursor: pointer;
+    transition: bottom 0.2s linear;
+    -webkit-transition: bottom 0.2s linear;
+    -moz-transition: bottom 0.2s linear;
+    -o-transition: bottom 0.2s linear;
+    -webkit-transition-delay: 0.6s;
+    transition-delay: 0.6s; }
+    #project-page-information-container .see-more-information span {
+      font-size: 7px; }
   #project-page-information-container:after {
     content: "";
     display: table;
@@ -256,12 +302,18 @@ header {
   .project-page-image-content-container.project-image-col-width-2 {
     width: 100%; }
   .project-page-image-content-container .project-page-image-container {
-    padding: 10px;
-    margin: 0 auto; }
+    display: inline-block;
+    padding: 10px 2px;
+    margin: 0 auto;
+    width: 100%; }
     .project-page-image-content-container .project-page-image-container img {
       display: inline-block;
       max-width: 100%;
-      max-height: 80vh; }
+      min-height: 420px; }
+    .project-page-image-content-container .project-page-image-container p {
+      text-align: left;
+      font-size: 12px;
+      margin: 0; }
 
 @media (max-width: 750px) {
   #project-page-container #project-page-title-container {
@@ -379,6 +431,7 @@ header {
   margin: 0 auto;
   background-color: #9fdded;
   color: #FFF;
+  overflow: auto;
   font-size: 1.2em; }
   #contact-form button {
     float: right;
@@ -421,9 +474,9 @@ header {
       display: block;
       background-color: inherit;
       text-align: left;
-      padding: 1vw 1vh;
+      padding: 20px 10px;
       flex: 1;
-      margin: 1.5em 1em;
+      margin: 15px 10px;
       transition: 0.3s linear all;
       -webkit-transition: 0.3s linear all;
       -moz-transition: 0.3s linear all;
@@ -442,17 +495,17 @@ header {
       -webkit-border-radius: 8px;
       -moz-border-radius: 8px;
       border-radius: 8px;
-      resize: none; }
+      resize: none;
+      font-family: inherit;
+      height: 20vh;
+      max-height: 25vh;
+      max-width: 100%;
+      margin-top: 38px; }
     #contact-form .form-input-container textarea:focus {
       border: 3px solid #FFE571;
       outline: none; }
       #contact-form .form-input-container textarea:focus.form-textarea-highlight {
         border: 3px solid #FFE571; }
-    #contact-form .form-input-container textarea {
-      font-family: inherit;
-      height: 20vh;
-      max-height: 25vh;
-      max-width: 100%; }
 
 /*********************/
 /** Project-Listing **/
@@ -494,7 +547,6 @@ header {
   height: 600px; }
 
 .listing-grid {
-  margin: 0 auto;
   text-align: center; }
   .listing-grid:after {
     content: '';
@@ -514,6 +566,9 @@ header {
   max-width: 100%;
   width: 100%;
   height: 100%; }
+
+#project-listing-margin {
+  margin: 0 40px; }
 
 #project-listing-container {
   text-align: center; }
