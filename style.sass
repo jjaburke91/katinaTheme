@@ -125,7 +125,8 @@ html
     @include text-highlight-color( nth($colour-palette, 2))
 
 body
-    margin: 0
+    margin: 0 auto
+    max-width: 1250px
 
 a
     text-decoration: none
@@ -428,10 +429,11 @@ header
         display: inline-block
         padding: 10px
         margin: 0 auto
+        width: 100%
         img
             display: inline-block
             max-width: 100%
-            max-height: 80vh
+            width: 100%
             min-height: 420px
         p
             text-align: left
@@ -647,17 +649,17 @@ $form-highlight-feature: 3px solid $form-highlight-colour
             border: 1px solid $form-element-edge-colour
             @include border-radius(8px)
             resize: none
+            font-family: inherit
+            height: 20vh
+            max-height: 25vh
+            max-width: 100%
+            margin-top: 26px
         textarea:focus
             border: $form-highlight-feature
             outline: none
             &.form-textarea-highlight
                 border: $form-highlight-feature
 
-        textarea
-            font-family: inherit
-            height: 20vh
-            max-height: 25vh
-            max-width: 100%
 
 /*********************/
 /** Project-Listing **/
