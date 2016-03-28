@@ -1,3 +1,7 @@
+/* Font stacks */
+/* Colours */
+/* Structural */
+/**** Testing Ifs ****/
 @font-face {
   font-family: "CircularStd_Book";
   src: url("fonts/CircularStd-Book.otf") format("opentype"); }
@@ -34,7 +38,6 @@
   color: #9FDDED !important;
   border-color: #9FDDED !important; }
 
-/**** Testing Ifs ****/
 /**************************************/
 /**************************************/
 *, *:after, *:before {
@@ -63,6 +66,9 @@ a {
   color: #5D6C76;
   outline: 0; }
 
+button::-moz-focus-inner {
+  border: 0; }
+
 .hide-overflow {
   overflow: hidden; }
 
@@ -76,28 +82,11 @@ a {
       #content-container #content {
         padding: 90px 1em 0.5em; } }
 
-button::-moz-focus-inner {
-  border: 0; }
-
-.coming-soon-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  z-index: 9999999; }
-  .coming-soon-overlay .coming-soon-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    margin-top: -70px;
-    text-align: center; }
-    .coming-soon-overlay .coming-soon-container h1, .coming-soon-overlay .coming-soon-container h2 {
-      color: #D1D3D4;
-      font-family: "Gotham_Medium", "CircularStd_Bold", "Open Sans", sans-serif; }
-
+/***** IMPORTS ******/
+/* Font stacks */
+/* Colours */
+/* Structural */
+/**** Testing Ifs ****/
 /************/
 /** Header **/
 /************/
@@ -168,9 +157,10 @@ header {
       header #header-content #about-contact-container #contact-link {
         margin: 0 10px 0 70px; }
 
-/***********/
-/** Pages **/
-/***********/
+/* Font stacks */
+/* Colours */
+/* Structural */
+/**** Testing Ifs ****/
 #title-colour-trim {
   display: block;
   position: absolute;
@@ -187,6 +177,7 @@ header {
   position: relative;
   max-width: 100%;
   width: 100%;
+  padding: 0 59px;
   text-align: center; }
   #project-page-container button {
     font-size: .7em;
@@ -222,11 +213,12 @@ header {
     overflow: auto; }
 
 #project-page-information-container {
+  display: block;
   position: fixed;
   top: 80px;
   left: 90px;
   right: 90px;
-  display: block;
+  max-width: 1080px;
   background-color: white;
   text-align: left;
   max-height: 200px;
@@ -242,6 +234,8 @@ header {
     border-bottom: 2px solid #E6E7E8;
     box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px;
     min-height: 40px; }
+  #project-page-information-container #project-page-information-center {
+    margin: 0 auto; }
   #project-page-information-container.hide .see-more-information {
     bottom: 13px; }
   #project-page-information-container #project-page-title-container {
@@ -303,12 +297,13 @@ header {
     width: 100%; }
   .project-page-image-content-container .project-page-image-container {
     display: inline-block;
+    width: 100%;
     padding: 10px 2px;
-    margin: 0 auto;
-    width: 100%; }
+    margin: 0 auto; }
     .project-page-image-content-container .project-page-image-container img {
       display: inline-block;
-      max-width: 100%; }
+      max-width: 100%;
+      min-width: 100%; }
     .project-page-image-content-container .project-page-image-container p {
       text-align: left;
       font-size: 12px;
@@ -324,6 +319,116 @@ header {
   #project-page-container .prev-project-container, #project-page-container .next-project-container {
     display: none; } }
 
+/* Font stacks */
+/* Colours */
+/* Structural */
+/**** Testing Ifs ****/
+/*********************/
+/** Project-Listing **/
+/*********************/
+.listing-grid {
+  text-align: center; }
+  .listing-grid:after {
+    content: '';
+    display: block;
+    clear: both; }
+
+.grid-item {
+  display: inline-block;
+  width: 33.33%;
+  height: 260px;
+  padding: .4em;
+  overflow: auto;
+  transition: 0.25s ease all;
+  -webkit-transition: 0.25s ease all;
+  -moz-transition: 0.25s ease all;
+  -o-transition: 0.25s ease all; }
+  .grid-item:hover {
+    padding: 0; }
+
+.grid-img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%; }
+
+#project-listing-container {
+  text-align: left; }
+
+.listing-item-container {
+  position: relative;
+  display: inline-block;
+  padding: .3% .5%;
+  z-index: 9999; }
+  .listing-item-container .listing-item {
+    position: relative;
+    /* todo: Be sure to do more testing on the 'vw' values!! Could cause problems. Word-wrapping properly is probably better option. */ }
+    .listing-item-container .listing-item:hover .listing-item-text-container, .listing-item-container .listing-item:hover .listing-item-title {
+      opacity: 1; }
+    .listing-item-container .listing-item:hover .listing-item-image-container {
+      opacity: 0.05;
+      filter: blur(1px);
+      -webkit-filter: blur(1px); }
+    .listing-item-container .listing-item .listing-item-text-container {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      margin-top: -1em;
+      z-index: -1;
+      opacity: 0;
+      text-align: center; }
+    .listing-item-container .listing-item .listing-item-title, .listing-item-container .listing-item .listing-item-description {
+      padding: 0 1em;
+      margin: 0; }
+    .listing-item-container .listing-item .listing-item-title {
+      font-size: 1.8vw; }
+    .listing-item-container .listing-item .listing-item-description {
+      padding: 0 1em;
+      font-size: 1.1vw; }
+    .listing-item-container .listing-item .listing-item-text-separator {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      margin: 10px 0;
+      border: 1px solid #5D6C76;
+      -webkit-border-radius: 500px;
+      -moz-border-radius: 500px;
+      border-radius: 500px;
+      background-color: #5D6C76; }
+
+.listing-item-image-container {
+  display: block;
+  z-index: 1;
+  height: 100%;
+  width: 100%; }
+  .listing-item-image-container img {
+    width: 100%;
+    display: block; }
+
+.project-listing-colour-0:hover {
+  background-color: #FFE571; }
+
+.project-listing-colour-1:hover {
+  background-color: #29C780; }
+
+.project-listing-colour-2:hover {
+  background-color: #FF7175; }
+
+.project-listing-colour-3:hover {
+  background-color: #C3ADE8; }
+
+.project-listing-colour-4:hover {
+  background-color: #FFAD94; }
+
+.project-listing-colour-5:hover {
+  background-color: #9FDDED; }
+
+/* Font stacks */
+/* Colours */
+/* Structural */
+/**** Testing Ifs ****/
 /*************/
 /** Modals ***/
 /*************/
@@ -421,6 +526,29 @@ header {
   color: #FFF;
   cursor: pointer; }
 
+.coming-soon-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 9999999; }
+  .coming-soon-overlay .coming-soon-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: -70px;
+    text-align: center; }
+    .coming-soon-overlay .coming-soon-container h1, .coming-soon-overlay .coming-soon-container h2 {
+      color: #D1D3D4;
+      font-family: "Gotham_Medium", "CircularStd_Bold", "Open Sans", sans-serif; }
+
+/* Font stacks */
+/* Colours */
+/* Structural */
+/**** Testing Ifs ****/
 /**********/
 /** Form **/
 /**********/
@@ -506,143 +634,10 @@ header {
       #contact-form .form-input-container textarea:focus.form-textarea-highlight {
         border: 3px solid #FFE571; }
 
-/*********************/
-/** Project-Listing **/
-/*********************/
-.grid-1x1 {
-  width: 200px;
-  height: 200px; }
-
-.grid-1x2 {
-  width: 200px;
-  height: 400px; }
-
-.grid-2x1 {
-  width: 400px;
-  height: 200px; }
-
-.grid-1x3 {
-  width: 200px;
-  height: 600px; }
-
-.grid-3x1 {
-  width: 600px;
-  height: 200px; }
-
-.grid-2x2 {
-  width: 400px;
-  height: 400px; }
-
-.grid-2x3 {
-  width: 400px;
-  height: 600px; }
-
-.grid-3x2 {
-  width: 600px;
-  height: 400px; }
-
-.grid-3x3 {
-  width: 600px;
-  height: 600px; }
-
-.listing-grid {
-  text-align: center; }
-  .listing-grid:after {
-    content: '';
-    display: block;
-    clear: both; }
-
-.grid-item {
-  padding: .4em;
-  transition: 0.25s ease all;
-  -webkit-transition: 0.25s ease all;
-  -moz-transition: 0.25s ease all;
-  -o-transition: 0.25s ease all; }
-  .grid-item:hover {
-    padding: 0; }
-
-.grid-img {
-  max-width: 100%;
-  width: 100%;
-  height: 100%; }
-
-#project-listing-margin {
-  margin: 0 40px; }
-
-#project-listing-container {
-  text-align: center; }
-
-.listing-item-container {
-  position: relative;
-  display: inline-block;
-  padding: .3% .5%;
-  z-index: 9999; }
-  .listing-item-container .listing-item {
-    position: relative;
-    /* todo: Be sure to do more testing on the 'vw' values!! Could cause problems. Word-wrapping properly is probably better option. */ }
-    .listing-item-container .listing-item:hover .listing-item-text-container, .listing-item-container .listing-item:hover .listing-item-title {
-      opacity: 1; }
-    .listing-item-container .listing-item:hover .listing-item-image-container {
-      opacity: 0.05;
-      filter: blur(1px);
-      -webkit-filter: blur(1px); }
-    .listing-item-container .listing-item .listing-item-text-container {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      margin-top: -1em;
-      z-index: -1;
-      opacity: 0;
-      text-align: center; }
-    .listing-item-container .listing-item .listing-item-title, .listing-item-container .listing-item .listing-item-description {
-      padding: 0 1em;
-      margin: 0; }
-    .listing-item-container .listing-item .listing-item-title {
-      font-size: 1.8vw; }
-    .listing-item-container .listing-item .listing-item-description {
-      padding: 0 1em;
-      font-size: 1.1vw; }
-    .listing-item-container .listing-item .listing-item-text-separator {
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      margin: 10px 0;
-      border: 1px solid #5D6C76;
-      -webkit-border-radius: 500px;
-      -moz-border-radius: 500px;
-      border-radius: 500px;
-      background-color: #5D6C76; }
-
-.listing-item-image-container {
-  display: block;
-  z-index: 1;
-  height: 100%;
-  width: 100%; }
-  .listing-item-image-container img {
-    width: 100%;
-    display: block; }
-
-.project-listing-colour-0:hover {
-  background-color: #FFE571; }
-
-.project-listing-colour-1:hover {
-  background-color: #29C780; }
-
-.project-listing-colour-2:hover {
-  background-color: #FF7175; }
-
-.project-listing-colour-3:hover {
-  background-color: #C3ADE8; }
-
-.project-listing-colour-4:hover {
-  background-color: #FFAD94; }
-
-.project-listing-colour-5:hover {
-  background-color: #9FDDED; }
-
+/* Font stacks */
+/* Colours */
+/* Structural */
+/**** Testing Ifs ****/
 /********************************/
 /*** Animations & Transitions ***/
 /********************************/
