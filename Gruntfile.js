@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'style.css': 'style.sass'
+                    'style.css': 'style/main.sass'
                 }
             }
         },
@@ -107,7 +107,7 @@ module.exports = function(grunt) {
             },
             min: {
                 files: [ 'Gruntfile.js',
-                    'style.sass',
+                    'style/main.sass',
                     'angular/*.js',
                     'angular/controllers/*.js',
                     'angular/directives/**/*.js', 'angular/directives/**/*.html',

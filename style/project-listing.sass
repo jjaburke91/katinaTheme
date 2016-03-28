@@ -1,0 +1,149 @@
+@import "master.sass"
+
+/*********************/
+/** Project-Listing **/
+/*********************/
+
+// 8 column grid
+$grid-cell-width: 200px
+$grid-cell-height: 200px
+
+@mixin set_cell_dimensions_width($num_rows)
+    width:     ($grid-cell-width * $num_rows)
+
+@mixin set_cell_dimensions_height($num_cols)
+    height:     ($grid-cell-height * $num_cols)
+
+.grid-1x1
+    @include set_cell_dimensions_width(1)
+    @include set_cell_dimensions_height(1)
+
+.grid-1x2
+    @include set_cell_dimensions_width(1)
+    @include set_cell_dimensions_height(2)
+
+.grid-2x1
+    @include set_cell_dimensions_width(2)
+    @include set_cell_dimensions_height(1)
+
+.grid-1x3
+    @include set_cell_dimensions_width(1)
+    @include set_cell_dimensions_height(3)
+
+.grid-3x1
+    @include set_cell_dimensions_width(3)
+    @include set_cell_dimensions_height(1)
+
+.grid-2x2
+    @include set_cell_dimensions_width(2)
+    @include set_cell_dimensions_height(2)
+
+.grid-2x3
+    @include set_cell_dimensions_width(2)
+    @include set_cell_dimensions_height(3)
+
+.grid-3x2
+    @include set_cell_dimensions_width(3)
+    @include set_cell_dimensions_height(2)
+
+.grid-3x3
+    @include set_cell_dimensions_width(3)
+    @include set_cell_dimensions_height(3)
+
+.listing-grid
+    //margin: 0 40px // margin: 0 auto here to center
+    text-align: center
+
+    &:after
+        content: ''
+        display: block
+        clear: both
+
+.grid-item
+    padding: .4em
+
+    @include transition(0.25s ease all)
+    &:hover
+        padding: 0
+
+.grid-img
+    max-width: 100%
+    width: 100% // Think this line causes some odd loading issues with images! Be cautious.
+    height: 100%
+
+#project-listing-margin
+    margin: 0 40px
+
+#project-listing-container
+    text-align: center
+
+.listing-item-container
+    position: relative
+    display: inline-block
+    padding: .3% .5%
+    z-index: 9999
+
+    .listing-item
+        position: relative
+
+        &:hover
+            .listing-item-text-container, .listing-item-title
+                opacity: 1
+
+            .listing-item-image-container
+                opacity: 0.05
+                filter: blur(1px)
+                -webkit-filter: blur(1px)
+
+        .listing-item-text-container
+            position: absolute
+            width: 100%
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            -moz-transform: translate(-50%, -50%)
+            margin-top: -1em
+            z-index: -1
+            opacity: 0
+            text-align: center
+
+        .listing-item-title, .listing-item-description
+            padding: 0 1em
+            margin: 0
+
+        /* todo: Be sure to do more testing on the 'vw' values!! Could cause problems. Word-wrapping properly is probably better option.
+        .listing-item-title
+            font-size: 1.8vw
+
+        .listing-item-description
+            padding: 0 1em
+            font-size: 1.1vw
+
+        .listing-item-text-separator
+            display: inline-block
+            width: 4px
+            height: 4px
+            margin: 10px 0
+
+            border: 1px solid $secondary-colour
+            @include border-radius(500px)
+            background-color: $secondary-colour
+
+.listing-item-image-container
+    display: block
+    z-index: 1
+    height: 100%
+    width: 100%
+
+    img
+        width: 100%
+        display: block
+
+// Used for creating series of classes for the different on-hover background colours on project-listing page.
+$num: 0
+@each $colour in ($colour-palette)
+    .project-listing-colour-#{$num}
+        &:hover
+            background-color: $colour
+    $num: $num + 1
+

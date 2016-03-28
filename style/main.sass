@@ -1,0 +1,126 @@
+@import "master.sass"
+
+@font-face
+    font-family: "CircularStd_Book"
+    src: url("fonts/CircularStd-Book.otf") format("opentype")
+
+@font-face
+    font-family: "CircularStd_Bold"
+    src: url("fonts/CircularStd-Bold.otf") format("opentype")
+
+@font-face
+    font-family: "Gotham_Medium"
+    src: url("fonts/Gotham-Medium.otf") format("opentype")
+
+.text-highlight-1
+    color: nth($colour-palette, 1) !important
+    border-color: nth($colour-palette, 1) !important
+.text-highlight-2
+    color: nth($colour-palette, 2) !important
+    border-color: nth($colour-palette, 2) !important
+.text-highlight-3
+    color: nth($colour-palette, 3) !important
+    border-color: nth($colour-palette, 3) !important
+.text-highlight-4
+    color: nth($colour-palette, 4) !important
+    border-color: nth($colour-palette, 4) !important
+.text-highlight-5
+    color: nth($colour-palette, 5) !important
+    border-color: nth($colour-palette, 5) !important
+.text-highlight-6
+    color: nth($colour-palette, 6) !important
+    border-color: nth($colour-palette, 6) !important
+
+@mixin animation($str)
+    animation: #{$str}
+    -webkit-animation: #{$str}
+    -moz-animation: #{$str}
+    -o-animation: #{$str}
+
+@mixin transition($str)
+    transition: #{$str}
+    -webkit-transition: #{$str}
+    -moz-transition: #{$str}
+    -o-transition: #{$str}
+
+@mixin transition-delay($str)
+    transition-delay: $str
+    -webkit-transition-delay: $str
+    -moz-transition-delay: $str
+    -o-transition: $str
+
+@mixin border-radius($str)
+    -webkit-border-radius: $str
+    -moz-border-radius: $str
+    border-radius: $str
+
+@mixin box-sizing($box-model)
+    -webkit-box-sizing: $box-model
+    -moz-box-sizing: $box-model
+    box-sizing: $box-model
+
+@mixin text-highlight-color($color)
+    ::-moz-selection
+        background: 0
+        color: $color
+    ::selection
+        background: 0
+        color: $color
+
+@if $show-div-borders
+    div
+        border: 1px solid black
+
+@if $show-project-listing-borders
+    .listing-item
+        border: 1px solid grey
+
+/**************************************/
+/**************************************/
+
+*, *:after, *:before
+    @include box-sizing(border-box)
+
+html
+    width: 100%
+    margin: 0 0 0 0
+
+    font-family: $font-stack
+    background-color: $base-colour
+
+    @include text-highlight-color( nth($colour-palette, 2))
+
+body
+    margin: 0 auto
+    max-width: 1250px
+
+a
+    text-decoration: none
+    color: $secondary-colour
+    outline: 0
+
+button::-moz-focus-inner
+    border: 0
+
+.hide-overflow
+    overflow: hidden
+
+#content-container
+    position: relative
+    #content
+        width: 100%
+        padding: ($header-height+24px) $side-margins 60px
+        color: $secondary-colour
+
+        @media(max-width: $mobile-small)
+            padding: ($header-height+10px) 1em .5em
+
+
+/***** IMPORTS ******/
+
+@import "header.sass"
+@import "project.sass"
+@import "project-listing.sass"
+@import "modals.sass"
+@import "forms.sass"
+@import "animations.sass"

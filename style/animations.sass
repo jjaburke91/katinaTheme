@@ -1,0 +1,57 @@
+@import "master.sass"
+
+/********************************/
+/*** Animations & Transitions ***/
+/********************************/
+
+/** https://scotch.io/tutorials/animating-angularjs-apps-ngview **/
+
+// ng-enter = starting point on entering view
+// ng-leave = starting point on leaving view
+// *-active = final point on *ing view
+
+.view-transition
+    @include transition(0.5s linear all)
+
+.view-transition.ng-enter
+    z-index: 9999
+    opacity: 0
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+
+.view-transition.ng-enter.ng-enter-active
+    @include transition-delay(0.6s)
+    opacity: 1
+
+.view-transition.ng-leave
+    z-index: 9999
+    opacity: 1
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+
+.view-transition.ng-leave.ng-leave-active
+    opacity: 0
+
+
+.modal-transition.ng-hide-add
+    @include animation(0.3s fadeOut ease)
+
+.modal-transition.ng-hide-remove
+    @include animation(0.3s fadeIn ease)
+
+
+@keyframes fadeOut
+    0%
+        opacity: $modal-opacity
+    100%
+        opacity: 0
+
+@keyframes fadeIn
+    0%
+        opacity: 0
+    100%
+        opacity: $modal-opacity

@@ -1,0 +1,93 @@
+@import "master.sass"
+
+/**********/
+/** Form **/
+/**********/
+$form-element-edge-colour: #266850
+$form-highlight-colour: nth($colour-palette, 1)
+$form-highlight-feature: 3px solid $form-highlight-colour
+
+#contact-form
+    max-width: 700px
+    min-width: 300px
+    margin: 0 auto
+    background-color: $contact-modal-colour
+    color: #FFF
+    overflow: auto
+
+    font-size: 1.2em
+
+    button
+        float: right
+        padding: .5em .5em
+        margin-right: .5em
+        color: inherit
+        background-color: inherit
+        border: none
+        text-transform: uppercase
+        font-size: 1.2em
+        cursor: pointer
+        @include transition(0.3s linear all)
+
+        &:focus
+            outline: none
+
+        &.form-button-valid
+            border-bottom: 2px solid $form-highlight-colour
+
+    .form-input-container
+        width: 100%
+        text-align: left
+        overflow: auto
+        display: flex
+        color: inherit
+
+        label, input, textarea
+            display: inline-block
+            font-size: 1.1em
+            color: #FFF
+
+        label
+            width: 102px
+            float: left
+            padding: 1em 0
+            margin: 1.5em 0
+            text-transform: lowercase
+            text-align: right
+
+            &.form-label-message
+                margin: .6em 0
+
+        input, textarea
+            display: block
+            background-color: inherit
+            text-align: left
+            padding: 20px 10px
+            flex: 1
+            margin: 15px 10px
+            @include transition(0.3s linear all)
+
+        input
+            border: none
+            border-bottom: 1px solid $form-element-edge-colour
+        input:focus
+            animation: bottom-border-draw 0.5s linear
+            border-bottom: $form-highlight-feature
+            outline: none
+            &.form-input-highlight
+                border-bottom: $form-highlight-feature
+
+        textarea
+            border: 1px solid $form-element-edge-colour
+            @include border-radius(8px)
+            resize: none
+            font-family: inherit
+            height: 20vh
+            max-height: 25vh
+            max-width: 100%
+            margin-top: 38px
+        textarea:focus
+            border: $form-highlight-feature
+            outline: none
+            &.form-textarea-highlight
+                border: $form-highlight-feature

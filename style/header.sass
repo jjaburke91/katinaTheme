@@ -1,0 +1,76 @@
+@import "master.sass"
+
+/************/
+/** Header **/
+/************/
+
+#header-colour-trim
+    display: block
+    width: 0
+    padding-bottom: 21px
+    border-bottom: 2px solid rgba(209, 211, 212, 0.9)
+    @include transition(width 0.6s)
+
+
+header
+    position: fixed
+    height: $header-height
+    width: 100%
+    top: 0
+    left: 0
+    margin: 0
+
+    font-family: $header-font-stack
+
+    background-color: white
+    box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
+    z-index: 99900
+
+    @include transition(opacity 0.6s 0.4s ease-in-out)
+
+    &.hide-header
+        opacity: 0
+        @include transition-delay(0.1s) // Sets transition delay when showing
+
+    #header-content
+        margin: 32px ($side-margins+44px) 0
+        height: $header-height - 32px
+
+        &.bottom-border
+            border-bottom: 2px solid #e6e7e8
+
+        h2
+            margin: 0
+            color: rgba(209, 211, 212, 0.9)
+            font-weight: 100
+
+        div
+            display: inline-block
+
+        #subtitle-container
+            margin-top: 8px
+            margin-left: 44px
+            h2
+                font-size: 14px
+
+        #title-container, #about-contact-container
+            display: inline-block
+
+        #title-container
+            float: left
+            margin-left: 13px
+            cursor: pointer
+            h2
+                font-size: 23px
+
+        #about-contact-container
+            float: right
+            h2
+                font-size: 20px
+            #about-link, #contact-link
+                margin: 0
+                display: inline-block
+                color: rgba(209, 211, 212, 0.9)
+                cursor: pointer
+            #contact-link
+                margin: 0 10px 0 70px
