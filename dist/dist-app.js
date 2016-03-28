@@ -49,8 +49,7 @@ jmApp.run( ["$rootScope", function($rootScope) {
         $rootScope.projectTitleWidth = 0;
     };
 
-    $rootScope.comingSoon = true;
-
+    $rootScope.comingSoon = false;
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?
@@ -242,21 +241,21 @@ jmApp.filter('trustAsHtml', function($sce){
     setTimeout($rootScope.clearHeaderTrim(), 300);
 
     // Stops bug where masonry aligns the images before the content has actually been retrieved.
-    $scope.masonryLoaded = false;
-    var $container = $('.listing-grid');
-    window.setTimeout( function() {
-        $container.imagesLoaded( function(){
-            $container.masonry({
-                itemSelector : '.grid-item',
-                columnWidth: 200,
-                isAnimated: true,
-                isFitWidth: true,
-                transitionDuration: '0.3s'
-            });
-        });
-        $scope.masonryLoaded = true;
-        $scope.$digest();
-    }, 500);
+    // $scope.masonryLoaded = false;
+    // var $container = $('.listing-grid');
+    // window.setTimeout( function() {
+    //     $container.imagesLoaded( function(){
+    //         $container.masonry({
+    //             itemSelector : '.grid-item',
+    //             columnWidth: 200,
+    //             isAnimated: true,
+    //             isFitWidth: true,
+    //             transitionDuration: '0.3s'
+    //         });
+    //     });
+    //     $scope.masonryLoaded = true;
+    //     $scope.$digest();
+    // }, 500);
 
     window.setTimeout( function() {
         $rootScope.headerTrimWidth = '100%';
@@ -363,10 +362,10 @@ angular.module("../angular/views/404.html", []).run(["$templateCache", function(
 angular.module("../angular/views/project-listing.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/views/project-listing.html",
     "<div id=\"project-listing-margin\">\n" +
-    "    <div id=\"project-listing-container\" class=\"listing-grid\" ng-hide=\"!masonryLoaded\">\n" +
+    "    <div id=\"project-listing-container\" class=\"listing-grid\">\n" +
     "\n" +
     "        <project-listing-item\n" +
-    "                class=\"grid-item grid-{{project.grid_size}}\"\n" +
+    "                class=\"grid-item grid-1x1\"\n" +
     "                ng-repeat=\"project in projects\"\n" +
     "                project=\"project\"\n" +
     "                >\n" +
@@ -380,36 +379,38 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
   $templateCache.put("../angular/views/project.html",
     "<div id=\"project-page-container\">\n" +
     "    <div id=\"project-page-information-container\" ng-class=\"{'hide': !showProjectInformation}\">\n" +
-    "        <a class=\"prev-project-container project-changer\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >\n" +
-    "            <i class=\"fa fa-angle-left fa-3x\"></i>\n" +
-    "        </a>\n" +
     "\n" +
-    "        <div id=\"project-page-information-content\">\n" +
+    "        <div id=\"project-page-information-center\">\n" +
+    "            <a class=\"prev-project-container project-changer\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >\n" +
+    "                <i class=\"fa fa-angle-left fa-3x\"></i>\n" +
+    "            </a>\n" +
     "\n" +
-    "            <div id=\"project-page-title-container\" ng-click=\"toggleProjectInformation()\">\n" +
-    "                <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
+    "            <div id=\"project-page-information-content\">\n" +
+    "\n" +
+    "                <div id=\"project-page-title-container\" ng-click=\"toggleProjectInformation()\">\n" +
+    "                    <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <div id=\"project-page-description\" ng-class=\"{'hide-description': !showProjectInformation}\" ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
+    "\n" +
+    "                <div class=\"see-more-information\" ng-click=\"toggleProjectInformation()\" ng-if=\"!showProjectInformation\">\n" +
+    "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <span id=\"title-colour-trim\" class=\"{{projectTitleColour}}\" ng-style=\"{'width': projectTitleWidth+'px' }\"></span>\n" +
     "            </div>\n" +
     "\n" +
-    "            <div id=\"project-page-description\" ng-class=\"{'hide-description': !showProjectInformation}\" ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
-    "\n" +
-    "            <div class=\"see-more-information\" ng-click=\"toggleProjectInformation()\" ng-if=\"!showProjectInformation\">\n" +
-    "                <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
-    "                <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
-    "                <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
-    "            </div>\n" +
-    "\n" +
-    "            <span id=\"title-colour-trim\" class=\"{{projectTitleColour}}\" ng-style=\"{'width': projectTitleWidth+'px' }\"></span>\n" +
+    "            <a class=\"next-project-container project-changer\" ng-show=\"project.next_post\" href=\"{{project.next_post}}\" >\n" +
+    "                <i class=\"fa fa-angle-right fa-3x\"></i>\n" +
+    "            </a>\n" +
     "        </div>\n" +
-    "\n" +
-    "        <a class=\"next-project-container project-changer\" ng-show=\"project.next_post\" href=\"{{project.next_post}}\" >\n" +
-    "            <i class=\"fa fa-angle-right fa-3x\"></i>\n" +
-    "        </a>\n" +
-    "\n" +
     "    </div>\n" +
     "\n" +
     "    <div id=\"project-page-media\">\n" +
     "        <div class=\"project-page-image-content-container project-image-col-width-{{project_media.column_width}}\"\n" +
-    "             ng-repeat=\"project_media in project.attachments | orderBy: project_media.order\">\n" +
+    "             ng-repeat=\"project_media in project.attachments | orderBy: 'order'\">\n" +
     "\n" +
     "            <div class=\"project-video-container project-youtube-video\" ng-if=\"project_media.type == 'video' && (project_media.src.indexOf('.youtube.') > -1)\">\n" +
     "                <iframe type=\"text/html\" frameborder=\"0\"\n" +

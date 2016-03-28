@@ -94,7 +94,7 @@ module.exports = function(grunt) {
         watch: {
             dev: {
                 files: [ 'Gruntfile.js',
-                    'style.sass',
+                    'style/*.sass',
                     'angular/*.js',
                     'angular/controllers/*.js',
                     'angular/directives/**/*.js', 'angular/directives/**/*.html',
@@ -107,7 +107,7 @@ module.exports = function(grunt) {
             },
             min: {
                 files: [ 'Gruntfile.js',
-                    'style/main.sass',
+                    'style/*.sass',
                     'angular/*.js',
                     'angular/controllers/*.js',
                     'angular/directives/**/*.js', 'angular/directives/**/*.html',

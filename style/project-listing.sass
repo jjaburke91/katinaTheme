@@ -14,41 +14,42 @@ $grid-cell-height: 200px
 @mixin set_cell_dimensions_height($num_cols)
     height:     ($grid-cell-height * $num_cols)
 
-.grid-1x1
-    @include set_cell_dimensions_width(1)
-    @include set_cell_dimensions_height(1)
-
-.grid-1x2
-    @include set_cell_dimensions_width(1)
-    @include set_cell_dimensions_height(2)
-
-.grid-2x1
-    @include set_cell_dimensions_width(2)
-    @include set_cell_dimensions_height(1)
-
-.grid-1x3
-    @include set_cell_dimensions_width(1)
-    @include set_cell_dimensions_height(3)
-
-.grid-3x1
-    @include set_cell_dimensions_width(3)
-    @include set_cell_dimensions_height(1)
-
-.grid-2x2
-    @include set_cell_dimensions_width(2)
-    @include set_cell_dimensions_height(2)
-
-.grid-2x3
-    @include set_cell_dimensions_width(2)
-    @include set_cell_dimensions_height(3)
-
-.grid-3x2
-    @include set_cell_dimensions_width(3)
-    @include set_cell_dimensions_height(2)
-
-.grid-3x3
-    @include set_cell_dimensions_width(3)
-    @include set_cell_dimensions_height(3)
+//.grid-1x1
+//    width: 33.33%
+    //@include set_cell_dimensions_width(1)
+    //@include set_cell_dimensions_height(1)
+//
+//.grid-1x2
+//    @include set_cell_dimensions_width(1)
+//    @include set_cell_dimensions_height(2)
+//
+//.grid-2x1
+//    @include set_cell_dimensions_width(2)
+//    @include set_cell_dimensions_height(1)
+//
+//.grid-1x3
+//    @include set_cell_dimensions_width(1)
+//    @include set_cell_dimensions_height(3)
+//
+//.grid-3x1
+//    @include set_cell_dimensions_width(3)
+//    @include set_cell_dimensions_height(1)
+//
+//.grid-2x2
+//    @include set_cell_dimensions_width(2)
+//    @include set_cell_dimensions_height(2)
+//
+//.grid-2x3
+//    @include set_cell_dimensions_width(2)
+//    @include set_cell_dimensions_height(3)
+//
+//.grid-3x2
+//    @include set_cell_dimensions_width(3)
+//    @include set_cell_dimensions_height(2)
+//
+//.grid-3x3
+//    @include set_cell_dimensions_width(3)
+//    @include set_cell_dimensions_height(3)
 
 .listing-grid
     //margin: 0 40px // margin: 0 auto here to center
@@ -60,7 +61,14 @@ $grid-cell-height: 200px
         clear: both
 
 .grid-item
+    display: inline-block
+
+    width: 33.33%
+    height: 260px
     padding: .4em
+    overflow: auto
+
+    //border: 1px solid grey
 
     @include transition(0.25s ease all)
     &:hover
@@ -72,10 +80,10 @@ $grid-cell-height: 200px
     height: 100%
 
 #project-listing-margin
-    margin: 0 40px
+    //margin: 0 40px
 
 #project-listing-container
-    text-align: center
+    text-align: left
 
 .listing-item-container
     position: relative

@@ -49,8 +49,7 @@ jmApp.run( ["$rootScope", function($rootScope) {
         $rootScope.projectTitleWidth = 0;
     };
 
-    $rootScope.comingSoon = true;
-
+    $rootScope.comingSoon = false;
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?
