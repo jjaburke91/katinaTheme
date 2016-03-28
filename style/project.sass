@@ -1,9 +1,5 @@
 @import "master.sass"
 
-/***********/
-/** Pages **/
-/***********/
-
 #title-colour-trim
     display: block
     position: absolute
@@ -18,6 +14,7 @@
 
     max-width: 100%
     width: 100%
+    padding: 0 59px
 
     text-align: center
 
@@ -63,17 +60,16 @@
         padding-top: 140px
         overflow: auto
 
+
 #project-page-information-container
+    display: block
     position: fixed
     top: $header-height
     left: 90px
     right: 90px
-
-    display: block
-    //padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
+    max-width: 1080px
 
     background-color: white
-
     text-align: left
 
     max-height: 200px // Dummy value to allow for transition
@@ -88,6 +84,9 @@
         border-bottom: 2px solid #E6E7E8
         box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px
         min-height: 40px
+
+    #project-page-information-center
+        margin: 0 auto
 
     &.hide
         .see-more-information
@@ -179,19 +178,20 @@
 
     .project-page-image-container
         display: inline-block
+        width: 100%
         padding: 10px 2px
         margin: 0 auto
-        width: 100%
+
         img
             display: inline-block
             max-width: 100%
+            min-width: 100%
         //width: 100%
         //min-height: 420px
         p
             text-align: left
             font-size: 12px
             margin: 0
-
 
 
 #project-page-container

@@ -1,35 +1,37 @@
 <div id="project-page-container">
     <div id="project-page-information-container" ng-class="{'hide': !showProjectInformation}">
-        <a class="prev-project-container project-changer" ng-show="project.previous_post" href="{{project.previous_post}}" >
-            <i class="fa fa-angle-left fa-3x"></i>
-        </a>
 
-        <div id="project-page-information-content">
+        <div id="project-page-information-center">
+            <a class="prev-project-container project-changer" ng-show="project.previous_post" href="{{project.previous_post}}" >
+                <i class="fa fa-angle-left fa-3x"></i>
+            </a>
 
-            <div id="project-page-title-container" ng-click="toggleProjectInformation()">
-                <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
+            <div id="project-page-information-content">
+
+                <div id="project-page-title-container" ng-click="toggleProjectInformation()">
+                    <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
+                </div>
+
+                <div id="project-page-description" ng-class="{'hide-description': !showProjectInformation}" ng-bind-html="project.description | trustAsHtml"></div>
+
+                <div class="see-more-information" ng-click="toggleProjectInformation()" ng-if="!showProjectInformation">
+                    <span class="fa fa-circle {{project_highlight}}" ></span>
+                    <span class="fa fa-circle {{project_highlight}}" ></span>
+                    <span class="fa fa-circle {{project_highlight}}" ></span>
+                </div>
+
+                <span id="title-colour-trim" class="{{projectTitleColour}}" ng-style="{'width': projectTitleWidth+'px' }"></span>
             </div>
 
-            <div id="project-page-description" ng-class="{'hide-description': !showProjectInformation}" ng-bind-html="project.description | trustAsHtml"></div>
-
-            <div class="see-more-information" ng-click="toggleProjectInformation()" ng-if="!showProjectInformation">
-                <span class="fa fa-circle {{project_highlight}}" ></span>
-                <span class="fa fa-circle {{project_highlight}}" ></span>
-                <span class="fa fa-circle {{project_highlight}}" ></span>
-            </div>
-
-            <span id="title-colour-trim" class="{{projectTitleColour}}" ng-style="{'width': projectTitleWidth+'px' }"></span>
+            <a class="next-project-container project-changer" ng-show="project.next_post" href="{{project.next_post}}" >
+                <i class="fa fa-angle-right fa-3x"></i>
+            </a>
         </div>
-
-        <a class="next-project-container project-changer" ng-show="project.next_post" href="{{project.next_post}}" >
-            <i class="fa fa-angle-right fa-3x"></i>
-        </a>
-
     </div>
 
     <div id="project-page-media">
         <div class="project-page-image-content-container project-image-col-width-{{project_media.column_width}}"
-             ng-repeat="project_media in project.attachments | orderBy: project_media.order">
+             ng-repeat="project_media in project.attachments | orderBy: 'order'">
 
             <div class="project-video-container project-youtube-video" ng-if="project_media.type == 'video' && (project_media.src.indexOf('.youtube.') > -1)">
                 <iframe type="text/html" frameborder="0"
