@@ -1,4 +1,5 @@
 <div id="project-page-container">
+
     <div id="project-page-information-container" class="zoom--custom" ng-class="{'hide': !showProjectInformation}">
 
         <div id="project-page-information-center">
@@ -7,12 +8,14 @@
             </a>
 
             <div id="project-page-information-content">
-
                 <div id="project-page-title-container" ng-click="toggleProjectInformation()">
                     <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
                 </div>
 
-                <div id="project-page-description" ng-class="{'hide-description': !showProjectInformation}" ng-bind-html="project.description | trustAsHtml"></div>
+                <div id="project-page-description"
+                     ng-class="{'hide-description': !showProjectInformation}"
+                     style="max-height: {{(projectDescriptionHeight || 300) + 14}}px;"
+                     ng-bind-html="project.description | trustAsHtml"></div>
 
                 <div class="see-more-information" ng-click="toggleProjectInformation()" ng-if="!showProjectInformation">
                     <span class="fa fa-circle {{project_highlight}}" ></span>
@@ -47,8 +50,6 @@
                 <img src="{{project_media.img}}" data-action="zoom"/>
                 <p ng-bind="project_media.caption" ng-if="project_media.type == 'image'"></p>
             </div>
-
         </div>
     </div>
-
 </div>

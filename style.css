@@ -248,11 +248,13 @@ header {
     font-size: 13px;
     line-height: 22px;
     color: #D1D3D4;
-    max-height: 200px; }
-    #project-page-information-container #project-page-description .desc {
-      max-height: 200px; }
+    max-height: 200px;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear; }
     #project-page-information-container #project-page-description.hide-description {
-      max-height: 0; }
+      max-height: 0 !important; }
   #project-page-information-container .see-more-information {
     position: absolute;
     bottom: -10px;
@@ -260,12 +262,10 @@ header {
     transform: translateX(-50%);
     width: 26px;
     cursor: pointer;
-    transition: bottom 0.2s linear;
-    -webkit-transition: bottom 0.2s linear;
-    -moz-transition: bottom 0.2s linear;
-    -o-transition: bottom 0.2s linear;
-    -webkit-transition-delay: 0.6s;
-    transition-delay: 0.6s; }
+    transition: bottom 0.3s linear;
+    -webkit-transition: bottom 0.3s linear;
+    -moz-transition: bottom 0.3s linear;
+    -o-transition: bottom 0.3s linear; }
     #project-page-information-container .see-more-information span {
       font-size: 7px; }
   #project-page-information-container:after {

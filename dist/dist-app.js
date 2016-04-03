@@ -198,6 +198,8 @@ jmApp.filter('trustAsHtml', function($sce){
         $rootScope.projectTitleColour = $scope.project_highlight;
         $rootScope.projectTitleWidth = $('#project-page-title').width() || 0;
 
+        $scope.projectDescriptionHeight = $('#project-page-description').height();
+
         $rootScope.$digest();
     }, 1400);
 
@@ -378,6 +380,7 @@ angular.module("../angular/views/project-listing.html", []).run(["$templateCache
 angular.module("../angular/views/project.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/views/project.html",
     "<div id=\"project-page-container\">\n" +
+    "\n" +
     "    <div id=\"project-page-information-container\" class=\"zoom--custom\" ng-class=\"{'hide': !showProjectInformation}\">\n" +
     "\n" +
     "        <div id=\"project-page-information-center\">\n" +
@@ -386,12 +389,14 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
     "            </a>\n" +
     "\n" +
     "            <div id=\"project-page-information-content\">\n" +
-    "\n" +
     "                <div id=\"project-page-title-container\" ng-click=\"toggleProjectInformation()\">\n" +
     "                    <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
     "                </div>\n" +
     "\n" +
-    "                <div id=\"project-page-description\" ng-class=\"{'hide-description': !showProjectInformation}\" ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
+    "                <div id=\"project-page-description\"\n" +
+    "                     ng-class=\"{'hide-description': !showProjectInformation}\"\n" +
+    "                     style=\"max-height: {{(projectDescriptionHeight || 300) + 14}}px;\"\n" +
+    "                     ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
     "\n" +
     "                <div class=\"see-more-information\" ng-click=\"toggleProjectInformation()\" ng-if=\"!showProjectInformation\">\n" +
     "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
@@ -426,10 +431,8 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
     "                <img src=\"{{project_media.img}}\" data-action=\"zoom\"/>\n" +
     "                <p ng-bind=\"project_media.caption\" ng-if=\"project_media.type == 'image'\"></p>\n" +
     "            </div>\n" +
-    "\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "\n" +
     "</div>");
 }]);
 

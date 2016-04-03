@@ -11,6 +11,8 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
         $rootScope.projectTitleColour = $scope.project_highlight;
         $rootScope.projectTitleWidth = $('#project-page-title').width() || 0;
 
+        $scope.projectDescriptionHeight = $('#project-page-description').height();
+
         $rootScope.$digest();
     }, 1400);
 
