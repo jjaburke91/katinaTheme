@@ -58,7 +58,7 @@
 
     #project-page-media
         padding-top: 140px
-        overflow: auto
+        overflow: visible
 
 
 #project-page-information-container
@@ -73,7 +73,7 @@
     text-align: left
 
     max-height: 200px // Dummy value to allow for transition
-    @include transition(max-height 0.5s linear)
+    @include transition(all 0.3s)
 
     overflow: hidden
     z-index: 99999
@@ -142,7 +142,7 @@
         &.hide-description
             max-height: 0
 
-        @include transition(max-height 0.5s linear)
+        //@include transition(max-height 0.5s linear)
 
     .see-more-information
         position: absolute

@@ -109,18 +109,7 @@ header {
   margin: 0;
   font-family: "Gotham_Medium", "CircularStd_Bold", "Open Sans", sans-serif;
   background-color: white;
-  box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px;
-  z-index: 99900;
-  transition: opacity 0.6s 0.4s ease-in-out;
-  -webkit-transition: opacity 0.6s 0.4s ease-in-out;
-  -moz-transition: opacity 0.6s 0.4s ease-in-out;
-  -o-transition: opacity 0.6s 0.4s ease-in-out; }
-  header.hide-header {
-    opacity: 0;
-    transition-delay: 0.1s;
-    -webkit-transition-delay: 0.1s;
-    -moz-transition-delay: 0.1s;
-    -o-transition: 0.1s; }
+  z-index: 99900; }
   header #header-content {
     margin: 32px 124px 0;
     height: 48px; }
@@ -210,7 +199,7 @@ header {
       height: 100%; }
   #project-page-container #project-page-media {
     padding-top: 140px;
-    overflow: auto; }
+    overflow: visible; }
 
 #project-page-information-container {
   display: block;
@@ -222,10 +211,10 @@ header {
   background-color: white;
   text-align: left;
   max-height: 200px;
-  transition: max-height 0.5s linear;
-  -webkit-transition: max-height 0.5s linear;
-  -moz-transition: max-height 0.5s linear;
-  -o-transition: max-height 0.5s linear;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
   overflow: hidden;
   z-index: 99999; }
   #project-page-information-container #project-page-information-content {
@@ -259,11 +248,7 @@ header {
     font-size: 13px;
     line-height: 22px;
     color: #D1D3D4;
-    max-height: 200px;
-    transition: max-height 0.5s linear;
-    -webkit-transition: max-height 0.5s linear;
-    -moz-transition: max-height 0.5s linear;
-    -o-transition: max-height 0.5s linear; }
+    max-height: 200px; }
     #project-page-information-container #project-page-description .desc {
       max-height: 200px; }
     #project-page-information-container #project-page-description.hide-description {
@@ -338,11 +323,11 @@ header {
   width: 33.33%;
   height: 260px;
   padding: .4em;
-  overflow: auto;
-  transition: 0.25s ease all;
-  -webkit-transition: 0.25s ease all;
-  -moz-transition: 0.25s ease all;
-  -o-transition: 0.25s ease all; }
+  overflow: hidden;
+  transition: 0.25s ease padding;
+  -webkit-transition: 0.25s ease padding;
+  -moz-transition: 0.25s ease padding;
+  -o-transition: 0.25s ease padding; }
   .grid-item:hover {
     padding: 0; }
 

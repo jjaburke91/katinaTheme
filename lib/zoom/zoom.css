@@ -39,3 +39,16 @@ img.zoom-img {
 .zoom-overlay-transitioning {
   cursor: default;
 }
+
+.zoom--custom {
+    opacity: 1;
+    -webkit-transition: opacity 300ms;
+         -o-transition: opacity 300ms;
+            transition: opacity 300ms;
+}
+.zoom--overflow-visible{
+    overflow: visible !important;
+}
+.zoom-open--custom {
+    opacity: 0;
+}

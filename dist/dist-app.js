@@ -378,7 +378,7 @@ angular.module("../angular/views/project-listing.html", []).run(["$templateCache
 angular.module("../angular/views/project.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/views/project.html",
     "<div id=\"project-page-container\">\n" +
-    "    <div id=\"project-page-information-container\" ng-class=\"{'hide': !showProjectInformation}\">\n" +
+    "    <div id=\"project-page-information-container\" class=\"zoom--custom\" ng-class=\"{'hide': !showProjectInformation}\">\n" +
     "\n" +
     "        <div id=\"project-page-information-center\">\n" +
     "            <a class=\"prev-project-container project-changer\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >\n" +
@@ -527,7 +527,7 @@ angular.module("../angular/directives/contact-form/contact-form.html", []).run([
 
 angular.module("../angular/directives/header/header.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/directives/header/header.html",
-    "<header>\n" +
+    "<header id=\"header\" class=\"zoom--custom\">\n" +
     "    <div id=\"header-content\">\n" +
     "        {{isHomePage}}\n" +
     "         <div id=\"title-container\">\n" +
