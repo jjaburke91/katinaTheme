@@ -12,9 +12,10 @@
     display: block
     position: relative
 
-    max-width: 100%
+    max-width: 1000px
     width: 100%
-    padding: 0 59px
+    padding: 0 10px
+    margin: 0 auto
 
     text-align: center
 
@@ -58,28 +59,30 @@
 
     #project-page-media
         padding-top: 140px
-        overflow: visible
+        overflow: auto
+        //overflow: visible
 
 
 #project-page-information-container
     display: block
     position: fixed
     top: $header-height
-    left: 90px
-    right: 90px
-    max-width: 1080px
+    left: 46px
+    right: 46px
+
+    max-width: 1068px
+    max-height: 200px // Dummy value to allow for transition
+    margin: 0 auto
+    //padding: 0 80px
 
     background-color: white
     text-align: left
-
-    max-height: 200px // Dummy value to allow for transition
-    @include transition(all 0.3s)
-
     overflow: hidden
     z-index: 99999
+    @include transition(all 0.3s)
 
     #project-page-information-content
-        margin: 0 50px
+        margin: 0 46px
         padding-bottom: 15px // be careful changing this, has influence over fluidity of hide / view transition
         border-bottom: 2px solid #E6E7E8
         box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px

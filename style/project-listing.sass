@@ -4,53 +4,6 @@
 /** Project-Listing **/
 /*********************/
 
-// 8 column grid
-$grid-cell-width: 200px
-$grid-cell-height: 200px
-
-@mixin set_cell_dimensions_width($num_rows)
-    width:     ($grid-cell-width * $num_rows)
-
-@mixin set_cell_dimensions_height($num_cols)
-    height:     ($grid-cell-height * $num_cols)
-
-//.grid-1x1
-//    width: 33.33%
-    //@include set_cell_dimensions_width(1)
-    //@include set_cell_dimensions_height(1)
-//
-//.grid-1x2
-//    @include set_cell_dimensions_width(1)
-//    @include set_cell_dimensions_height(2)
-//
-//.grid-2x1
-//    @include set_cell_dimensions_width(2)
-//    @include set_cell_dimensions_height(1)
-//
-//.grid-1x3
-//    @include set_cell_dimensions_width(1)
-//    @include set_cell_dimensions_height(3)
-//
-//.grid-3x1
-//    @include set_cell_dimensions_width(3)
-//    @include set_cell_dimensions_height(1)
-//
-//.grid-2x2
-//    @include set_cell_dimensions_width(2)
-//    @include set_cell_dimensions_height(2)
-//
-//.grid-2x3
-//    @include set_cell_dimensions_width(2)
-//    @include set_cell_dimensions_height(3)
-//
-//.grid-3x2
-//    @include set_cell_dimensions_width(3)
-//    @include set_cell_dimensions_height(2)
-//
-//.grid-3x3
-//    @include set_cell_dimensions_width(3)
-//    @include set_cell_dimensions_height(3)
-
 .listing-grid
     text-align: center
     line-height: 0
@@ -59,6 +12,13 @@ $grid-cell-height: 200px
         content: ''
         display: block
         clear: both
+
+#project-listing-margin
+    max-width: 1000px
+    margin: 0 auto
+
+#project-listing-container
+    text-align: left
 
 .project-listing-item-container
     position: relative
@@ -92,9 +52,6 @@ $grid-cell-height: 200px
     max-width: 100%
     width: 100% // Think this line causes some odd loading issues with images! Be cautious.
     height: 100%
-
-#project-listing-container
-    text-align: left
 
 .listing-item-container
     position: relative
