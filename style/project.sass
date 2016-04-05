@@ -23,6 +23,16 @@
         font-size: .7em
         text-transform: uppercase
 
+
+    #mobile-project-changer
+        display: none
+        padding: 18px 0 39px
+        #mobile-prev-project
+            float: left
+        #mobile-next-project
+            float: right
+
+
     .project-changer
         position: absolute
         top: 5px
@@ -94,22 +104,6 @@
     &.hide
         .see-more-information
             bottom: 13px
-
-    //&>.hide
-    //    max-height: 1em
-    //
-    //    .project-page-description
-    //        overflow: hidden
-    //        max-height: 0
-    //        .project-desc
-    //            max-height: 0
-    //
-    //    .see-more-information
-    //        bottom: 14px;
-    //
-    //    .project-page-title-container
-    //        max-height: 0
-
 
     #project-page-title-container
         width: 35%
@@ -192,15 +186,3 @@
             text-align: left
             font-size: 12px
             margin: 0
-
-
-#project-page-container
-    @media(max-width: $mobile-small)
-        #project-page-title-container
-            width: 100%
-            text-align: center
-        #project-page-description
-            width: 100%
-            display: inline-block
-        .prev-project-container, .next-project-container
-            display: none

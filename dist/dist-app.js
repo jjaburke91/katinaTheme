@@ -434,6 +434,11 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
     "                <p ng-bind=\"project_media.caption\" ng-if=\"project_media.type == 'image'\"></p>\n" +
     "            </div>\n" +
     "        </div>\n" +
+    "\n" +
+    "    </div>\n" +
+    "    <div id=\"mobile-project-changer\">\n" +
+    "        <a id=\"mobile-prev-project\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >Previous Project</a>\n" +
+    "        <a id=\"mobile-next-project\" ng-show=\"project.next_post\" href=\"{{project.next_post}}\" >Next Project</a>\n" +
     "    </div>\n" +
     "</div>");
 }]);
