@@ -197,7 +197,7 @@ header {
     height: 0;
     padding-bottom: 56.25%;
     padding-top: 25px;
-    margin: 10px 2px; }
+    margin: 2px 2px; }
     #project-page-container .project-video-container iframe {
       position: absolute;
       top: 0;
@@ -206,7 +206,8 @@ header {
       height: 100%; }
   #project-page-container #project-page-media {
     padding-top: 140px;
-    overflow: auto; }
+    line-height: 0;
+    overflow: hidden; }
 
 #project-page-information-container {
   display: block;
@@ -291,7 +292,7 @@ header {
   .project-page-image-content-container .project-page-image-container {
     display: inline-block;
     width: 100%;
-    padding: 10px 2px;
+    padding: 2px 2px;
     margin: 0 auto; }
     .project-page-image-content-container .project-page-image-container img {
       display: inline-block;
