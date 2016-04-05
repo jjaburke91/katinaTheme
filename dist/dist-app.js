@@ -221,7 +221,7 @@ jmApp.filter('trustAsHtml', function($sce){
             if ( hide && (previousScrollTop < thisScrollTop) && $scope.showProjectInformation) {
                 console.log("hiding info");
                 $scope.showProjectInformation = false;
-                $scope.informationHeight = $('#project-page-title-container').height() + 7;
+                // $scope.informationHeight = $('#project-page-title-container').height() + 7;
                 $scope.$digest();
             } else if( (previousScrollTop > thisScrollTop) && !$scope.showProjectInformation) {
                 console.log("showing info");

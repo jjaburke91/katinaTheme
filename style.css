@@ -237,14 +237,15 @@ header {
     border-bottom: 2px solid #E6E7E8;
     box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px;
     min-height: 40px;
-    overflow: auto;
+    max-height: 100px;
+    overflow: hidden;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s; }
     #project-page-information-container #project-page-information-content.hide {
-      height: 0;
-      min-height: 0; }
+      min-height: 0;
+      max-height: 0; }
   #project-page-information-container #project-page-information-center {
     margin: 0 auto; }
   #project-page-information-container.hide .see-more-information {
