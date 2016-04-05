@@ -52,33 +52,46 @@ $grid-cell-height: 200px
 //    @include set_cell_dimensions_height(3)
 
 .listing-grid
-    //margin: 0 40px // margin: 0 auto here to center
     text-align: center
+    line-height: 0
 
     &:after
         content: ''
         display: block
         clear: both
 
-.grid-item
+.project-listing-item-container
+    position: relative
     display: inline-block
 
     width: 33.33%
-    height: 260px
-    padding: .4em
+    padding-bottom: 33.33%
+
+.grid-item
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+    padding: 4px
     overflow: hidden
 
     @include transition(0.25s ease padding)
+
     &:hover
         padding: 0
 
+    a
+        display: block
+        height: 100%
+        width: 100%
+
 .grid-img
+    display: block
     max-width: 100%
     width: 100% // Think this line causes some odd loading issues with images! Be cautious.
     height: 100%
-
-#project-listing-margin
-    //margin: 0 40px
 
 #project-listing-container
     text-align: left

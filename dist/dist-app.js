@@ -364,14 +364,16 @@ angular.module("../angular/views/404.html", []).run(["$templateCache", function(
 angular.module("../angular/views/project-listing.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/views/project-listing.html",
     "<div id=\"project-listing-margin\">\n" +
-    "    <div id=\"project-listing-container\" class=\"listing-grid\">\n" +
+    "    <div id=\"project-listing-container\" class=\"listing-grid\" >\n" +
     "\n" +
-    "        <project-listing-item\n" +
-    "                class=\"grid-item grid-1x1\"\n" +
-    "                ng-repeat=\"project in projects\"\n" +
-    "                project=\"project\"\n" +
-    "                >\n" +
-    "        </project-listing-item>\n" +
+    "        <span class=\"project-listing-item-container\"\n" +
+    "              ng-repeat=\"project in projects\">\n" +
+    "            <project-listing-item\n" +
+    "                    class=\"grid-item\"\n" +
+    "                    project=\"project\"\n" +
+    "                    >\n" +
+    "            </project-listing-item>\n" +
+    "        </span>\n" +
     "    </div>\n" +
     "\n" +
     "</div>");

@@ -1,12 +1,14 @@
 <div id="project-listing-margin">
-    <div id="project-listing-container" class="listing-grid">
+    <div id="project-listing-container" class="listing-grid" >
 
-        <project-listing-item
-                class="grid-item grid-1x1"
-                ng-repeat="project in projects"
-                project="project"
-                >
-        </project-listing-item>
+        <span class="project-listing-item-container"
+              ng-repeat="project in projects">
+            <project-listing-item
+                    class="grid-item"
+                    project="project"
+                    >
+            </project-listing-item>
+        </span>
     </div>
 
 </div>
