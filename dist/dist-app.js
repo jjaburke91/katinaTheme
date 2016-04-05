@@ -191,6 +191,8 @@ jmApp.filter('trustAsHtml', function($sce){
     $scope.showProjectInformation = true;
     console.log(project);
 
+    $scope.informationHeight = $('#project-page-title-container').height() + 7;
+
     $scope.project_highlight = "text-highlight-" + Math.floor( (Math.random()*6)+1); // make sure this is the same as highlight-colours available in stylesheet.
 
     // Sets border trim feature
@@ -219,6 +221,7 @@ jmApp.filter('trustAsHtml', function($sce){
             if ( hide && (previousScrollTop < thisScrollTop) && $scope.showProjectInformation) {
                 console.log("hiding info");
                 $scope.showProjectInformation = false;
+                $scope.informationHeight = $('#project-page-title-container').height() + 7;
                 $scope.$digest();
             } else if( (previousScrollTop > thisScrollTop) && !$scope.showProjectInformation) {
                 console.log("showing info");
@@ -390,7 +393,7 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
     "                <i class=\"fa fa-angle-left fa-3x\"></i>\n" +
     "            </a>\n" +
     "\n" +
-    "            <div id=\"project-page-information-content\">\n" +
+    "            <div id=\"project-page-information-content\" style=\"min-height: {{informationHeight}}px\">\n" +
     "                <div id=\"project-page-title-container\" ng-click=\"toggleProjectInformation()\">\n" +
     "                    <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
     "                </div>\n" +

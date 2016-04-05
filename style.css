@@ -234,10 +234,10 @@ header {
   -o-transition: all 0.3s; }
   #project-page-information-container #project-page-information-content {
     margin: 0 46px;
-    padding-bottom: 15px;
     border-bottom: 2px solid #E6E7E8;
     box-shadow: rgba(255, 255, 255, 0.5) 0px 1px 14px;
-    min-height: 40px; }
+    min-height: 40px;
+    overflow: auto; }
   #project-page-information-container #project-page-information-center {
     margin: 0 auto; }
   #project-page-information-container.hide .see-more-information {

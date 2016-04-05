@@ -4,6 +4,8 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
     $scope.showProjectInformation = true;
     console.log(project);
 
+    $scope.informationHeight = $('#project-page-title-container').height() + 7;
+
     $scope.project_highlight = "text-highlight-" + Math.floor( (Math.random()*6)+1); // make sure this is the same as highlight-colours available in stylesheet.
 
     // Sets border trim feature
@@ -32,6 +34,7 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
             if ( hide && (previousScrollTop < thisScrollTop) && $scope.showProjectInformation) {
                 console.log("hiding info");
                 $scope.showProjectInformation = false;
+                $scope.informationHeight = $('#project-page-title-container').height() + 7;
                 $scope.$digest();
             } else if( (previousScrollTop > thisScrollTop) && !$scope.showProjectInformation) {
                 console.log("showing info");
