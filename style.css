@@ -179,9 +179,11 @@ header {
     display: none;
     padding: 18px 0 39px; }
     #project-page-container #mobile-project-changer #mobile-prev-project {
-      float: left; }
+      float: left;
+      color: rgba(209, 211, 212, 0.9); }
     #project-page-container #mobile-project-changer #mobile-next-project {
-      float: right; }
+      float: right;
+      color: rgba(209, 211, 212, 0.9); }
   #project-page-container .project-changer {
     position: absolute;
     top: 5px;
@@ -709,6 +711,8 @@ header {
 /* Structural */
 /**** Testing Ifs ****/
 @media (max-width: 750px) {
+  #content {
+    padding: 50px 20px 0.5em !important; }
   #subtitle-container {
     display: none !important; }
   #contact-link {
@@ -726,18 +730,22 @@ header {
     display: none !important; }
   #mobile-project-changer {
     display: block !important; }
-  #project-page-title-container {
-    width: 100%;
-    text-align: center; }
   #project-page-information-container {
+    position: relative;
+    top: 0;
     left: 0 !important;
     right: 0 !important; }
+  #project-page-information-content {
+    margin: 0 !important; }
+  #project-page-title-container {
+    width: 100% !important;
+    text-align: center; }
   #project-page-description {
-    width: 100%;
-    display: inline-block; }
-  .prev-project-container, .next-project-container {
-    display: none; }
-  #content {
-    padding: 50px 20px 0.5em !important; } }
+    width: 100% !important;
+    padding: 0 14px !important;
+    max-height: default;
+    display: inline-block !important; }
+  #project-page-media {
+    padding-top: 18px !important; } }
 
 /*# sourceMappingURL=style.css.map */
