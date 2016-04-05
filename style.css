@@ -746,6 +746,10 @@ header {
     max-height: default;
     display: inline-block !important; }
   #project-page-media {
-    padding-top: 18px !important; } }
+    padding-top: 18px !important; }
+  .project-video-container {
+    width: 100% !important; }
+  .project-page-image-container {
+    width: 100% !important; } }
 
 /*# sourceMappingURL=style.css.map */
