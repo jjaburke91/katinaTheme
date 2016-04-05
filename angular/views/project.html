@@ -1,19 +1,19 @@
 <div id="project-page-container">
 
-    <div id="project-page-information-container" class="zoom--custom" ng-class="{'hide': !showProjectInformation}">
+    <div id="project-page-information-container" class="zoom--custom">
 
-        <div id="project-page-information-center">
+        <div id="project-page-information-center" >
             <a class="prev-project-container project-changer" ng-show="project.previous_post" href="{{project.previous_post}}" >
                 <i class="fa fa-angle-left fa-3x"></i>
             </a>
 
-            <div id="project-page-information-content" style="min-height: {{informationHeight}}px">
+            <!--<div id="project-page-information-content" style="min-height: {{informationHeight}}px">-->
+            <div id="project-page-information-content" ng-class="{'hide': !showProjectInformation}" >
                 <div id="project-page-title-container" ng-click="toggleProjectInformation()">
                     <h1 id="project-page-title" class="{{project_highlight}}">{{project.title}}</h1>
                 </div>
 
                 <div id="project-page-description"
-                     ng-class="{'hide-description': !showProjectInformation}"
                      style="max-height: {{(projectDescriptionHeight || 300) + 14}}px;"
                      ng-bind-html="project.description | trustAsHtml"></div>
 

@@ -386,20 +386,20 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
   $templateCache.put("../angular/views/project.html",
     "<div id=\"project-page-container\">\n" +
     "\n" +
-    "    <div id=\"project-page-information-container\" class=\"zoom--custom\" ng-class=\"{'hide': !showProjectInformation}\">\n" +
+    "    <div id=\"project-page-information-container\" class=\"zoom--custom\">\n" +
     "\n" +
-    "        <div id=\"project-page-information-center\">\n" +
+    "        <div id=\"project-page-information-center\" >\n" +
     "            <a class=\"prev-project-container project-changer\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >\n" +
     "                <i class=\"fa fa-angle-left fa-3x\"></i>\n" +
     "            </a>\n" +
     "\n" +
-    "            <div id=\"project-page-information-content\" style=\"min-height: {{informationHeight}}px\">\n" +
+    "            <!--<div id=\"project-page-information-content\" style=\"min-height: {{informationHeight}}px\">-->\n" +
+    "            <div id=\"project-page-information-content\" ng-class=\"{'hide': !showProjectInformation}\" >\n" +
     "                <div id=\"project-page-title-container\" ng-click=\"toggleProjectInformation()\">\n" +
     "                    <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
     "                </div>\n" +
     "\n" +
     "                <div id=\"project-page-description\"\n" +
-    "                     ng-class=\"{'hide-description': !showProjectInformation}\"\n" +
     "                     style=\"max-height: {{(projectDescriptionHeight || 300) + 14}}px;\"\n" +
     "                     ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
     "\n" +

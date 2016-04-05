@@ -105,9 +105,16 @@
         min-height: 40px
         overflow: auto
 
+        @include transition(all 0.3s)
+
+        &.hide
+            height: 0
+            min-height: 0
+
 
     #project-page-information-center
         margin: 0 auto
+
 
     &.hide
         .see-more-information
