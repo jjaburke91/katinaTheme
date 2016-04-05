@@ -203,7 +203,7 @@ header {
     height: 0;
     padding-bottom: 56.25%;
     padding-top: 25px;
-    margin: 2px 2px; }
+    margin: 4px 4px; }
     #project-page-container .project-video-container iframe {
       position: absolute;
       top: 0;
@@ -298,7 +298,7 @@ header {
   .project-page-image-content-container .project-page-image-container {
     display: inline-block;
     width: 100%;
-    padding: 2px 2px;
+    padding: 4px 4px;
     margin: 0 auto; }
     .project-page-image-content-container .project-page-image-container img {
       display: inline-block;
