@@ -370,4 +370,217 @@ jmApp.controller('contactFormController', ["$scope", "wp", function($scope, wp) 
         },
         templateUrl: template_directory+'/angular/directives/project-listing-item/project-listing-item.html'
     }
-});
+});;angular.module('templates-dist', ['../angular/views/404.html', '../angular/views/project-listing.html', '../angular/views/project.html', '../angular/directives/about-modal/about-modal.html', '../angular/directives/contact-form/contact-form.html', '../angular/directives/header/header.html', '../angular/directives/project-listing-item/project-listing-item.html']);
+
+angular.module("../angular/views/404.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../angular/views/404.html",
+    "<h1>Page not found.</h1>");
+}]);
+
+angular.module("../angular/views/project-listing.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../angular/views/project-listing.html",
+    "<div id=\"project-listing-margin\">\n" +
+    "    <div id=\"project-listing-container\" class=\"listing-grid\" >\n" +
+    "\n" +
+    "        <span class=\"project-listing-item-container\"\n" +
+    "              ng-repeat=\"project in projects\">\n" +
+    "            <project-listing-item\n" +
+    "                    class=\"grid-item\"\n" +
+    "                    project=\"project\"\n" +
+    "                    ng-if=\"project.thumbnail_img\"\n" +
+    "                    >\n" +
+    "            </project-listing-item>\n" +
+    "        </span>\n" +
+    "    </div>\n" +
+    "\n" +
+    "</div>");
+}]);
+
+angular.module("../angular/views/project.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../angular/views/project.html",
+    "<div id=\"project-page-container\">\n" +
+    "\n" +
+    "    <div id=\"project-page-information-container\" class=\"zoom--custom\">\n" +
+    "\n" +
+    "        <div id=\"project-page-information-center\" >\n" +
+    "            <a class=\"prev-project-container project-changer\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >\n" +
+    "                <i class=\"fa fa-angle-left fa-3x\"></i>\n" +
+    "            </a>\n" +
+    "\n" +
+    "            <!--<div id=\"project-page-information-content\" style=\"min-height: {{informationHeight}}px\">-->\n" +
+    "            <div id=\"project-page-information-content\" ng-class=\"{'hide': !showProjectInformation}\" >\n" +
+    "                <div id=\"project-page-title-container\" ng-click=\"toggleProjectInformation()\">\n" +
+    "                    <h1 id=\"project-page-title\" class=\"{{project_highlight}}\">{{project.title}}</h1>\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <div id=\"project-page-description\"\n" +
+    "                     style=\"max-height: {{(projectDescriptionHeight || 300) + 14}}px;\"\n" +
+    "                     ng-bind-html=\"project.description | trustAsHtml\"></div>\n" +
+    "\n" +
+    "                <div class=\"see-more-information\" ng-click=\"toggleProjectInformation()\" ng-if=\"!showProjectInformation\">\n" +
+    "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <span id=\"title-colour-trim\" class=\"{{projectTitleColour}}\"\n" +
+    "                      ng-style=\"{'width': projectTitleWidth }\"></span>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <a class=\"next-project-container project-changer\" ng-show=\"project.next_post\" href=\"{{project.next_post}}\" >\n" +
+    "                <i class=\"fa fa-angle-right fa-3x\"></i>\n" +
+    "            </a>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div id=\"project-page-media\">\n" +
+    "        <div class=\"project-page-image-content-container project-image-col-width-{{project_media.column_width}}\"\n" +
+    "             ng-repeat=\"project_media in project.attachments | orderBy: 'order'\">\n" +
+    "\n" +
+    "            <div class=\"project-video-container project-youtube-video\" ng-if=\"project_media.type == 'video' && (project_media.src.indexOf('.youtube.') > -1)\">\n" +
+    "                <iframe type=\"text/html\" frameborder=\"0\"\n" +
+    "                        ng-src=\"{{project_media.src + '?origin=www.jordanmuir.co.uk&controls=2&showinfo=0&rel=0&iv_load_policy=3&fs=1' | trustAsResourceUrl}}\"></iframe>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <div class=\"project-video-container project-vimeo-video\" ng-if=\"project_media.type == 'video' && (project_media.src.indexOf('.vimeo.') > -1)\">\n" +
+    "                <iframe ng-src=\"{{project_media.src + '?badge=0&byline=0&portrait=0&title=0' | trustAsResourceUrl}}\"\n" +
+    "                        frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <div class=\"project-page-image-container\" ng-if=\"project_media.type == 'image'\">\n" +
+    "                <img src=\"{{project_media.img}}\" data-action=\"zoom\"/>\n" +
+    "                <p ng-bind=\"project_media.caption\" ng-if=\"project_media.type == 'image'\"></p>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "\n" +
+    "    </div>\n" +
+    "    <div id=\"mobile-project-changer\">\n" +
+    "        <a id=\"mobile-prev-project\" ng-show=\"project.previous_post\" href=\"{{project.previous_post}}\" >Previous Project</a>\n" +
+    "        <a id=\"mobile-next-project\" ng-show=\"project.next_post\" href=\"{{project.next_post}}\" >Next Project</a>\n" +
+    "    </div>\n" +
+    "</div>");
+}]);
+
+angular.module("../angular/directives/about-modal/about-modal.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../angular/directives/about-modal/about-modal.html",
+    "<div id=\"about-modal\" class=\"modal modal-transition\"\n" +
+    "     ng-show=\"aboutModal.visible\">\n" +
+    "\n" +
+    "    <span class=\"modal-close\"\n" +
+    "          ng-click=\"aboutModal.closeModal()\">\n" +
+    "        <i class=\"fa fa-times fa-4x\"></i>\n" +
+    "    </span>\n" +
+    "\n" +
+    "    <!-- <button id=\"about-modal-close-button\" class=\"fadeInOut\"\n" +
+    "            ng-click=\"aboutModal.closeModal()\">\n" +
+    "        Close\n" +
+    "    </button> -->\n" +
+    "\n" +
+    "    <div id=\"about-modal-container\">\n" +
+    "        <h1>About</h1>\n" +
+    "        <div id=\"about-left-panel\">\n" +
+    "            <p id=\"about-page-content\" ng-bind-html=\"aboutModal.content | trustAsHtml\"></p>\n" +
+    "            <div id=\"about-media-links\">\n" +
+    "                <a href=\"mailto:hello@jordanmuir.co.uk\">\n" +
+    "                    <img class=\"media-icon\" src=\"{{template_directory}}/img/media-icons/Email.svg\" />\n" +
+    "                </a>\n" +
+    "                <a href=\"https://www.linkedin.com/pub/jordan-muir/75/447/896\" target=\"_blank\">\n" +
+    "                    <img class=\"media-icon\" src=\"{{template_directory}}/img/media-icons/linkin.svg\" />\n" +
+    "                </a>\n" +
+    "                <a href=\"{{template_directory}}/share/Jordan Muir CV.pdf\" download>\n" +
+    "                    <img class=\"media-icon-less-padding\" src=\"{{template_directory}}/img/media-icons/CV.svg\" />\n" +
+    "                </a>\n" +
+    "                <!--<a href=\"{{template_directory}}/share/Jordan Muir Portfolio.pdf\" download>-->\n" +
+    "                    <!--<img class=\"media-icon-less-padding\" src=\"{{template_directory}}/img/media-icons/Folio.svg\" />-->\n" +
+    "                <!--</a>-->\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "\n" +
+    "        <div id=\"about-photo-container\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "\n" +
+    "</div>");
+}]);
+
+angular.module("../angular/directives/contact-form/contact-form.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../angular/directives/contact-form/contact-form.html",
+    "<form id=\"contact-form\" name=\"contactForm\"\n" +
+    "      ng-submit=\"submitContactForm(contactForm.$valid)\" novalidate>\n" +
+    "\n" +
+    "    <div class=\"form-input-container\">\n" +
+    "        <label class=\"form-label\" for=\"form-name\">Your Name</label>\n" +
+    "        <input id=\"form-name\" name=\"form-name\" type=\"text\"\n" +
+    "               ng-class=\"{'form-input-highlight': contactFormData.name != ''}\"\n" +
+    "               ng-model=\"contactFormData.name\" />\n" +
+    "\n" +
+    "        <p class=\"form-error\"></p>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"form-input-container\">\n" +
+    "        <label class=\"form-label\" for=\"form-email\">Your Email</label>\n" +
+    "        <input id=\"form-email\" name=\"form-email\" type=\"email\"\n" +
+    "               ng-class=\"{'form-input-highlight': contactFormData.email != ''}\"\n" +
+    "               ng-model=\"contactFormData.email\"/>\n" +
+    "\n" +
+    "        <p class=\"form-error\"></p>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"form-input-container\">\n" +
+    "        <label class=\"form-label\" for=\"form-subject\">Subject</label>\n" +
+    "        <input id=\"form-subject\" name=\"form-subject\" type=\"text\"\n" +
+    "               ng-class=\"{'form-input-highlight': contactFormData.subject != ''}\"\n" +
+    "               ng-model=\"contactFormData.subject\"/>\n" +
+    "\n" +
+    "        <p class=\"form-error\"></p>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"form-input-container\">\n" +
+    "        <label class=\"form-label form-label-message\" for=\"form-message\">Message</label>\n" +
+    "        <textarea id=\"form-message\" name=\"form-message\"\n" +
+    "                  ng-class=\"{'form-textarea-highlight': contactFormData.message != ''}\"\n" +
+    "                  ng-model=\"contactFormData.message\"></textarea>\n" +
+    "\n" +
+    "        <p class=\"form-error\"></p>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <button type=\"submit\" class=\"contact-form-button\" ng-class=\"{'form-button-valid': (contactForm.$valid == true)}\">\n" +
+    "        Send\n" +
+    "    </button>\n" +
+    "\n" +
+    "</form>");
+}]);
+
+angular.module("../angular/directives/header/header.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../angular/directives/header/header.html",
+    "<header id=\"header\" class=\"zoom--custom\">\n" +
+    "    <div id=\"header-content\">\n" +
+    "        {{isHomePage}}\n" +
+    "         <div id=\"title-container\">\n" +
+    "            <a ui-sref=\"project-listing\">\n" +
+    "                <h2>Jordan Muir</h2>\n" +
+    "            </a>\n" +
+    "        </div>\n" +
+    "        <div id=\"subtitle-container\">\n" +
+    "            <h2>3D / Spatial Designer</h2>\n" +
+    "        </div>\n" +
+    "\n" +
+    "        <div id=\"about-contact-container\" >\n" +
+    "            <h2 id=\"about-link\" ng-click=\"aboutModal.openModal()\">About</h2>\n" +
+    "        </div>\n" +
+    "\n" +
+    "        <span id=\"header-colour-trim\" ng-style=\"{'width': headerTrimWidth }\"></span>\n" +
+    "    </div>\n" +
+    "</header>");
+}]);
+
+angular.module("../angular/directives/project-listing-item/project-listing-item.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../angular/directives/project-listing-item/project-listing-item.html",
+    "<a href=\"{{project.url}}\">\n" +
+    "    <img class=\"grid-img listing-item-text-container\"\n" +
+    "         ng-if=\"project.thumbnail_img\"\n" +
+    "         src=\"{{project.thumbnail_img}}\"\n" +
+    "     />\n" +
+    "</a>");
+}]);
