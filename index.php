@@ -6,7 +6,7 @@
 </script>
 
 <head>
-    <title>{{page_title}}</title>
+    <title ng-cloak>{{page_title}}</title>
 
     <!-- bower:js -->
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
