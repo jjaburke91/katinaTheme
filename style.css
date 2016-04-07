@@ -227,7 +227,7 @@ header {
   background-color: white;
   text-align: left;
   overflow: hidden;
-  z-index: 99999;
+  z-index: 100;
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -270,7 +270,7 @@ header {
     display: block;
     width: 65%;
     padding: .5em 0;
-    margin: 0;
+    margin: 0 0 20px;
     overflow: hidden;
     font-size: 13px;
     line-height: 22px;
@@ -281,7 +281,8 @@ header {
     -moz-transition: all 0.3s linear;
     -o-transition: all 0.3s linear; }
     #project-page-information-container #project-page-description.hide-description {
-      max-height: 0 !important; }
+      max-height: 0 !important;
+      margin-bottom: 0 !important; }
   #project-page-information-container .see-more-information {
     position: absolute;
     bottom: -10px;
@@ -724,15 +725,23 @@ header {
 /**** Testing Ifs ****/
 @media (max-width: 1000px) {
   #content {
-    padding: 50px 20px 0.5em !important; }
-  #subtitle-container {
-    display: none !important; }
-  #contact-link {
-    margin-left: 20px !important; }
+    padding: 70px 20px 0.5em !important; }
   header {
-    padding: 15px 20px 0px !important; }
-  #header-colour-trim {
-    padding-bottom: 36px; }
+    padding: 15px 20px 0px; }
+    header #title-container {
+      margin-left: 5px; }
+      header #title-container h2 {
+        font-size: 30px !important; }
+    header #about-contact-container h2 {
+      font-size: 30px !important; }
+    header #header-colour-trim {
+      padding-bottom: 47px; }
+    header #subtitle-container {
+      display: none !important; }
+    header #contact-link {
+      margin-left: 20px !important; }
+  #about-modal-container #about-page-content {
+    font-size: 18px !important; }
   #project-listing-margin {
     margin-top: 15px !important; }
   .project-listing-item-container {
@@ -751,17 +760,26 @@ header {
     margin: 0 !important; }
   #project-page-title-container {
     width: 100% !important;
-    text-align: center; }
+    text-align: center;
+    font-size: 17px !important;
+    padding-bottom: 0.75em; }
   #project-page-description {
     width: 100% !important;
     padding: 0 14px !important;
     max-height: default;
-    display: inline-block !important; }
+    display: inline-block !important;
+    font-size: 16px !important;
+    line-height: 25px !important; }
   #project-page-media {
     padding-top: 18px !important; }
   .project-video-container {
     width: 100% !important; }
   .project-page-image-container {
     width: 100% !important; } }
+
+@media (max-width: 750px) {
+  .project-listing-item-container {
+    width: 100%;
+    padding-bottom: 100%; } }
 
 /*# sourceMappingURL=style.css.map */

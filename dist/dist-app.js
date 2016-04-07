@@ -195,12 +195,20 @@ jmApp.filter('trustAsHtml', function($sce){
 
     $scope.project_highlight = "text-highlight-" + Math.floor( (Math.random()*6)+1); // make sure this is the same as highlight-colours available in stylesheet.
 
+    var viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    $scope.desktopAnimations = viewWidth > 1000;
+    
     // Sets border trim feature
     setTimeout( function() {
         $rootScope.projectTitleColour = $scope.project_highlight;
-        $rootScope.projectTitleWidth = $('#project-page-title').width() || 0;
 
-        $scope.projectDescriptionHeight = $('#project-page-description').height();
+
+        if ($scope.desktopAnimations) {
+            $rootScope.projectTitleWidth = ($('#project-page-title').width() || 0) + 'px';
+            $scope.projectDescriptionHeight = $('#project-page-description').height();
+        } else {
+            $rootScope.projectTitleWidth = '100%';
+        }
 
         $rootScope.$digest();
     }, 1400);
@@ -232,9 +240,11 @@ jmApp.filter('trustAsHtml', function($sce){
         }
     }
 
-    $(window).scroll(
-        _.throttle( detectScrollToMoveProjectArrows(), 500)
-    );
+    if ($scope.desktopAnimations) {
+        $(window).scroll(
+            _.throttle( detectScrollToMoveProjectArrows(), 500)
+        );
+    }
 }]);
 ;jmApp.controller('projectListingController', ["$scope", "$rootScope", "wp", "projects", function( $scope, $rootScope, wp, projects) {
     $rootScope.page_title = "Jordan Muir";
@@ -409,7 +419,8 @@ angular.module("../angular/views/project.html", []).run(["$templateCache", funct
     "                    <span class=\"fa fa-circle {{project_highlight}}\" ></span>\n" +
     "                </div>\n" +
     "\n" +
-    "                <span id=\"title-colour-trim\" class=\"{{projectTitleColour}}\" ng-style=\"{'width': projectTitleWidth+'px' }\"></span>\n" +
+    "                <span id=\"title-colour-trim\" class=\"{{projectTitleColour}}\"\n" +
+    "                      ng-style=\"{'width': projectTitleWidth }\"></span>\n" +
     "            </div>\n" +
     "\n" +
     "            <a class=\"next-project-container project-changer\" ng-show=\"project.next_post\" href=\"{{project.next_post}}\" >\n" +

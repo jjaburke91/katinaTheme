@@ -3,17 +3,27 @@
 @media(max-width: $mobile-wide)
 
     #content
-        padding: 50px 20px .5em !important
-
-    #subtitle-container
-        display: none !important
-    #contact-link
-        margin-left: 20px !important
+        padding: 70px 20px .5em !important
 
     header
-        padding: 15px 20px 0px !important
-    #header-colour-trim
-        padding-bottom: 36px
+        padding: 15px 20px 0px
+        #title-container
+            margin-left: 5px
+            h2
+                font-size: 30px !important
+        #about-contact-container
+            h2
+                font-size: 30px !important
+        #header-colour-trim
+            padding-bottom: 47px
+        #subtitle-container
+            display: none !important
+        #contact-link
+            margin-left: 20px !important
+
+    #about-modal-container
+        #about-page-content
+            font-size: 18px !important
 
     #project-listing-margin
         margin-top: 15px !important
@@ -37,12 +47,16 @@
     #project-page-title-container
         width: 100% !important
         text-align: center
+        font-size: 17px !important
+        padding-bottom: 0.75em
 
     #project-page-description
         width: 100% !important
         padding: 0 14px !important
         max-height: default
         display: inline-block !important
+        font-size: 16px !important
+        line-height: 25px !important
 
     #project-page-media
         padding-top: 18px !important
@@ -53,4 +67,8 @@
         width: 100% !important
 
 
+@media(max-width: $mobile-small)
+    .project-listing-item-container
+        width: 100%
+        padding-bottom: 100%
 
