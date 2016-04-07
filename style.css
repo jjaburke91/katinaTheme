@@ -156,7 +156,7 @@ header {
 #title-colour-trim {
   display: block;
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
   width: 0;
   border-bottom: 2px solid;
   transition: all 0.5s;
@@ -247,7 +247,7 @@ header {
       min-height: 0;
       max-height: 0; }
   #project-page-information-container #project-page-information-center {
-    margin: 0 auto; }
+    margin: 0 auto 2px; }
   #project-page-information-container.hide .see-more-information {
     bottom: 13px; }
   #project-page-information-container #project-page-title-container {
