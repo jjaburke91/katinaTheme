@@ -722,7 +722,7 @@ header {
 /* Colours */
 /* Structural */
 /**** Testing Ifs ****/
-@media (max-width: 750px) {
+@media (max-width: 1000px) {
   #content {
     padding: 50px 20px 0.5em !important; }
   #subtitle-container {
