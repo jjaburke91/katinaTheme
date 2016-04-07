@@ -554,7 +554,6 @@ angular.module("../angular/directives/header/header.html", []).run(["$templateCa
     "\n" +
     "        <div id=\"about-contact-container\" >\n" +
     "            <h2 id=\"about-link\" ng-click=\"aboutModal.openModal()\">About</h2>\n" +
-    "            <h2 id=\"contact-link\" ng-click=\"contactModal.openModal()\">Contact</h2>\n" +
     "        </div>\n" +
     "\n" +
     "        <span id=\"header-colour-trim\" ng-style=\"{'width': headerTrimWidth }\"></span>\n" +
