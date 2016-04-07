@@ -37,11 +37,14 @@ jmApp.run( ["$rootScope", function($rootScope) {
 
     };
 
-    $rootScope.$on("$routeChangeSuccess", function ( ) {
-        $('html, body').animate({
-            scrollTop: $("jm-header").offset().top,
-            easing: 'easeInOutCirc'
-        }, 1200);
+    $rootScope.$on('$stateChangeStart', function() {
+        setTimeout( function() {
+            // $('html, body').animate({
+            //     scrollTop: $("jm-header").offset().top,
+            //     easing: 'easeInOutCirc'
+            // }, 1200);
+            window.scrollTo(0, 0);
+        }, 700);
     });
 
     $rootScope.clearHeaderTrim = function() {
