@@ -1,53 +1,22 @@
-# jordanmuir.co.uk #
+# jordanmuir.co.uk
 
-###Current Status / Upcoming to-dos:###
+## Development
 
-* Mobile friendly - text sizing.
-* More robust API call for About page.
-* Look into using Cloudinary for sitting image width better.
-* Contact Form
-* Media Queries (Project Page, About Page...)
-* Hide header on image zoom.
-* Hide project information on scroll.
-* Bug fix on listing page when grid isn't laid out properly.
+`npm run development`
 
-###Recently Completed Tasks:###
+## Deploying
 
-* Integration of wp-json.
-* Project URLs that come through wp-json now contain hashbang and appropriate prefix.
-* Styling listing page objects
-  * Alternating colours on project listing.
-  * Vertically centered properly.
-* About page modal.
-* Project meta box.
-* Project image upload and ordering.
-* Routing to project page.
-* Cloudinary Integration
-* Masonry Grid for home page.
-* Integrate zoom.js
-* Change colour and behaviour of what happens when you highlight text
-* Sass compilation in Gruntfile
-* No image should be taller than the window height
-* Embedding Videos
-* End-point for retrieving the about page properly
-* Set meta description for each page (SEO) - https://support.google.com/webmasters/answer/35624#1
+Run the local production script and add the generated files to the repository. Script is run with:
 
-### Things to remember ###
-* Google crawler
-    * Including what the blurb says.
-    * Get google webmaster tools on board to help with SEO config.
-* ~~Get sprites used for logos and icons?~~
-* Images on click - include caption?
-* Set default image for when Jordan forgets to include featured image
-* Changing max upload size on main site (https://wordpress.org/support/topic/change-maximum-upload-size-and-find-phpini)
+`npm run production`
 
-### Live Build ###
-* Browserify
-* Minification
-* Cloudinary - make sure of no issues here
+Commit these files and push onto the `production` branch.
 
+Finally, SSH (private key should be in your local .ssh _jamie_) onto the host server, go the theme's folder and pull in this branch.
 
-###Documentation to add:###
+---
+
+### Documentation to add:
 
 * Custom controller for JSON API
     * Retrieving the Attachments Plugin content.
@@ -55,9 +24,7 @@
 * Custom Meta Box
 * Cloudinary
 
-### Plugins Used ###
+### Plugins Used
 * Cloudinary
 * Attachments
 * WP-API
-
-See for notes: https://trello.com/b/kuHzz3E8/jordanmuir-co-uk-notes
