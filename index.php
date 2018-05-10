@@ -6,8 +6,6 @@
 </script>
 
 <head>
-    <title ng-cloak>{{page_title}}</title>
-
     <!-- bower:js -->
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.js"></script>
@@ -32,6 +30,9 @@
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" defer ></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/lib/jordanMuir.js" defer ></script>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
+
+    <title ng-cloak>{{page_title}}</title>
+
 </head>
 
 <body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible || comingSoon}">
