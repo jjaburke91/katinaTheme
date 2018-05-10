@@ -31,10 +31,6 @@ jmApp.run( ["$rootScope", function($rootScope) {
             $rootScope.aboutModal.closeModal();
             $rootScope.contactModal.closeModal();
         }
-        if (event.keyCode === 74) {
-            $rootScope.comingSoon = false
-        }
-
     };
 
     $rootScope.$on('$stateChangeStart', function() {
@@ -51,8 +47,6 @@ jmApp.run( ["$rootScope", function($rootScope) {
         $rootScope.projectTitleColour = null;
         $rootScope.projectTitleWidth = 0;
     };
-
-    $rootScope.comingSoon = false;
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?
@@ -370,7 +364,7 @@ jmApp.controller('contactFormController', ["$scope", "wp", function($scope, wp) 
         },
         templateUrl: template_directory+'/angular/directives/project-listing-item/project-listing-item.html'
     }
-});;angular.module('templates-dist', ['../angular/views/404.html', '../angular/views/project-listing.html', '../angular/views/project.html', '../angular/directives/about-modal/about-modal.html', '../angular/directives/contact-form/contact-form.html', '../angular/directives/header/header.html', '../angular/directives/project-listing-item/project-listing-item.html']);
+});;angular.module("templates-dist", ["../angular/views/404.html", "../angular/views/project-listing.html", "../angular/views/project.html", "../angular/directives/about-modal/about-modal.html", "../angular/directives/contact-form/contact-form.html", "../angular/directives/header/header.html", "../angular/directives/project-listing-item/project-listing-item.html"]);
 
 angular.module("../angular/views/404.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../angular/views/404.html",

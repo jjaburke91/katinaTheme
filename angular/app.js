@@ -31,10 +31,6 @@ jmApp.run( ["$rootScope", function($rootScope) {
             $rootScope.aboutModal.closeModal();
             $rootScope.contactModal.closeModal();
         }
-        if (event.keyCode === 74) {
-            $rootScope.comingSoon = false
-        }
-
     };
 
     $rootScope.$on('$stateChangeStart', function() {
@@ -51,8 +47,6 @@ jmApp.run( ["$rootScope", function($rootScope) {
         $rootScope.projectTitleColour = null;
         $rootScope.projectTitleWidth = 0;
     };
-
-    $rootScope.comingSoon = false;
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?

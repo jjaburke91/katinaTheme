@@ -6,6 +6,8 @@
 </script>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- bower:js -->
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.js"></script>
@@ -35,15 +37,7 @@
 
 </head>
 
-<body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible || comingSoon}">
-
-    <div class="coming-soon-overlay" ng-if="comingSoon">
-        <div class="coming-soon-container">
-            <h1>Jordan Muir<h1>
-            <h2>arriving early Jan 2012...</h2>
-        </div>
-    </div>
-
+<body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible}">
     <jm-header></jm-header>
 
     <div id="content-container">
@@ -62,9 +56,14 @@
         <div id="contact-modal-container">
             <contact-form ng-show="contactModal.visible"></contact-form>
         </div>
-
     </div>
 
+    <div class="coming-soon-overlay">
+        <div class="coming-soon-container">
+            <h1>Jordan Muir<h1>
+            <h2>update coming soon</h2>
+        </div>
+    </div>
 </body>
 
 </html>
