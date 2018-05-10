@@ -29,8 +29,7 @@
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
 
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/dist-app.js" defer ></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/lib/jordanMuir.js" defer ></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/app.min.js" defer ></script>
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 
     <title ng-cloak>{{page_title}}</title>

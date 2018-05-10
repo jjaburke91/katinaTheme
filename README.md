@@ -16,6 +16,10 @@ Finally, SSH (private key should be in your local .ssh _jamie_) onto the host se
 
 ---
 
+`dist/dist-app.js` is old but left for any caching issues while phasing in new file. Remove this at a later date.
+
+---
+
 ### Documentation to add:
 
 * Custom controller for JSON API

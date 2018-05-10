@@ -28,10 +28,11 @@ module.exports = function(grunt) {
         },
 
         sass: {
-            options: {
-                sourceMap: true
-            },
             dist: {
+                options: {
+                    sourcemap: 'none',
+                    style: 'compressed'
+                },
                 files: {
                     'style.css': 'style/main.sass'
                 }
@@ -68,7 +69,7 @@ module.exports = function(grunt) {
                     'angular/controllers/*.js',
                     'angular/directives/**/*.js',
                     'tmp/*.js' ],
-                dest: 'dist/dist-app.js'
+                dest: 'dist/app.js'
             }
         },
 
@@ -76,7 +77,7 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    'dist/app.js': [ 'dist/app.js' ]
+                    'dist/app.min.js': [ 'dist/app.js' ]
                 },
                 options: {
                     mangle: false
@@ -87,7 +88,7 @@ module.exports = function(grunt) {
         // cleans the tmp directory
         clean: {
             temp: {
-                src: [ 'tmp' ]
+                src: [ 'tmp','dist/app.js' ]
             }
         },
 
@@ -130,7 +131,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-task');
-    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.registerTask('dev', [ 'bower', 'sass', 'watch:dev' ]);
     grunt.registerTask('test', [ 'bower' ]);
