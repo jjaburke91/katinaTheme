@@ -7,6 +7,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charSet="utf-8"/>
 
     <!-- bower:js -->
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
@@ -33,7 +34,14 @@
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 
     <title ng-cloak>{{page_title}}</title>
-
+    <link rel="canonical" href="http://www.jordanmuir.co.uk" />
+    <meta name="description" content="Jordan Muir. I am a creative freelance spatial & environmental designer based in London. I graduated from Duncan of Jordanstone College of Art and Design in 2014. Completing a degree in Interior and Environmental Design." />
+    <meta property="og:description" content="Jordan Muir. I am a creative freelance spatial & environmental designer based in London. I graduated from Duncan of Jordanstone College of Art and Design in 2014. Completing a degree in Interior and Environmental Design." />
+    <meta property="og:site_name" content="Jordan Muir" />
+    <meta property="og:title" content="Jordan Muir - 3D / Spatial Designer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.jordanmuir.co.uk" />
+    <meta property="og:image:alt" content="Jordan Muir - 3D / Spatial Designer" />
 </head>
 
 <body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible}">
