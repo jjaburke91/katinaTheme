@@ -9,6 +9,12 @@ jmApp.directive('aboutModal', function() {
                 console.error("Error retrieving about page.");
             }
         );
+
+        $('.about-email-container').hover(function() {
+            $(this).html('hello@jordanmuir.co.uk');
+        }, function() {
+            $(this).html('hello (at) jordanmuir.co.uk');
+        })
     }
 
     return {

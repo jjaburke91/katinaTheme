@@ -6,33 +6,27 @@
         <i class="fa fa-times fa-4x"></i>
     </span>
 
-    <!-- <button id="about-modal-close-button" class="fadeInOut"
-            ng-click="aboutModal.closeModal()">
-        Close
-    </button> -->
-
     <div id="about-modal-container">
         <h1>About</h1>
+    
         <div id="about-left-panel">
             <p id="about-page-content" ng-bind-html="aboutModal.content | trustAsHtml"></p>
+
             <div id="about-media-links">
-                <a href="mailto:hello@jordanmuir.co.uk">
-                    <img class="media-icon" src="{{template_directory}}/img/media-icons/Email.svg" />
-                </a>
                 <a href="https://www.linkedin.com/pub/jordan-muir/75/447/896" target="_blank">
                     <img class="media-icon" src="{{template_directory}}/img/media-icons/linkin.svg" />
                 </a>
                 <a href="{{template_directory}}/share/Jordan Muir CV.pdf" download>
                     <img class="media-icon-less-padding" src="{{template_directory}}/img/media-icons/CV.svg" />
                 </a>
-                <!--<a href="{{template_directory}}/share/Jordan Muir Portfolio.pdf" download>-->
-                    <!--<img class="media-icon-less-padding" src="{{template_directory}}/img/media-icons/Folio.svg" />-->
-                <!--</a>-->
             </div>
-        </div>
 
-        <div id="about-photo-container">
+            <div class="about-email-container">
+                hello (at) jordanmuir.co.uk
+            </div>
+
         </div>
+        <div id="about-photo-container"></div>
     </div>
 
 
