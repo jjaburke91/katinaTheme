@@ -15,6 +15,8 @@ function gup( name, url ) {
 jmApp.run( ["$rootScope", function($rootScope) {
     $rootScope.template_directory = template_directory;
 
+    $rootScope.gaTrackingId = 'UA-119130508-1';
+
     $rootScope.aboutModal = {
         visible: false,
         openModal: function() {

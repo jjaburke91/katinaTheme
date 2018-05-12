@@ -1,7 +1,14 @@
 jmApp.controller('projectController', ['$scope', '$rootScope', 'project', function( $scope, $rootScope, project) {
-    $rootScope.page_title = 'Jordan Muir - ' + project.title;
+    var pageTitle = 'Jordan Muir - ' + project.title;
+    $rootScope.page_title = pageTitle;
     $scope.project = project;
     $scope.showProjectInformation = true;
+
+    gtag('config', $rootScope.gaTrackingId, {
+        'page_title': pageTitle,
+        'page_path': window.location.href.replace("/#", ''),
+        'page_location': window.location.href
+    });
 
     $scope.informationHeight = $('#project-page-title-container').height() + 7;
 

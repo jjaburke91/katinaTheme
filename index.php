@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bower_components/font-awesome/css/font-awesome.min.css" />
     <!-- endbower -->
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119130508-1"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-119130508-1', { 'send_page_view': false });
+    </script>
+
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/app.min.js" defer ></script>
     <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/app.js" defer ></script> -->
 
