@@ -31,6 +31,8 @@
     <!-- endbower -->
 
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/app.min.js" defer ></script>
+    <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/app.js" defer ></script> -->
+
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
 
     <title ng-cloak>{{page_title}}</title>
