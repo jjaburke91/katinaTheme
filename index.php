@@ -10,16 +10,16 @@
     <meta charSet="utf-8"/>
 
     <!-- bower:js -->
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-animate/angular-animate.js"></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/underscore/underscore.js"></script>
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <!-- endbower -->
 
-    <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+    <script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
 
     <!-- Zoom dependencies-->
     <script src="<?php bloginfo('template_directory'); ?>/lib/zoom/transition.js" type="text/javascript"></script>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/lib/zoom/zoom.css" />
 
     <!-- bower:css -->
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bower_components/font-awesome/css/font-awesome.min.css" />
     <!-- endbower -->
 
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dist/app.min.js" defer ></script>
