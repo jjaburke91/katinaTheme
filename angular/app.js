@@ -3,6 +3,15 @@ var jmApp = angular.module('jordan_muir_app', [
     'ui.router'
 ]);
 
+function gup( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}
+
 jmApp.run( ["$rootScope", function($rootScope) {
     $rootScope.template_directory = template_directory;
 
@@ -35,10 +44,6 @@ jmApp.run( ["$rootScope", function($rootScope) {
 
     $rootScope.$on('$stateChangeStart', function() {
         setTimeout( function() {
-            // $('html, body').animate({
-            //     scrollTop: $("jm-header").offset().top,
-            //     easing: 'easeInOutCirc'
-            // }, 1200);
             window.scrollTo(0, 0);
         }, 700);
     });
@@ -47,6 +52,11 @@ jmApp.run( ["$rootScope", function($rootScope) {
         $rootScope.projectTitleColour = null;
         $rootScope.projectTitleWidth = 0;
     };
+
+    if (gup('view') == "true") {
+        $('.coming-soon-overlay').addClass('hidden');
+        $('body').removeClass("hide-overflow");
+    }
 }]);
 
 //todo: Don't think we should be using template directory in the routing, bypassing template cache?

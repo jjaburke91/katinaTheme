@@ -46,7 +46,7 @@
     <meta property="og:image:alt" content="Jordan Muir - 3D / Spatial Designer" />
 </head>
 
-<body ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible}">
+<body class="hide-overflow" ng-class="{'hide-overflow': aboutModal.visible || contactModal.visible}">
     <jm-header></jm-header>
 
     <div id="content-container">
