@@ -88,7 +88,10 @@ module.exports = function(grunt) {
         // cleans the tmp directory
         clean: {
             temp: {
-                src: [ 'tmp','dist/app.js' ]
+                src: [ 'tmp']
+            },
+            prod: {
+                src: ['tmp', 'dist/app.js']
             }
         },
 
@@ -136,6 +139,6 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', [ 'bower', 'sass', 'watch:dev' ]);
     grunt.registerTask('test', [ 'bower' ]);
     grunt.registerTask('minified', [ 'bower', 'watch:min' ]);
-    grunt.registerTask('package', [ 'bower', 'sass', 'html2js:dist', 'concat:dist', 'uglify:dist', 'clean:temp' ]);
+    grunt.registerTask('package', [ 'bower', 'sass', 'html2js:dist', 'concat:dist', 'uglify:dist', 'clean:prod' ]);
 
 };

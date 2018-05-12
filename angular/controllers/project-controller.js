@@ -1,8 +1,7 @@
 jmApp.controller('projectController', ['$scope', '$rootScope', 'project', function( $scope, $rootScope, project) {
-    $rootScope.page_title = project.title;
+    $rootScope.page_title = 'Jordan Muir - ' + project.title;
     $scope.project = project;
     $scope.showProjectInformation = true;
-    console.log(project);
 
     $scope.informationHeight = $('#project-page-title-container').height() + 7;
 
@@ -14,7 +13,6 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
     // Sets border trim feature
     setTimeout( function() {
         $rootScope.projectTitleColour = $scope.project_highlight;
-
 
         if ($scope.desktopAnimations) {
             $rootScope.projectTitleWidth = ($('#project-page-title').width() || 0) + 'px';
@@ -34,18 +32,14 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
         var previousScrollTop = 0;
         var projectInformationScrollTop = $('#project-page-information-container').scrollTop() + 16;
         var projectInformationHeight = $('#project-page-information-container').height();
-        isFixed = false;
 
         return function() {
             var thisScrollTop = $(this).scrollTop();
             var hide = thisScrollTop >= (projectInformationHeight + projectInformationScrollTop);
             if ( hide && (previousScrollTop < thisScrollTop) && $scope.showProjectInformation) {
-                console.log("hiding info");
                 $scope.showProjectInformation = false;
-                // $scope.informationHeight = $('#project-page-title-container').height() + 7;
                 $scope.$digest();
             } else if( (previousScrollTop > thisScrollTop) && !$scope.showProjectInformation) {
-                console.log("showing info");
                 $scope.showProjectInformation = true;
                 $scope.$digest();
             }
@@ -55,7 +49,7 @@ jmApp.controller('projectController', ['$scope', '$rootScope', 'project', functi
 
     if ($scope.desktopAnimations) {
         $(window).scroll(
-            _.throttle( detectScrollToMoveProjectArrows(), 500)
+            _.throttle( detectScrollToMoveProjectArrows(), 50)
         );
     }
 }]);

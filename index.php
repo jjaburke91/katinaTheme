@@ -54,7 +54,6 @@
     <about-modal></about-modal>
 
     <div id="contact-modal" class="modal modal-transition" ng-show="contactModal.visible">
-
         <span class="modal-close"
               ng-click="contactModal.closeModal()">
             <i class="fa fa-times fa-4x"></i>
